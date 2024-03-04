@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 :root{
     /* Colors */
     --neutral-lowest: #FFFFFF;
@@ -71,14 +76,31 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    background: orange;
 }
 
+
+
 h1{
-    font-size: var(--display-h1);
-    font-family: 'fontspring_demo_-_roc_groteRg';
+    font-size: 10vw;
+    font-family: var(--display);
     text-transform: uppercase;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+h1 span {
+    display: inline-block;
+    animation: marque-animation 100s linear infinite;
+}
+
+@keyframes marque-animation {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(-100%,0);
+    }
 }
 
 h5{
@@ -94,4 +116,15 @@ h5{
     font-size: var(--label-smaller);
     font-family: Inter, sans-serif;
     font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--2xs);
+    transition: ease-out 150ms;
+}
+
+.button:hover{
+    background: #4338CA;
+    transition: ease-out 150ms;
 }
