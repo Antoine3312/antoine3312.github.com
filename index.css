@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    /* Colors */
+    --neutral-lowest: #FFFFFF;
+    --neutral-hightest: #09090B;
+    --primary-brand-medium: #6366F1;
+    --primary-brand-lowest: #EEF2FF;
+
+    /* Font size*/
+    --display-h1: 80px;
+    --label-smaller: 16px;
+
+    /* Font familly */
+    --display: 'roc_groteskcompressedXBd';
+
+    /* Spacing */
+    --4: 2px;
+    --3xs: 4px;
+    --2xs: 6px;
+    --xs: 8px;
+    --s: 12px;
+    --m: 16px;
+    --l: 24px;
+    --xl: 32px;
+    --2xl: 48px;
+    --3xl: 64px;
+
+    /* Radius */
+    --radius-m: 4px;
+    --radius-l: 8px;
+    --radius-xl: 16px;
+    --radius-round: 9999px;
+
+    /* Buttons*/
+    --button-background: var(--primary-brand-medium);
+    --button-text: var(--primary-brand-lowest);
+    --button-radius: var(--radius-l);
+    --button-padding-v: var(--2xs);
+    --button-padding-h: var(--s);
+    --button-spacing: var(--2xs);
+}
+
+@font-face {
+    font-family: 'roc_groteskcompressedXBd';
+    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff2') format('woff2'),
+    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    width: 100vw;
+    height: 100dvh;
+    gap: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+h1{
+    font-size: var(--display-h1);
+    font-family: var(--display);
+    text-transform: uppercase;
+}
+
+h5{
+    font-size: var(--label-smaller);
+    font-family: Inter, sans-serif;
+}
+
+.button{
+    background: var(--button-background);
+    padding: var(--button-padding-v) var(--button-padding-h);
+    border-radius: var(--button-radius);
+    color: var(--button-text);
+    font-size: var(--label-smaller);
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+}
