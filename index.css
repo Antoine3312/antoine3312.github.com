@@ -55,6 +55,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'fontspring_demo_-_roc_groteRg';
+    src: url('./font/fontspring-demo-rocgrotesk-regular-webfont.woff2') format('woff2'),
+    url('./font/fontspring-demo-rocgrotesk-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
     width: 100vw;
@@ -65,12 +72,12 @@ body{
     align-items: center;
     flex-direction: column;
 
-    background: red;
+    background: orange;
 }
 
 h1{
     font-size: var(--display-h1);
-    font-family: 'roc_groteskcompressedXBd', Fallback, sans-serif;;
+    font-family: 'fontspring_demo_-_roc_groteRg';
     text-transform: uppercase;
 }
 
