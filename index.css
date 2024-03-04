@@ -65,11 +65,12 @@ body{
     align-items: center;
     flex-direction: column;
 
+    background: red;
 }
 
 h1{
     font-size: var(--display-h1);
-    font-family: 'roc_groteskcompressedXBd';
+    font-family: 'roc_groteskcompressedXBd', Fallback, sans-serif;;
     text-transform: uppercase;
 }
 
