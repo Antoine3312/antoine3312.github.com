@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://p.typekit.net/p.css?s=1&k=xci1jgh&ht=tk&f=41097.41111.41079.41082.41088.41091.41099.41102.41113.41116&a=171548360&app=typekit&e=css");
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+:root{
+    --slate-50: #F8FAFC;
+    --slate-100: #F1F5F9;
+    --slate-200: #E2E8F0;
+    --slate-300: #CBD5E1;
+
+    --heading-h1: 56px;
+    --text-medium: 16px;
+
+    --primary-brand-hightest: #312E81;
+}
+
+body{
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family:"roc-grotesk-compressed";
+    src:url("https://use.typekit.net/af/404af9/00000000000000007735b7d5/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/404af9/00000000000000007735b7d5/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/404af9/00000000000000007735b7d5/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"roc-grotesk";
+    src:url("https://use.typekit.net/af/975d46/00000000000000007735b7c3/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/975d46/00000000000000007735b7c3/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/975d46/00000000000000007735b7c3/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+.menu_section{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-transform: uppercase;
+    font-size: var(--heading-h1);
+    font-family: Inter, sans-serif;
+    font-weight: 900;
+    color: var(--primary-brand-hightest);
+}
+
+.menu_section p {
+    display: none;
+}
+
+.menu_section svg{
+    display: none;
+}
+
+.menu_section:nth-child(1){
+    background: var(--slate-50);
+    /*animation: fadeIn .3s 0s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;*/
+}
+.menu_section:nth-child(2){
+    background: var(--slate-100);
+    /*animation: fadeIn .3s .1s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;*/
+}
+.menu_section:nth-child(3){
+    background: var(--slate-200);
+    /*animation: fadeIn .3s .2s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;*/
+}
+.menu_section:nth-child(4){
+    background: var(--slate-300);
+    /*animation: fadeIn .3s .3s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;*/
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 100;
+    }
+}
+
+@media (min-width: 1000px) {
+    body{
+        flex-direction: row;
+    }
+
+    .menu_section{
+        position: relative;
+        display: block;
+        padding: 64px 24px 32px 24px;
+        color: black;
+        font-size: 36px;
+        transition: ease-in .2s;
+    }
+
+    .menu_section:nth-child(n){
+        background: var(--slate-50);
+    }
+
+    .menu_section p {
+        text-transform: none;
+        display: block;
+        font-size: var(--text-medium);
+        font-weight: 300;
+        margin-top: 10px;
+    }
+
+    .menu_section svg {
+        display: block;
+        position: absolute;
+        bottom: 32px;
+        right: 24px;
+        stroke: black;
+        transition: ease-in .2s;
+    }
+
+    .menu_section:hover{
+        background: #1E293B;
+        color: white;
+        transition: ease-in .2s;
+    }
+
+    .menu_section:hover > svg {
+        stroke: white;
+        transition: ease-in .2s;
+    }
+
+
+
+
+}
