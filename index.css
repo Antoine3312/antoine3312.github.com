@@ -53,17 +53,6 @@ a{
     --button-spacing: var(--2xs);
 }
 
-/*@font-face {*/
-/*    font-family: 'roc_groteskcompressedXBd';*/
-/*    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.eot');*/
-/*    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.eot?#iefix') format('embedded-opentype'),*/
-/*    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff2') format('woff2'),*/
-/*    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff') format('woff'),*/
-/*    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.ttf') format('truetype');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
-
 body{
     width: 100vw;
     height: 100dvh;
@@ -72,7 +61,6 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: orange;
 }
 
 @font-face {
@@ -90,12 +78,13 @@ body{
 
 
 h1{
-    font-size: var(--display-h1);
+    font-size: 128px;
     font-family:"roc-grotesk-compressed";
     text-transform: uppercase;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
+    animation: fadeIn .5s .5s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;
 }
 
 h1 span {
@@ -113,9 +102,18 @@ h1 span {
 }
 
 h5{
-    font-size: var(--label-smaller);
+    font-size: 20px;
     font-family: Inter, sans-serif;
-    font-weight: 900;
+    font-weight: 500;
+    animation: textAppearFromBottom 1.3s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+h5 span {
+    animation: textAppearFromBottom 1.3s .1s cubic-bezier(0.5, 0, 0.1, 1) both;
+    background-image: linear-gradient(to top left, #4338CA, #6366F1, #A5B4FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }
 
 .button{
@@ -131,8 +129,9 @@ h5{
     justify-content: center;
     align-items: center;
     gap: var(--2xs);
-    transition: ease-out 150ms;
 
+    transition: ease-out 150ms;
+    animation: fadeIn .5s 1s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;
 }
 
 .button:hover{
@@ -140,9 +139,30 @@ h5{
     transition: ease-out 150ms;
 }
 
+@keyframes textAppearFromBottom {
+    from {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 100;
+    }
+}
+
 @media (min-width: 1000px) {
     h5{
         font-size: var(--label-smaller);
+    }
+    h1{
+        font-size: 256px;
     }
     body{
         gap: 32px;
