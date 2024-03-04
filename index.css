@@ -54,24 +54,20 @@ a{
 
 @font-face {
     font-family: 'roc_groteskcompressedXBd';
-    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff2') format('woff2'),
-    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff') format('woff');
+    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.eot');
+    src: url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff2') format('woff2'),
+    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.woff') format('woff'),
+    url('./font/fontspring-demo-rocgroteskcomp-extrabold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
 
-@font-face {
-    font-family: 'fontspring_demo_-_roc_groteRg';
-    src: url('./font/fontspring-demo-rocgrotesk-regular-webfont.woff2') format('woff2'),
-    url('./font/fontspring-demo-rocgrotesk-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 }
 
 body{
     width: 100vw;
     height: 100dvh;
-    gap: 32px;
+    gap: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +77,7 @@ body{
 
 
 h1{
-    font-size: 256px;
+    font-size: calc(var(--display-h1) * 2.5);
     font-family: var(--display);
     text-transform: uppercase;
     width: 100%;
@@ -104,7 +100,7 @@ h1 span {
 }
 
 h5{
-    font-size: var(--label-smaller);
+    font-size: calc( var(--label-smaller) * 1.5);
     font-family: Inter, sans-serif;
 }
 
@@ -122,9 +118,23 @@ h5{
     align-items: center;
     gap: var(--2xs);
     transition: ease-out 150ms;
+
+    transform: scale(2);
 }
 
 .button:hover{
     background: #4338CA;
     transition: ease-out 150ms;
+}
+
+@media (min-width: 1000px) {
+    h5{
+        font-size: var(--label-smaller);
+    }
+    body{
+        gap: 32px;
+    }
+    .button{
+        transform: scale(1);
+    }
 }
