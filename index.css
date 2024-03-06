@@ -47,9 +47,9 @@ a{
     /* Buttons*/
     --button-background: var(--primary-brand-medium);
     --button-text: var(--primary-brand-lowest);
-    --button-radius: var(--radius-l);
-    --button-padding-v: var(--2xs);
-    --button-padding-h: var(--s);
+    --button-radius: var(--radius-xl);
+    --button-padding-v: var(--s);
+    --button-padding-h: var(--l);
     --button-spacing: var(--2xs);
 }
 
@@ -78,7 +78,7 @@ body{
 
 
 h1{
-    font-size: 128px;
+    font-size: 200px;
     font-family:"roc-grotesk-compressed";
     text-transform: uppercase;
     width: 100%;
@@ -102,7 +102,7 @@ h1 span {
 }
 
 h5{
-    font-size: 20px;
+    font-size: 40px;
     font-family: Inter, sans-serif;
     font-weight: 500;
     animation: textAppearFromBottom 1.3s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
@@ -121,7 +121,7 @@ h5 span {
     padding: var(--button-padding-v) var(--button-padding-h);
     border-radius: var(--button-radius);
     color: var(--button-text);
-    font-size: var(--label-smaller);
+    font-size: 24px;
     font-family: Inter, sans-serif;
     font-weight: 500;
 
@@ -132,6 +132,10 @@ h5 span {
 
     transition: ease-out 150ms;
     animation: fadeIn .5s 1s cubic-bezier( 0.57, 0.01, 0.75, 0.06 ) both;
+}
+
+.button svg {
+    height: 100%;
 }
 
 .button:hover{
@@ -167,7 +171,5 @@ h5 span {
     body{
         gap: 32px;
     }
-    .button{
-        transform: scale(1);
-    }
+
 }
