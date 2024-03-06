@@ -41,7 +41,7 @@ body{
     width: 100vw;
     height: 100dvh;
     gap: 32px;
-    padding: 16px 12px;
+    padding: 34px;
 }
 
 .menu{
@@ -69,13 +69,12 @@ body{
     height: 100dvh;
     background: var(--slate-100);
     display: none;
-    padding: 16px 12px;
+    padding: 40px 20px;
 
     position: absolute;
     top: 0;
     left: 0;
 
-    /*animation: slideIn .3s 0s cubic-bezier(0.89, 0, 0.17, 1);*/
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
