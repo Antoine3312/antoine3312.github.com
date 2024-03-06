@@ -11,6 +11,21 @@
     font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
 }
 
+:root {
+    --display: "roc-grotesk-compressed";
+    --content: Inter, sans-serif;
+
+    --neutral-lowest: #FFFFFF;
+    --neutral-hightest: #09090B;
+    --primary-brand-medium: #6366F1;
+    --primary-brand-lowest: #EEF2FF;
+
+    --slate-50: #F8FAFC;
+    --slate-100: #F1F5F9;
+    --slate-200: #E2E8F0;
+    --slate-300: #CBD5E1;
+}
+
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
@@ -26,7 +41,7 @@ body{
     width: 100vw;
     height: 100dvh;
     gap: 32px;
-    padding: 16px 12px 16px 12px;
+    padding: 16px 12px;
 }
 
 .menu{
@@ -39,11 +54,147 @@ body{
 }
 
 .menu > h1{
-    font-family: Inter, sans-serif;
+    font-family: var(--content);
     font-size: 2.5em;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .menu > svg{
     height: 100%;
+}
+
+
+.burger_menu{
+    width: 100vw;
+    height: 100dvh;
+    background: var(--slate-100);
+    display: none;
+    padding: 16px 12px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /*animation: slideIn .3s 0s cubic-bezier(0.89, 0, 0.17, 1);*/
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.burger_menu_heading{
+    display: flex;
+    font-family: var(--content);
+    font-weight: 900;
+    font-size: 20px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn .8s .8s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+.burger_menu_heading > svg {
+    height: 50px;
+}
+
+.burger_menu_choices{
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 200%;
+    text-transform: uppercase;
+    text-align: center;
+}
+.burger_menu_choices > h1:nth-child(n){
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.burger_menu_choices > h1:nth-child(1){
+    animation: textAppearFromBottom .3s .3s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+.burger_menu_choices > h1:nth-child(2){
+    animation: textAppearFromBottom .3s .4s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+.burger_menu_choices > h1:nth-child(3){
+    animation: textAppearFromBottom .3s .5s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+.burger_menu_choices > h1:nth-child(4){
+    animation: textAppearFromBottom .3s .6s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+
+.burger_menu object {
+    width: 100%;
+}
+
+.burger_menu_footer{
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn .8s .8s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+
+.bg{
+    width: 100%;
+}
+.avatar {
+    background: var(--slate-200);
+    padding: 14px;
+    height: 80%;
+    border-radius: 9999px;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.burger_menu_footer > svg{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 30%;
+}
+.burger_menu_footer > h1{
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    transform: translate(-55%, -50%);
+
+    font-family: var(--content);
+    font-weight: 900;
+    color: white;
+    font-size: 40px;
+}
+
+
+
+@keyframes slideIn {
+    from{
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+@keyframes slideOut {
+    from{
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 100;
+    }
+}
+
+@keyframes textAppearFromBottom {
+    from {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 }

@@ -13,6 +13,13 @@ a{
 }
 
 :root{
+    --display: "roc-grotesk-compressed";
+    --content: Inter, sans-serif;
+
+    --neutral-lowest: #FFFFFF;
+    --neutral-hightest: #09090B;
+    --primary-brand-medium: #6366F1;
+    --primary-brand-lowest: #EEF2FF;
     --slate-50: #F8FAFC;
     --slate-100: #F1F5F9;
     --slate-200: #E2E8F0;
@@ -56,7 +63,7 @@ body{
 
     text-transform: uppercase;
     font-size: var(--heading-h1);
-    font-family: Inter, sans-serif;
+    font-family: var(--content);
     font-weight: 900;
     color: var(--primary-brand-hightest);
 }
@@ -140,8 +147,4 @@ body{
         stroke: white;
         transition: ease-in .2s;
     }
-
-
-
-
 }
