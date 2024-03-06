@@ -12,6 +12,5 @@ closeMenu = () => {
     burgerMenu.style.animation = " slideOut ."+animationDuration+"s 0s cubic-bezier(0.9, 0, 0.22, 1)";
     setTimeout(() => {
         burgerMenu.style.display = "none";
-        console.log("delay")
     }, animationDuration)
 }

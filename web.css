@@ -16,6 +16,7 @@
     --content: Inter, sans-serif;
 
     --neutral-lowest: #FFFFFF;
+    --neutral-lower: #F1F5F9;
     --neutral-hightest: #09090B;
     --primary-brand-medium: #6366F1;
     --primary-brand-lowest: #EEF2FF;
@@ -40,10 +41,14 @@ a{
 body{
     width: 100vw;
     height: 100dvh;
-    gap: 32px;
+    gap: 64px;
     padding: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* ==================== MENU ====================*/
 .menu{
     width: 100%;
     height: 100px;
@@ -78,6 +83,8 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+
+    z-index: 10;
 }
 
 .burger_menu_heading{
@@ -197,3 +204,58 @@ body{
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 }
+
+
+/* ==================== CONTENT ==================== */
+
+body > h1 {
+    font-family: var(--display);
+    font-size: 128px;
+}
+
+.wrapper_project{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.project{
+    background: var(--neutral-lower);
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.project > img {
+    position: absolute;
+    left: -55%;
+    height: 100%;
+
+}
+
+.project_info{
+    position: absolute;
+    left: 40%;
+    top: 60px;
+    height: 80%;
+    padding-right: 30px;
+}
+
+.project_info > h1{
+    font-family: var(--content);
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.project_info > svg{
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}
+

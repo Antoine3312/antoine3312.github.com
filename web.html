@@ -7,34 +7,47 @@
     <script defer src="./web.js" ></script>
 </head>
 <body>
-<div class="menu">
-    <h1>Accueil</h1>
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="showMenu()">
-        <path d="M5.33334 12H18.6667M5.33334 7H18.6667M5.33334 17H18.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-</div>
-<div class="burger_menu" id="burger_menu">
-    <div class="burger_menu_heading" onclick="closeMenu()">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.75 11.5L6.25 8L9.75 4.5" stroke="#09090B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h1>Retour</h1>
-    </div>
-    <div class="burger_menu_choices">
-        <h1>Java</h1>
-        <h1>Web</h1>
-        <h1>Python</h1>
-        <h1>BD</h1>
-    </div>
-    <div class="burger_menu_footer">
-        <img src="./svg/gradient_whoami.svg" alt="background_image_footer" class="bg">
-        <img src="./svg/avatar.svg" alt="" class="avatar">
-        <h1>Qui Suis-Je ?</h1>
-        <svg viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 14.5H21M21 14.5L14 7.5M21 14.5L14 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="menu">
+        <h1><a href="menu.html">Accueil</a></h1>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="showMenu()">
+            <path d="M5.33334 12H18.6667M5.33334 7H18.6667M5.33334 17H18.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </div>
+    <div class="burger_menu" id="burger_menu">
+        <div class="burger_menu_heading" onclick="closeMenu()">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.75 11.5L6.25 8L9.75 4.5" stroke="#09090B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h1>Retour</h1>
+        </div>
+        <div class="burger_menu_choices">
+            <h1>Java</h1>
+            <h1>Web</h1>
+            <h1>Python</h1>
+            <h1>BD</h1>
+        </div>
+        <div class="burger_menu_footer">
+            <img src="./svg/gradient_whoami.svg" alt="background_image_footer" class="bg">
+            <img src="./svg/avatar.svg" alt="" class="avatar">
+            <h1>Qui Suis-Je ?</h1>
+            <svg viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 14.5H21M21 14.5L14 7.5M21 14.5L14 21.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
 
-</div>
+    </div>
+    <h1>Mes Projets Web</h1>
+    <div class="wrapper_project">
+        <div class="project project_1">
+            <img src="./images/mockup_1_couleur.png" alt="">
+            <div class="project_info">
+                <h1>Compteur de Point de Tarot</h1>
+                <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 14H21M14 7V21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
