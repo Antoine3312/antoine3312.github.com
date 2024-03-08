@@ -288,7 +288,32 @@ body > h1 {
     height: 100%;
     background: var(--neutral-lowest);
     border-radius: 16px;
+    padding: 26px 20px;
 }
+.project_data > .heading_data{
+    font-family: var(--content);
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.project_data > p {
+    font-family: var(--content);
+    font-size: 32px;
+}
+.gradient_text{
+    background-image: linear-gradient(to top left, #4338CA, #6366F1, #A5B4FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.project_data > .heading_data > svg{
+    height: 60px;
+}
+
+
 .project_data_3{
     grid-column: span 2;
 }
@@ -307,4 +332,22 @@ body > h1 {
     bottom: 0;
     right: 0;
 }
+
+@keyframes appearGrid {
+    from{
+        display: none;
+    }
+    to{
+        display: grid;
+    }
+}
+@keyframes disappearGrid {
+    from{
+        display: grid;
+    }
+    to{
+        display: none;
+    }
+}
+
 
