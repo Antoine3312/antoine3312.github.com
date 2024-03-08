@@ -38,12 +38,25 @@
     </div>
     <h1>Mes Projets Web</h1>
     <div class="wrapper_project">
-        <div class="project project_1">
-            <img src="./images/mockup_1_couleur.png" alt="">
-            <div class="project_info">
-                <h1>Compteur de Point de Tarot</h1>
-                <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="project project_1"  id="project_1">
+            <img src="./images/mockup_1_couleur.png" alt="" id="img_p1">
+            <div class="wrapper_dot" id="wrapper_dot_p1">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="project_info" id="project_info_p1">
+                <h1 id="title_p1">Compteur de Point de Tarot</h1>
+                <div class="wrapper_project_data" id="wrapper_project_data_p1">
+                    <div class="project_data project_data_1"></div>
+                    <div class="project_data project_data_2"></div>
+                    <div class="project_data project_data_3"></div>
+                </div>
+                <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" id="plus_p1" onclick="openProject(1)">
                     <path d="M7 14H21M14 7V21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" id="minus_p1" onclick="closeProject(1)">
+                    <path d="M7 14H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
 

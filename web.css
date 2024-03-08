@@ -229,13 +229,33 @@ body > h1 {
     position: relative;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
 }
 
 .project > img {
     position: absolute;
     left: -55%;
-    height: 100%;
+    height: 600px;
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+}
+.wrapper_dot{
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 0;
+}
+.dot{
+    background: var(--neutral-hightest);
+    border-radius: 99999px;
+    width: 12px;
+    height: 12px;
+}
 
+.dot:nth-child(n+2){
+    opacity: 30%;
 }
 
 .project_info{
@@ -244,6 +264,7 @@ body > h1 {
     top: 60px;
     height: 80%;
     padding-right: 30px;
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
 }
 
 .project_info > h1{
@@ -252,10 +273,38 @@ body > h1 {
     font-weight: 900;
 }
 
+.wrapper_project_data{
+    width: 100%;
+    height: 700px;
+    margin-top: 10px;
+    padding: 27px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    opacity: 0;
+}
+.project_data{
+    width: 100%;
+    height: 100%;
+    background: var(--neutral-lowest);
+    border-radius: 16px;
+}
+.project_data_3{
+    grid-column: span 2;
+}
+
 .project_info > svg{
     width: 60px;
     position: absolute;
     bottom: 0;
     right: 30px;
+}
+
+#minus_p1{
+    display: none;
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
