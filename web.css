@@ -311,10 +311,17 @@ body > h1 {
 .project_data > .heading_data > svg{
     height: 60px;
 }
-
-.techno{
+.wrapper_tecno{
     width: 100%;
-    margin: 10px 0 0 25px;
+    /*background: red;*/
+    height: 75%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.techno{
+    margin-left: 33%;
     display: flex;
     align-items: center;
     gap: 10px;
