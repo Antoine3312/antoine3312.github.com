@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Portfolio</title>
     <link rel="stylesheet" href="./web.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script defer src="./web.js" ></script>
 </head>
 <body>
@@ -39,11 +40,15 @@
     <h1>Mes Projets Web</h1>
     <div class="wrapper_project">
         <div class="project project_1"  id="project_1">
-            <img src="./images/mockup_1_couleur.png" alt="" id="img_p1">
+            <div class="wrapper_caroussel wrapper_caroussel_p1" id="img_p1">
+                <img src="./images/mockup_1_couleur.png" alt="">
+                <img src="./images/mockup_1_couleur.png" alt="">
+                <img src="./images/mockup_1_couleur.png" alt="">
+            </div>
             <div class="wrapper_dot" id="wrapper_dot_p1">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+                <div class="dot" onclick="changePannel(1, 1)"></div>
+                <div class="dot" onclick="changePannel(1, 2)"></div>
+                <div class="dot" onclick="changePannel(1, 3)"></div>
             </div>
             <div class="project_info" id="project_info_p1">
                 <h1 id="title_p1">Compteur de Point de Tarot</h1>
@@ -80,7 +85,7 @@
                             </svg>
                             <h2>Technologies</h2>
                         </div>
-                        <div class="wrapper_tecno">
+                        <div class="wrapper_techno">
                             <div class="techno">
                                 <img src="./images/logo_angular.png" alt="logo angular">
                                 <p>Angular</p>
@@ -106,7 +111,6 @@
             </div>
 
         </div>
-
     </div>
 </body>
 </html>

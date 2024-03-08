@@ -232,12 +232,19 @@ body > h1 {
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
 }
 
-.project > img {
+.wrapper_caroussel {
     position: absolute;
     left: -55%;
     height: 600px;
+    width: 913px;
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+    display: flex;
+    overflow: hidden;
 }
+.wrapper_caroussel > img{
+    height: 100%;
+}
+
 .wrapper_dot{
     display: flex;
     gap: 20px;
@@ -378,4 +385,8 @@ body > h1 {
     }
 }
 
-
+.test{
+    background: red;
+    width: 100px;
+    height: 100px;
+}

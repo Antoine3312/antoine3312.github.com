@@ -17,10 +17,11 @@ openProject = (project_id) => {
     document.getElementById("project_"+project_id).style.height = "1600px"
     document.getElementById("project_"+project_id).style.padding = "50px"
     document.getElementById("img_p"+project_id).style.height = "550px"
+    document.getElementById("img_p"+project_id).style.width = "837px"
     document.getElementById("img_p"+project_id).style.left = "50%"
     document.getElementById("img_p"+project_id).style.transform = "translate(-50%,0)"
-    document.getElementById("img_p"+project_id).style.background = "#FFE54B"
-    document.getElementById("img_p"+project_id).style.borderRadius = "32px"
+    // document.getElementById("img_p"+project_id).style.background = "#FFE54B"
+    // document.getElementById("img_p"+project_id).style.borderRadius = "32px"
     document.getElementById("project_info_p"+project_id).style.position = "relative"
     document.getElementById("project_info_p"+project_id).style.left = "0"
     document.getElementById("project_info_p"+project_id).style.top = "600px"
@@ -32,6 +33,8 @@ openProject = (project_id) => {
     document.getElementById("wrapper_dot_p"+project_id).style.animation = "fadeIn .3s .3s cubic-bezier(0, 0, 0.58, 1) forwards"
     setTimeout(() => {
         document.getElementById("wrapper_project_data_p"+project_id).style.display = "grid"
+        document.getElementById("img_p"+project_id).style.overflow = "visible"
+        document.getElementById("img_p"+project_id).style.transition = "none"
     }, 200)
 }
 
@@ -41,6 +44,7 @@ closeProject = (project_id) => {
     document.getElementById("img_p"+project_id).style.height = ""
     document.getElementById("img_p"+project_id).style.left = ""
     document.getElementById("img_p"+project_id).style.transform = ""
+    document.getElementById("img_p"+project_id).style.overflow = ""
     document.getElementById("img_p"+project_id).style.background = ""
     document.getElementById("img_p"+project_id).style.borderRadius = ""
     document.getElementById("project_info_p"+project_id).style.position = ""
@@ -53,4 +57,23 @@ closeProject = (project_id) => {
     document.getElementById("minus_p"+project_id).style.display = ""
     document.getElementById("wrapper_project_data_p"+project_id).style.display = "none"
     document.getElementById("wrapper_dot_p"+project_id).style.animation = "fadeOut .1s ease-in forwards"
+    document.getElementById("img_p"+project_id).style.transition = ""
+}
+
+
+
+function changePannel(project_id, positionWanted){
+    gsap.to(".wrapper_caroussel_p"+project_id,{
+        x: -1*(positionWanted-1)*(document.getElementById("img_p"+project_id).offsetWidth),
+        duration : .7,
+        ease: "power3.out",
+    })
+    const dotList = document.getElementsByClassName("dot");
+    for(let i=0; i<dotList.length; i++){
+        if (i+1 === positionWanted){
+            dotList[i].style.opacity = "100%";
+        } else {
+            dotList[i].style.opacity = "30%";
+        }
+    }
 }
