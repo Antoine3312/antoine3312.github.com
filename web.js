@@ -29,8 +29,10 @@ openProject = (project_id) => {
     document.getElementById("project_info_p"+project_id).style.height = "60%"
     document.getElementById("plus_p"+project_id).style.display = "none"
     document.getElementById("minus_p"+project_id).style.display = "block"
-    document.getElementById("wrapper_project_data_p"+project_id).style.animation = "fadeIn .3s .1s cubic-bezier(0, 0, 0.58, 1) forwards"
     document.getElementById("wrapper_dot_p"+project_id).style.animation = "fadeIn .3s .3s cubic-bezier(0, 0, 0.58, 1) forwards"
+    setTimeout(() => {
+        document.getElementById("wrapper_project_data_p"+project_id).style.display = "grid"
+    }, 200)
 }
 
 closeProject = (project_id) => {
@@ -49,6 +51,6 @@ closeProject = (project_id) => {
     document.getElementById("project_info_p"+project_id).style.height = ""
     document.getElementById("plus_p"+project_id).style.display = ""
     document.getElementById("minus_p"+project_id).style.display = ""
-    document.getElementById("wrapper_project_data_p"+project_id).style.animation = "fadeOut .1s ease-in forwards"
+    document.getElementById("wrapper_project_data_p"+project_id).style.display = "none"
     document.getElementById("wrapper_dot_p"+project_id).style.animation = "fadeOut .1s ease-in forwards"
 }
