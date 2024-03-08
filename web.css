@@ -311,9 +311,8 @@ body > h1 {
 .project_data > .heading_data > svg{
     height: 60px;
 }
-.wrapper_tecno{
+.wrapper_techno{
     width: 100%;
-    /*background: red;*/
     height: 75%;
     gap: 20px;
     display: flex;
