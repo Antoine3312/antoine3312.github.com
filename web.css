@@ -462,7 +462,7 @@ body > h1 {
     .project_info{
         position: absolute;
         left: 53%;
-        top: 85px;
+        top: 70px;
         width: 45%;
         height: 70%;
         padding: 0;
@@ -492,9 +492,7 @@ body > h1 {
         position: relative;
         width: calc(100% *3);
         height: 80%;
-        /*background: red;*/
         display: flex;
-        /*align-items: center;*/
     }
 
     .wrapper_caroussel > img{
