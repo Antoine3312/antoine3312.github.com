@@ -9,10 +9,19 @@
 </head>
 <body>
     <div class="menu">
-        <h1><a href="menu.html">Accueil</a></h1>
+        <div class="menu_headers">
+            <h1><a href="menu.html">Accueil</a></h1>
+            <h1 class="menu_whoami"><a href="#">Qui suis Je</a></h1>
+        </div>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="showMenu()">
             <path d="M5.33334 12H18.6667M5.33334 7H18.6667M5.33334 17H18.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+        <div class="menu_choices">
+            <h1><a href="web.html">Web</a></h1>
+            <h1><a href="#">Base de Données</a></h1>
+            <h1><a href="#">Java</a></h1>
+            <h1><a href="#">Python</a></h1>
+        </div>
     </div>
     <div class="burger_menu" id="burger_menu">
         <div class="burger_menu_heading" onclick="closeMenu()">
@@ -37,7 +46,7 @@
         </div>
 
     </div>
-    <h1>Mes Projets Web</h1>
+    <h1>Mes Projets <span class="gradient_text">Web</span></h1>
     <div class="wrapper_project">
         <div class="project project_1"  id="project_1">
             <div class="wrapper_caroussel wrapper_caroussel_p1" id="img_p1">
