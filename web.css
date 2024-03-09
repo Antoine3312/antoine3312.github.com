@@ -480,6 +480,7 @@ body > h1 {
         width: 609px;
         align-items: center;
         /*overflow: visible;*/
+        transition: none;
     }
 
     .wrapper_caroussel > img{
