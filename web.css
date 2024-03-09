@@ -299,6 +299,12 @@ body > h1 {
     display: flex;
     overflow: hidden;
 }
+.caroussel{
+    position: relative;
+    width: calc(100% *3);
+    height: 100%;
+    display: flex;
+}
 .wrapper_caroussel > img{
     height: 100%;
 }
@@ -476,15 +482,23 @@ body > h1 {
 
     .wrapper_caroussel {
         left: 0;
+        top: 50px;
         height: 100%;
         width: 609px;
-        align-items: center;
-        /*overflow: visible;*/
         transition: none;
     }
 
-    .wrapper_caroussel > img{
+    .caroussel{
+        position: relative;
+        width: calc(100% *3);
         height: 80%;
+        /*background: red;*/
+        display: flex;
+        /*align-items: center;*/
+    }
+
+    .wrapper_caroussel > img{
+        height: 100%;
     }
 
     .wrapper_dot{

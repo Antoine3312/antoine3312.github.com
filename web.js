@@ -63,8 +63,8 @@ closeProject = (project_id) => {
 
 
 function changePannel(project_id, positionWanted){
-    gsap.to(".wrapper_caroussel_p"+project_id,{
-        x: -1*(positionWanted-1)*(document.getElementById("img_p"+project_id).offsetWidth),
+    gsap.to(".caroussel_p"+project_id,{
+        x: -1*(positionWanted-1)*(document.getElementById("caroussel_p"+project_id).offsetWidth/3),
         duration : .7,
         ease: "power3.out",
     })
