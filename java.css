@@ -277,6 +277,16 @@ body > h1 {
     font-size: 128px;
 }
 
+body > h1 > span:nth-child(n){
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+body > h1 > span:nth-child(1){
+    animation: textAppearFromBottom .5s  cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+body > h1 > span:nth-child(2){
+    animation: textAppearFromBottom .3s .15s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+
 .gradient_text{
     background-image: linear-gradient(to top left, #4338CA, #6366F1, #A5B4FC);
     -webkit-background-clip: text;

@@ -277,6 +277,16 @@ body > h1 {
     font-size: 128px;
 }
 
+body > h1 > span:nth-child(n){
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+body > h1 > span:nth-child(1){
+    animation: textAppearFromBottom .5s  cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+body > h1 > span:nth-child(2){
+    animation: textAppearFromBottom .3s .15s cubic-bezier(0, 0, 0.58, 1) forwards;
+}
+
 .wrapper_project{
     width: 100%;
     display: flex;
@@ -294,6 +304,16 @@ body > h1 {
     overflow: hidden;
     /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+}
+
+.project:nth-child(n){
+    opacity: 0;
+}
+.project:nth-child(1){
+    animation: fadeIn .3s .3s cubic-bezier(0.87, 0, 0.17, 1) forwards;
+}
+.project:nth-child(2){
+    animation: fadeIn .3s .4s cubic-bezier(0.87, 0, 0.17, 1) forwards;
 }
 
 .wrapper_caroussel {
