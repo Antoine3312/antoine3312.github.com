@@ -41,7 +41,7 @@ openProject = (project_id) => {
 }
 
 closeProject = (project_id) => {
-    changePannel(project_id, 1, 0)
+    // changePannel(project_id, 1, 0)
     document.getElementById("project_" + project_id).style.height = ""
     document.getElementById("project_" + project_id).style.padding = ""
     document.getElementById("img_p" + project_id).style.height = ""
