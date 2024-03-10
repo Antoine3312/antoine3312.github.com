@@ -1,10 +1,8 @@
 const animationDuration = 300
 const burgerMenu = document.getElementById('burger_menu');
 showMenu = () => {
-    burgerMenu.style.animation = " slideIn ." + animationDuration + "s 0s cubic-bezier(0.9, -0.01, 0.17, 1)";
-    burgerMenu.style.display = "flex";
-    document.body.style.height = "100dvh"
-    document.body.style.overflow = "hidden"
+    // burgerMenu.style.animation = " slideIn ." + animationDuration + "s 0s cubic-bezier(0.9, -0.01, 0.17, 1)";
+    // burgerMenu.style.display = "flex";
 }
 closeMenu = () => {
     burgerMenu.style.animation = " slideOut ." + animationDuration + "s 0s cubic-bezier(0.9, 0, 0.22, 1)";
@@ -17,7 +15,6 @@ closeMenu = () => {
 
 
 openProject = (project_id) => {
-    console.log("open")
     document.getElementById("project_" + project_id).style.height = "1600px"
     document.getElementById("project_" + project_id).style.padding = "50px"
     document.getElementById("img_p" + project_id).style.height = "550px"
