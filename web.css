@@ -301,7 +301,7 @@ body > h1 > span:nth-child(2){
     border-radius: 16px;
     display: flex;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
 }
@@ -323,7 +323,7 @@ body > h1 > span:nth-child(2){
     width: 913px;
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
     display: flex;
-    overflow: visible;
+    overflow: hidden;
 }
 .wrapper_caroussel > svg{
     display: none;
