@@ -360,6 +360,7 @@ body > h1 {
     left: 40%;
     top: 60px;
     height: 80%;
+    width: 60%;
     padding-right: 30px;
     transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
 }
