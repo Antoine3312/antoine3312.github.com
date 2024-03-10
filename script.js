@@ -21,7 +21,7 @@ openProject = (project_id) => {
     document.getElementById("project_" + project_id).style.padding = "50px"
     document.getElementById("img_p" + project_id).style.height = "550px"
     document.getElementById("img_p" + project_id).style.width = "837px"
-    document.getElementById("img_p" + project_id).style.left = "50%"
+    document.getElementById("img_p" + project_id).style.left = "51%"
     document.getElementById("img_p" + project_id).style.transform = "translate(-50%,0)"
     // document.getElementById("img_p"+project_id).style.background = "#FFE54B"
     // document.getElementById("img_p"+project_id).style.borderRadius = "32px"
@@ -36,14 +36,15 @@ openProject = (project_id) => {
     document.getElementById("wrapper_dot_p" + project_id).style.animation = "fadeIn .3s .3s cubic-bezier(0, 0, 0.58, 1) forwards"
     setTimeout(() => {
         document.getElementById("wrapper_project_data_p" + project_id).style.display = "grid"
-        document.getElementById("img_p" + project_id).style.overflow = "visible"
+        // document.getElementById("img_p" + project_id).style.overflow = "visible"
         document.getElementById("img_p" + project_id).style.transition = "none"
         document.getElementById("navigation_caroussel_right_p" + project_id).style.display = "block"
     }, 200)
 }
 
 closeProject = (project_id) => {
-    // changePannel(project_id, 1, 0)
+    console.log(0.6 - (positionOfCaroussels[project_id-1] * 0.1))
+    changePannel(project_id, 1, 0.6 - (positionOfCaroussels[project_id-1] * 0.1))
     document.getElementById("project_" + project_id).style.height = ""
     document.getElementById("project_" + project_id).style.padding = ""
     document.getElementById("img_p" + project_id).style.height = ""
@@ -73,7 +74,7 @@ const positionOfCaroussels = [1, 1]
 
 changePannel = (project_id, positionWanted, duration = 0.7) => {
     gsap.to(".caroussel_p" + project_id, {
-        x: -1 * (positionWanted - 1) * (document.getElementById("caroussel_p" + project_id).offsetWidth / 3),
+        x: -1 * (positionWanted - 1) * (document.getElementById("img_size_p"+project_id).offsetWidth),
         duration: duration,
         ease: "power3.out",
     })

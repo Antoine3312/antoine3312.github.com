@@ -343,7 +343,7 @@ body > h1 > span:nth-child(2){
 }
 .caroussel{
     position: relative;
-    width: calc(100% *3);
+    width: 100%;
     height: 100%;
     display: flex;
 }
