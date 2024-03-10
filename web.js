@@ -3,17 +3,21 @@ const burgerMenu = document.getElementById('burger_menu');
 showMenu = () => {
     burgerMenu.style.animation = " slideIn ." + animationDuration + "s 0s cubic-bezier(0.9, -0.01, 0.17, 1)";
     burgerMenu.style.display = "flex";
-
+    document.body.style.height = "100dvh"
+    document.body.style.overflow = "hidden"
 }
 closeMenu = () => {
     burgerMenu.style.animation = " slideOut ." + animationDuration + "s 0s cubic-bezier(0.9, 0, 0.22, 1)";
     setTimeout(() => {
         burgerMenu.style.display = "none";
     }, animationDuration)
+    document.body.style.height = ""
+    document.body.style.overflow = ""
 }
 
 
 openProject = (project_id) => {
+    console.log("open")
     document.getElementById("project_" + project_id).style.height = "1600px"
     document.getElementById("project_" + project_id).style.padding = "50px"
     document.getElementById("img_p" + project_id).style.height = "550px"
@@ -61,7 +65,9 @@ closeProject = (project_id) => {
 }
 
 
-const positionOfCaroussels = [1]
+const positionOfCaroussels = [1, 1]
+
+
 
 changePannel = (project_id, positionWanted) => {
     gsap.to(".caroussel_p" + project_id, {
@@ -69,37 +75,42 @@ changePannel = (project_id, positionWanted) => {
         duration: .7,
         ease: "power3.out",
     })
-    const dotList = document.getElementsByClassName("dot");
-    for (let i = 0; i < dotList.length; i++) {
-        if (i + 1 === positionWanted) {
-            dotList[i].style.opacity = "100%";
-        } else {
-            dotList[i].style.opacity = "30%";
-        }
-    }
     positionOfCaroussels[project_id - 1] = positionWanted;
+    updateDisplayNavigationArrow(project_id)
+    updateCarousselDot(project_id)
 }
 
 
 changePannelRight = (project_id) => {
     changePannel(project_id, positionOfCaroussels[project_id - 1] + 1)
-    updataDisplayNavigationArrow(project_id);
+    updateDisplayNavigationArrow(project_id);
 }
 changePannelLeft = (project_id) => {
     changePannel(project_id, positionOfCaroussels[project_id - 1] - 1)
-    updataDisplayNavigationArrow(project_id);
+    updateDisplayNavigationArrow(project_id);
 }
 
-updataDisplayNavigationArrow = (project_id) => {
-    const amoutImage = document.getElementsByClassName("caroussel_image").length
+updateDisplayNavigationArrow = (project_id) => {
+    const amoutImage = document.getElementsByClassName("caroussel_image_p"+project_id).length
     if (positionOfCaroussels[project_id - 1] === amoutImage) {
-        document.getElementById("navigation_caroussel_right").style.display = "none";
-        document.getElementById("navigation_caroussel_left").style.display = "block";
+        document.getElementById("navigation_caroussel_right_p"+project_id).style.display = "none";
+        document.getElementById("navigation_caroussel_left_p"+project_id).style.display = "block";
     } else if(positionOfCaroussels[project_id - 1] === 1){
-        document.getElementById("navigation_caroussel_right").style.display = "block";
-        document.getElementById("navigation_caroussel_left").style.display = "none";
+        document.getElementById("navigation_caroussel_right_p"+project_id).style.display = "block";
+        document.getElementById("navigation_caroussel_left_p"+project_id).style.display = "none";
     } else {
-        document.getElementById("navigation_caroussel_right").style.display = "block";
-        document.getElementById("navigation_caroussel_left").style.display = "block";
+        document.getElementById("navigation_caroussel_right_p"+project_id).style.display = "block";
+        document.getElementById("navigation_caroussel_left_p"+project_id).style.display = "block";
+    }
+}
+
+updateCarousselDot = (project_id) => {
+    const dotList = document.getElementsByClassName("dot_p"+project_id);
+    for (let i = 0; i < dotList.length; i++) {
+        if (i + 1 === positionOfCaroussels[project_id - 1]) {
+            dotList[i].style.opacity = "100%";
+        } else {
+            dotList[i].style.opacity = "30%";
+        }
     }
 }
