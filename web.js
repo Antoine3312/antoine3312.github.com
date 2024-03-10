@@ -39,10 +39,12 @@ openProject = (project_id) => {
         document.getElementById("wrapper_project_data_p" + project_id).style.display = "grid"
         document.getElementById("img_p" + project_id).style.overflow = "visible"
         document.getElementById("img_p" + project_id).style.transition = "none"
+        document.getElementById("navigation_caroussel_right_p" + project_id).style.display = "block"
     }, 200)
 }
 
 closeProject = (project_id) => {
+    changePannel(project_id, 1, 0)
     document.getElementById("project_" + project_id).style.height = ""
     document.getElementById("project_" + project_id).style.padding = ""
     document.getElementById("img_p" + project_id).style.height = ""
@@ -62,6 +64,7 @@ closeProject = (project_id) => {
     document.getElementById("wrapper_project_data_p" + project_id).style.display = "none"
     document.getElementById("wrapper_dot_p" + project_id).style.animation = "fadeOut .1s ease-in forwards"
     document.getElementById("img_p" + project_id).style.transition = ""
+    document.getElementById("navigation_caroussel_right_p" + project_id).style.display = ""
 }
 
 
@@ -69,10 +72,10 @@ const positionOfCaroussels = [1, 1]
 
 
 
-changePannel = (project_id, positionWanted) => {
+changePannel = (project_id, positionWanted, duration = 0.7) => {
     gsap.to(".caroussel_p" + project_id, {
         x: -1 * (positionWanted - 1) * (document.getElementById("caroussel_p" + project_id).offsetWidth / 3),
-        duration: .7,
+        duration: duration,
         ease: "power3.out",
     })
     positionOfCaroussels[project_id - 1] = positionWanted;
