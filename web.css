@@ -313,6 +313,9 @@ body > h1 {
     height: 100%;
     display: flex;
 }
+.caroussel > svg{
+    display: none;
+}
 .wrapper_caroussel > img{
     height: 100%;
 }
@@ -495,6 +498,29 @@ body > h1 {
         width: 609px;
         transition: none;
     }
+    .wrapper_caroussel:hover #navigation_caroussel_left{
+        display: none;
+    }
+    .wrapper_caroussel:hover > svg{
+        opacity: 100;
+    }
+    .wrapper_caroussel > svg{
+        display: block;
+        opacity: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 38%;
+        transition: .25s ease;
+        z-index: 1000;
+    }
+    #navigation_caroussel_left{
+        left: 40px;
+    }
+    #navigation_caroussel_right{
+        right: 40px;
+    }
+
 
     .caroussel{
         position: relative;
@@ -502,6 +528,7 @@ body > h1 {
         height: 80%;
         display: flex;
     }
+
 
     .wrapper_caroussel > img{
         height: 100%;
@@ -515,8 +542,8 @@ body > h1 {
     }
     .dot{
         border-radius: 99999px;
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
     }
 
     .wrapper_project_data{
