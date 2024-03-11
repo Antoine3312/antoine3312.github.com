@@ -36,7 +36,6 @@ openProject = (project_id) => {
     document.getElementById("wrapper_dot_p" + project_id).style.animation = "fadeIn .3s .3s cubic-bezier(0, 0, 0.58, 1) forwards"
     setTimeout(() => {
         document.getElementById("wrapper_project_data_p" + project_id).style.display = "grid"
-        // document.getElementById("img_p" + project_id).style.overflow = "visible"
         document.getElementById("img_p" + project_id).style.transition = "none"
         document.getElementById("navigation_caroussel_right_p" + project_id).style.display = "block"
     }, 200)
