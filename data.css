@@ -287,20 +287,364 @@ body > h1 > span:nth-child(2){
     animation: textAppearFromBottom .3s .15s cubic-bezier(0, 0, 0.58, 1) forwards;
 }
 
+.wrapper_project{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.project{
+    background: var(--neutral-lower);
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+}
+
+.project:nth-child(n){
+    opacity: 0;
+}
+.project:nth-child(1){
+    animation: fadeIn .3s .3s cubic-bezier(0.87, 0, 0.17, 1) forwards;
+}
+.project:nth-child(2){
+    animation: fadeIn .3s .4s cubic-bezier(0.87, 0, 0.17, 1) forwards;
+}
+
+.wrapper_caroussel {
+    position: absolute;
+    left: -15%;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 550px;
+    width: 388px;
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+    display: flex;
+    overflow: hidden;
+}
+.wrapper_caroussel > svg{
+    display: none;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 45%;
+    transition: 1s ease-in;
+    z-index: 1000;
+}
+.navigation_caroussel_left{
+    display: none;
+    left: 10px;
+}
+.navigation_caroussel_right{
+    right: 10px;
+}
+.caroussel{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.caroussel > svg{
+    display: none;
+}
+.caroussel > img{
+    height: 100%;
+}
+
+
+.wrapper_dot{
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 0;
+}
+.dot{
+    background: var(--neutral-hightest);
+    border-radius: 99999px;
+    width: 12px;
+    height: 12px;
+}
+
+.dot:nth-child(n+2){
+    opacity: 30%;
+}
+
+.project_info{
+    position: absolute;
+    left: 40%;
+    top: 60px;
+    height: 80%;
+    width: 60%;
+    padding-right: 30px;
+    transition: .3s cubic-bezier(0.93, -0.01, 0.19, 1);
+}
+
+.project_info > h1{
+    font-family: var(--content);
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.wrapper_project_data{
+    width: 100%;
+    height: 770px;
+    margin-top: 10px;
+    padding: 27px 20px;
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.project_data{
+    width: 100%;
+    height: 100%;
+    background: var(--neutral-lowest);
+    border-radius: 16px;
+    padding: 26px 20px;
+}
+.project_data > .heading_data{
+    font-family: var(--content);
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.project_data > p {
+    font-family: var(--content);
+    font-size: 32px;
+}
 .gradient_text{
     background-image: linear-gradient(to top left, #4338CA, #6366F1, #A5B4FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+
+.project_data > .heading_data > svg{
+    height: 60px;
+}
+.wrapper_techno{
+    width: 100%;
+    height: 75%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.techno{
+    margin-left: 33%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--content);
+    font-size: 32px;
+}
+.techno > img {
+    height: 50px;
+}
+.project_data_3{
+    grid-column: span 2;
+    grid-row: span 3;
+    position: relative;
+}
+.project_data_3 > p {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    opacity: 30%;
+    font-weight: 500;
+    font-family: var(--content);
+}
+
+.project_info > svg{
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}
+
+.minus{
+    display: none;
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+@keyframes appearGrid {
+    from{
+        display: none;
+    }
+    to{
+        display: grid;
+    }
+}
+@keyframes disappearGrid {
+    from{
+        display: grid;
+    }
+    to{
+        display: none;
+    }
+}
+
 @media (min-width: 1050px) {
     body > h1 {
         font-size: 96px;
+    }
+
+    .project{
+        height: 500px;
+        box-shadow: none;
+        transition: .5s ease;
+    }
+    .wrapper_project{
+        gap: 25px;
+    }
+
+
+    .project_info{
+        position: absolute;
+        left: 53%;
+        top: 70px;
+        width: 45%;
+        height: 70%;
+        padding: 0;
+    }
+
+    .project_info > h1{
+        font-family: var(--content);
+        font-size: 35px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+    }
+
+    .project_info > svg{
+        display: none;
+    }
+
+
+    .wrapper_caroussel {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 600px;
+        transition: none;
+    }
+    .wrapper_caroussel:hover .navigation_caroussel_left{
+        display: none;
+    }
+    .wrapper_caroussel:hover > svg{
+        opacity: 100;
+    }
+    .wrapper_caroussel > svg{
+        display: block;
+        opacity: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 38%;
+        transition: .25s ease;
+        z-index: 1000;
+    }
+    .navigation_caroussel_left{
+        left: 40px;
+    }
+    .navigation_caroussel_right{
+        right: 40px;
+    }
+
+    .caroussel{
+        position: relative;
+        top: 20px;
+        height: 80%;
+        display: flex;
+    }
+
+
+    .caroussel > img{
+        height: 100%;
+        margin: 0px 165px;
+    }
+    .caroussel_p2 > img{
+        margin: 0px 130px;
+    }
+
+    .wrapper_dot{
+        gap: 15px;
+        top: 440px;
+        left: 300px;
+        opacity: 100;
+    }
+    .dot{
+        border-radius: 99999px;
+        width: 8px;
+        height: 8px;
+    }
+
+    .wrapper_project_data{
+        height: 90%;
+        margin-top: 10px;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+    }
+
+    .project_data{
+        border-radius: 16px;
+        padding: 13px 10px;
+    }
+
+    .project_data > .heading_data{
+        font-size: 12px;
+        gap: 3px;
+    }
+    .project_data > .heading_data > svg{
+        height: 30px;
+    }
+    .project_data > p {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+
+    .wrapper_techno{
+        gap: 5px;
+    }
+    .techno{
+        margin-left: 37%;
+        gap: 3px;
+        font-size: 16px;
+    }
+    .techno > img {
+        height: 25px;
+    }
+
+    .project_data_3{
+        grid-row: span 2;
+    }
+    .project_data_3 > p {
+        display: none;
     }
 }
 
 @media (min-width: 1450px) {
     .wrapper_project{
         padding: 0 10%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .wrapper_project{
+        padding: 0 20%;
     }
 }
