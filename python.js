@@ -19,23 +19,12 @@ closeMenu = () => {
 openProject = (project_id) => {
     document.getElementById("project_" + project_id).style.height = "1600px"
     document.getElementById("project_" + project_id).style.padding = "50px"
-    document.getElementById("img_p" + project_id).style.height = "500px"
+    document.getElementById("img_p" + project_id).style.height = "520px"
     document.getElementById("img_p" + project_id).style.width = "837px"
-    document.getElementById("img_p" + project_id).style.left = "51%"
-    document.getElementById("img_p" + project_id).style.top = "50px"
+    document.getElementById("img_p" + project_id).style.left = "63%"
     document.getElementById("img_p" + project_id).style.transform = "translate(-50%,0)"
-
-    Array.from(document.getElementsByClassName("caroussel_image_p"+project_id)).forEach(e => {
-        switch (project_id){
-            case 1:
-                e.style.margin = "0px 230px"
-                break
-            case 2:
-                e.style.margin = "0px 200px"
-        }
-
-    })
-
+    // document.getElementById("img_p"+project_id).style.background = "#FFE54B"
+    // document.getElementById("img_p"+project_id).style.borderRadius = "32px"
     document.getElementById("project_info_p" + project_id).style.position = "relative"
     document.getElementById("project_info_p" + project_id).style.left = "0"
     document.getElementById("project_info_p" + project_id).style.top = "600px"
@@ -48,24 +37,23 @@ openProject = (project_id) => {
     setTimeout(() => {
         document.getElementById("wrapper_project_data_p" + project_id).style.display = "grid"
         document.getElementById("img_p" + project_id).style.transition = "none"
-        if(project_id !== 2){
+        if(project_id !== 1){
             document.getElementById("navigation_caroussel_right_p" + project_id).style.display = "block"
         }
     }, 200)
 }
 
 closeProject = (project_id) => {
+    console.log(0.6 - (positionOfCaroussels[project_id-1] * 0.1))
     changePannel(project_id, 1, 0.6 - (positionOfCaroussels[project_id-1] * 0.1))
     document.getElementById("project_" + project_id).style.height = ""
     document.getElementById("project_" + project_id).style.padding = ""
     document.getElementById("img_p" + project_id).style.height = ""
-    document.getElementById("img_p" + project_id).style.width = ""
     document.getElementById("img_p" + project_id).style.left = ""
-    document.getElementById("img_p" + project_id).style.top = ""
     document.getElementById("img_p" + project_id).style.transform = ""
-    Array.from(document.getElementsByClassName("caroussel_image_p"+project_id)).forEach(e => {
-        e.style.margin = ""
-    })
+    document.getElementById("img_p" + project_id).style.overflow = ""
+    document.getElementById("img_p" + project_id).style.background = ""
+    document.getElementById("img_p" + project_id).style.borderRadius = ""
     document.getElementById("project_info_p" + project_id).style.position = ""
     document.getElementById("project_info_p" + project_id).style.left = ""
     document.getElementById("project_info_p" + project_id).style.top = ""
@@ -77,10 +65,9 @@ closeProject = (project_id) => {
     document.getElementById("wrapper_project_data_p" + project_id).style.display = "none"
     document.getElementById("wrapper_dot_p" + project_id).style.animation = "fadeOut .1s ease-in forwards"
     document.getElementById("img_p" + project_id).style.transition = ""
-    if(project_id !== 2){
+    if(project_id !== 1){
         document.getElementById("navigation_caroussel_right_p" + project_id).style.display = ""
     }
-
 }
 
 
@@ -90,7 +77,7 @@ const positionOfCaroussels = [1, 1]
 
 changePannel = (project_id, positionWanted, duration = 0.7) => {
     gsap.to(".caroussel_p" + project_id, {
-        x: -1 * (positionWanted - 1) * (document.getElementById("caroussel_p"+project_id).offsetWidth),
+        x: -1 * (positionWanted - 1) * (document.getElementById("img_size_p"+project_id).offsetWidth),
         duration: duration,
         ease: "power3.out",
     })
@@ -111,7 +98,7 @@ changePannelLeft = (project_id) => {
 
 updateDisplayNavigationArrow = (project_id) => {
     const amoutImage = document.getElementsByClassName("caroussel_image_p"+project_id).length
-    if( project_id !== 2){
+    if(project_id !== 1 ){
         if (positionOfCaroussels[project_id - 1] === amoutImage) {
             document.getElementById("navigation_caroussel_right_p"+project_id).style.display = "none";
             document.getElementById("navigation_caroussel_left_p"+project_id).style.display = "block";
