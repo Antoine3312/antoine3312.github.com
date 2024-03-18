@@ -21,7 +21,14 @@ openProject = (project_id) => {
     document.getElementById("project_" + project_id).style.padding = "50px"
     document.getElementById("img_p" + project_id).style.height = "550px"
     document.getElementById("img_p" + project_id).style.width = "837px"
-    document.getElementById("img_p" + project_id).style.left = "54%"
+    switch (project_id){
+        case 1:
+            document.getElementById("img_p" + project_id).style.left = "54%"
+            break
+        case 2:
+            document.getElementById("img_p" + project_id).style.left = "49%"
+            break
+    }
     document.getElementById("img_p" + project_id).style.transform = "translate(-50%,0)"
     // document.getElementById("img_p"+project_id).style.background = "#FFE54B"
     // document.getElementById("img_p"+project_id).style.borderRadius = "32px"
@@ -49,6 +56,9 @@ closeProject = (project_id) => {
     document.getElementById("project_" + project_id).style.padding = ""
     document.getElementById("img_p" + project_id).style.height = ""
     document.getElementById("img_p" + project_id).style.left = ""
+    if(project_id === 2) {
+        document.getElementById("img_p" + project_id).style.left = "-65%"
+    }
     document.getElementById("img_p" + project_id).style.transform = ""
     document.getElementById("img_p" + project_id).style.overflow = ""
     document.getElementById("img_p" + project_id).style.background = ""
@@ -73,8 +83,12 @@ const positionOfCaroussels = [1, 1]
 
 
 changePannel = (project_id, positionWanted, duration = 0.7) => {
+    let mouvementLength = document.getElementById("caroussel_p"+project_id).offsetWidth
+    if(project_id === 2){
+        mouvementLength = document.getElementById("img_size_p"+project_id).offsetWidth
+    }
     gsap.to(".caroussel_p" + project_id, {
-        x: -1 * (positionWanted - 1) * (document.getElementById("caroussel_p"+project_id).offsetWidth),
+        x: -1 * (positionWanted - 1) * (mouvementLength),
         duration: duration,
         ease: "power3.out",
     })

@@ -325,6 +325,9 @@ body > h1 > span:nth-child(2){
     display: flex;
     overflow: hidden;
 }
+.wrapper_caroussel_p2{
+    left: -65%;
+}
 .wrapper_caroussel > svg{
     display: none;
     width: 80px;
@@ -337,6 +340,9 @@ body > h1 > span:nth-child(2){
 .navigation_caroussel_left{
     display: none;
     left: -65px;
+}
+#navigation_caroussel_left_p2{
+    left: 10px;
 }
 .navigation_caroussel_right{
     right: 10px;
@@ -352,10 +358,14 @@ body > h1 > span:nth-child(2){
     display: none;
 }
 
-.caroussel > img{
+.caroussel_p1 > img{
     height: 90%;
-    margin-right: 55px;
+    margin-right: 57px;
 }
+.caroussel_p2 > img{
+    height: 90%;
+}
+
 
 .wrapper_dot{
     display: flex;
@@ -440,7 +450,7 @@ body > h1 > span:nth-child(2){
     justify-content: center;
 }
 .techno{
-    margin-left: 33%;
+    margin-left: 40%;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -542,6 +552,9 @@ body > h1 > span:nth-child(2){
         width: 600px;
         transition: none;
     }
+    .wrapper_caroussel_p1{
+        left: 40px;
+    }
     .wrapper_caroussel:hover .navigation_caroussel_left{
         display: none;
     }
@@ -564,19 +577,29 @@ body > h1 > span:nth-child(2){
     .navigation_caroussel_right{
         right: 40px;
     }
+    #navigation_caroussel_left_p1{
+        left: -15px;
+    }
+    #navigation_caroussel_right_p1{
+        right: 68px;
+    }
 
 
     .caroussel{
         position: relative;
-        width: calc(100% *3);
+        width: 100%;
         height: 80%;
         display: flex;
     }
 
 
-    .wrapper_caroussel > img{
-        height: 100%;
-        width: calc(100% /3 );
+
+    .caroussel_p1 > img{
+        height: 85%;
+        margin-right: 60px;
+    }
+    .caroussel_p2 > img{
+        height: 85%;
     }
 
     .wrapper_dot{
