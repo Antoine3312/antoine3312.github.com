@@ -352,7 +352,6 @@ body > h1 > span:nth-child(2){
 }
 .caroussel > img{
     height: 100%;
-    background: red;
 }
 
 .wrapper_dot{
