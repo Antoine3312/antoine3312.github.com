@@ -568,6 +568,7 @@ body > h1 > span:nth-child(2){
         width: calc(100% *3);
         height: 80%;
         display: flex;
+        left: 15%;
     }
 
 
