@@ -350,6 +350,9 @@ body > h1 > span:nth-child(2){
 .caroussel > svg{
     display: none;
 }
+.caroussel > img{
+    height: 100px;
+}
 
 .wrapper_dot{
     display: flex;
@@ -565,7 +568,7 @@ body > h1 > span:nth-child(2){
         height: 80%;
         display: flex;
     }
-    
+
 
     .wrapper_dot{
         gap: 15px;
