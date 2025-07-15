@@ -37,12 +37,12 @@ const Homepage = () => {
             <img src="arrow.svg" alt="arrow icon" />
           </button>
         </div>
-        <div className="footer">
-          <button type="button"><img src="arrow_bottom_orange.svg" alt="arrow icon" /></button>
-          <div className="main_title">
-            <h4>2025</h4>
-            <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
-          </div>
+      </div>
+      <div className="footer">
+        <button type="button"><img src="arrow_bottom_orange.svg" alt="arrow icon" /></button>
+        <div className="main_title">
+          <h4>2025</h4>
+          <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
         </div>
       </div>
     </div>
