@@ -1,0 +1,18 @@
+.animated-title {
+    display: flex;
+    overflow: hidden;
+    
+    span {
+        height: fit-content;
+    }
+
+    .loaded {
+        animation: riseUp 1s cubic-bezier(0.3, 0.29, 0, 01) forwards;
+    }
+}
+
+@keyframes riseUp {
+  to {
+    transform: translateY(0);
+  }
+}
