@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 export const WORD = 'word';
 export const LETTER = 'letter';
 
-const AnimatedTitle = ({ text, pageLoaded, hasScrolled = false, separation = LETTER }) => {
+const AnimatedTitle = ({ text, pageLoaded = true, hasScrolled = false, separation = LETTER }) => {
   const wrapperRef = useRef(null);
   const [baseHeight, setBaseHeight] = useState(0);
 
