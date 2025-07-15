@@ -9,9 +9,9 @@
 .wrapper_headings {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100%;
+    position: relative;
 
     .headings {
         background-color: #F53311;
@@ -187,6 +187,22 @@
                     opacity: 1;
                 }
             }
+        }
+
+    }
+}
+
+.has_scrolled {
+    padding: 0; 
+
+    .headings {
+        border-radius: unset;
+        padding: 70px;
+        background: #000;
+        height: 211px;
+
+        .footer button, .footer .main_title h4, .gradient_bottom, .gradient_top {
+            opacity: 0;
         }
     }
 }

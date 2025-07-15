@@ -12,10 +12,19 @@ const Homepage = () => {
     }, 0);
   }, []);
 
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  window.addEventListener('wheel', () => {
+    if (!hasScrolled) {
+      setHasScrolled(true);
+    }
+  });
+
   return (
     <div className={clsx({
       wrapper_headings: true,
       is_loaded: pageLoaded,
+      has_scrolled: hasScrolled,
     })}
     >
       <div className="headings">
@@ -32,7 +41,7 @@ const Homepage = () => {
           <button type="button"><img src="arrow_bottom_orange.svg" alt="arrow icon" /></button>
           <div className="main_title">
             <h4>2025</h4>
-            <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} /></h1>
+            <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
           </div>
         </div>
       </div>

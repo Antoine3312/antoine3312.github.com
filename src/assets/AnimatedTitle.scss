@@ -7,12 +7,7 @@
     }
 
     .loaded {
-        animation: riseUp 1s cubic-bezier(0.3, 0.29, 0, 01) forwards;
+        transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
+        transform: unset !important;
     }
-}
-
-@keyframes riseUp {
-  to {
-    transform: translateY(0);
-  }
 }

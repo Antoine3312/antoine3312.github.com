@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 export const WORD = 'word';
 export const LETTER = 'letter';
 
-const AnimatedTitle = ({ text, pageLoaded, separation = LETTER }) => {
+const AnimatedTitle = ({ text, pageLoaded, hasScrolled = false, separation = LETTER }) => {
   const wrapperRef = useRef(null);
   const [baseHeight, setBaseHeight] = useState(0);
 
@@ -26,9 +26,9 @@ const AnimatedTitle = ({ text, pageLoaded, separation = LETTER }) => {
         return (
           <span
             key={`${segment}-${index}`}
-            style={{ transform: `translateY(${baseHeight + index * 30}px)` }}
+            style={{ transform: `translateY(${hasScrolled ? '-' : ''}${baseHeight + index * 30}px)` }}
             className={clsx({
-              loaded: pageLoaded,
+              loaded: pageLoaded && !hasScrolled,
             })}
           >
             {displayChar === ' ' ? '\u00A0' : displayChar}
