@@ -95,7 +95,13 @@ const Homepage = () => {
               <p>A web-app made in my previous internship which goal was to organise the usage of the office’s desktop</p>
             </div>
           </button>
-          <div className="card">
+          <button
+            type="button"
+            className="card"
+            tabIndex={hasScrolled ? '0' : '-1'}
+            aria-hidden={hasScrolled}
+            style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+          >
             <div className="img_container">
               <img src="passeportcarbone_preview.png" alt="passeportcarbone preview" />
             </div>
@@ -104,8 +110,14 @@ const Homepage = () => {
               <h4>passeport carbone</h4>
               <p>A web-app broadcasted to the student of my school to make them aware of their carbon footprint </p>
             </div>
-          </div>
-          <div className="card">
+          </button>
+          <button
+            type="button"
+            className="card"
+            tabIndex={hasScrolled ? '0' : '-1'}
+            aria-hidden={hasScrolled}
+            style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+          >
             <div className="img_container">
               <img src="vlock_preview.png" alt="v-lock preview" />
             </div>
@@ -114,7 +126,7 @@ const Homepage = () => {
               <h4>v-lock</h4>
               <p>A mobile application that can be use to store and secure your own bike in town</p>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>
