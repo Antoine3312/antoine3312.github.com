@@ -27,6 +27,24 @@ const Homepage = () => {
     window.addEventListener('wheel', handleWheel, { passive: false });
   }, [hasScrolled]);
 
+  const projects = [
+    {
+      title: 'Présences',
+      description: 'A web-app made in my previous internship which goal was to organise the usage of the office’s desktop',
+      src: 'presences_preview.png',
+    },
+    {
+      title: 'passeport carbone',
+      description: 'A web-app broadcasted to the student of my school to make them aware of their carbon footprint',
+      src: 'passeportcarbone_preview.png',
+    },
+    {
+      title: 'v-lock',
+      description: 'A mobile application that can be use to store and secure your own bike in town',
+      src: 'vlock_preview.png',
+    },
+  ];
+
   return (
     <div className="homepage">
 
@@ -76,57 +94,50 @@ const Homepage = () => {
         content_scrolled: hasScrolled,
       })}
       >
-        <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
+        <div className="header">
+          <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
+          <div className="caroussel_nav">
+            <button
+              type="button"
+              className="arrow left"
+              tabIndex={hasScrolled ? '0' : '-1'}
+              aria-hidden={hasScrolled}
+              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+            >
+              <img src="arrow_left.svg" alt="arrow left icon" />
+            </button>
+            <button
+              type="button"
+              className="arrow right"
+              tabIndex={hasScrolled ? '0' : '-1'}
+              aria-hidden={hasScrolled}
+              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+            >
+              <img src="arrow_right.svg" alt="arrow right icon" />
+            </button>
+          </div>
+        </div>
 
         <div className="caroussel">
-          <button
-            type="button"
-            className="card"
-            tabIndex={hasScrolled ? '0' : '-1'}
-            aria-hidden={hasScrolled}
-            style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-          >
-            <div className="img_container">
-              <img src="presences_preview.png" alt="presences preview" />
-            </div>
-            <div className="titles">
-              <img src="presences_preview.png" alt="presences preview" />
-              <h4>Présences</h4>
-              <p>A web-app made in my previous internship which goal was to organise the usage of the office’s desktop</p>
-            </div>
-          </button>
-          <button
-            type="button"
-            className="card"
-            tabIndex={hasScrolled ? '0' : '-1'}
-            aria-hidden={hasScrolled}
-            style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-          >
-            <div className="img_container">
-              <img src="passeportcarbone_preview.png" alt="passeportcarbone preview" />
-            </div>
-            <div className="titles">
-              <img src="passeportcarbone_preview.png" alt="passeportcarbone preview" />
-              <h4>passeport carbone</h4>
-              <p>A web-app broadcasted to the student of my school to make them aware of their carbon footprint </p>
-            </div>
-          </button>
-          <button
-            type="button"
-            className="card"
-            tabIndex={hasScrolled ? '0' : '-1'}
-            aria-hidden={hasScrolled}
-            style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-          >
-            <div className="img_container">
-              <img src="vlock_preview.png" alt="v-lock preview" />
-            </div>
-            <div className="titles">
-              <img src="vlock_preview.png" alt="v-lock preview" />
-              <h4>v-lock</h4>
-              <p>A mobile application that can be use to store and secure your own bike in town</p>
-            </div>
-          </button>
+          {projects.map(({ title, description, src }) => (
+            <button
+              type="button"
+              className="card"
+              tabIndex={hasScrolled ? '0' : '-1'}
+              aria-hidden={hasScrolled}
+              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+            >
+              <div className="img_container">
+                <img src={src} alt={src.split('.')[0]} />
+              </div>
+              <div className="titles">
+                <img src={src} alt={src.split('.')[0]} />
+                <h4>{title}</h4>
+                <p>{description}</p>
+              </div>
+            </button>
+          ))}
+
         </div>
       </div>
     </div>
