@@ -148,7 +148,7 @@
             height: calc(100vh - 40px);
 
             canvas {
-                transition: all 3s linear;
+                transition: all 1.5s cubic-bezier(1, 0, 0.6, 0.62);
                 opacity: 1;
             }
     
@@ -361,13 +361,39 @@
                     border-radius: 9999px;
                     padding: 7.5px;
                     transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
+                    position: relative;
+                    overflow: hidden;
 
                     img {
                         display: block;
+                        transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+                    }
+
+
+                    .toSlide {
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-150%, -50%);
                     }
                     
-                    &:not([disabled]):hover {
+                    &:not([disabled]):hover, &:not([disabled]):focus {
                         cursor: pointer;
+
+                        img {
+                            transform: translateX(150%);
+                        }
+                        
+                        .arrow-left {
+                            transform: translateX(-150%);
+                        }
+
+                        .toSlide {
+                            transform: translate(0%, -50%);
+                        }
+                        
+                        .toSlide-left {
+                            transform: translate(0%, -50%);
+                        }
                     }
 
                     &:disabled {

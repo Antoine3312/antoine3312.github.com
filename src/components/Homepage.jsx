@@ -16,7 +16,7 @@ const Homepage = () => {
     });
     setTimeout(() => {
       setPageLoeaded(true);
-    }, 500);
+    }, 300);
     return () => colorbg;
   }, []);
 
@@ -100,8 +100,6 @@ const Homepage = () => {
     }
   };
 
-  const boxRef = useRef(null);
-
   return (
     <div className="homepage">
 
@@ -127,7 +125,7 @@ const Homepage = () => {
               </button>
             </div>
             <div className="header header_scroll">
-              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+              <h3><AnimatedTitle text="Antoine Mazeau" pageLoaded={pageLoaded} separation={WORD} /></h3>
               <button
                 type="button"
                 tabIndex={hasScrolled ? '0' : '-1'}
@@ -181,7 +179,8 @@ const Homepage = () => {
               disabled={carousselSlideIndex === 0}
               onClick={() => scrollCaroussel(true)}
             >
-              <img src="arrow_left.svg" alt="arrow left icon" />
+              <img src="arrow_left.svg" alt="arrow left icon" className="left-arrow" />
+              <img src="arrow_left.svg" alt="arrow left icon" className="toSlide toSlide-left" />
             </button>
             <button
               type="button"
@@ -192,6 +191,7 @@ const Homepage = () => {
               onClick={() => scrollCaroussel(false)}
             >
               <img src="arrow_right.svg" alt="arrow right icon" />
+              <img src="arrow_right.svg" alt="arrow right icon" className="toSlide" />
             </button>
           </div>
         </div>
