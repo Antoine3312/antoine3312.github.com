@@ -105,12 +105,21 @@ const Homepage = () => {
         <div className="headings">
           <div className="gradient_bottom" />
           <div className="gradient_top" />
-          <div className="header">
-            <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
-            <button type="button">
-              get my resume
-              <img src="arrow.svg" alt="arrow icon" />
-            </button>
+          <div className="wrapper_header">
+            <div className="header">
+              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+              <button type="button">
+                get my resume
+                <img src="arrow.svg" alt="arrow icon" />
+              </button>
+            </div>
+            <div className="header header_scroll">
+              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+              <button type="button">
+                get my resume
+                <img src="arrow.svg" alt="arrow icon" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

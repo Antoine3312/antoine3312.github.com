@@ -58,6 +58,31 @@
                 filter: blur(5rem);
             }
     
+            .wrapper_header {
+                width: 100%;
+                height: fit-content;
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+
+                .header_scroll {
+                    position: absolute;
+                    h3 {
+                        font-size: 1.25rem;
+                    }
+        
+                    button {
+                        font-size: 1.25rem;
+                        line-height: 1rem;
+
+                        img {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+            }
+
             .header {
                 display: flex;
                 justify-content: space-between;
@@ -97,6 +122,7 @@
                         cursor: pointer;
                     }
                 }
+
             }
     
         }
@@ -133,21 +159,43 @@
     
     .has_scrolled {
         padding: 0; 
+        // height: 100px;
         height: 179px;
         transition: unset;
 
 
     
         .headings {
-            transition: height 1s cubic-bezier(0.3, 0.29, 0, 01), background 1s cubic-bezier(0.3, 0.29, 0, 0.1);
+            transition: height 1s cubic-bezier(0.3, 0.29, 0, 01),
+                background 1s cubic-bezier(0.3, 0.29, 0, 0.1); 
+                // padding-top 1s cubic-bezier(0.3, 0.29, 0, 0.1)
             border-radius: unset;
             padding: 70px;
+            // padding-top: 30px;
             background: #000;
+            // background: #160400;
+            // height: 100px;
             height: 179px;
-            
+
     
             .gradient_bottom, .gradient_top {
                 opacity: 0;
+            }
+
+            .wrapper_header {
+
+                .header {
+                    button {
+                        transition: all 1s cubic-bezier(0.3, 0.29, 0, 01) .3s;
+                        transform: translateY(-120%);
+                    }
+                    
+                    h3 {
+                        transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
+                        transform: translateY(-120%);
+                    }
+                }
+
             }
         }
     }
@@ -455,10 +503,30 @@
                     button {
                         font-size: 1.25rem;
                         line-height: 1rem;
+                        gap: 10px;
 
                         img {
                             width: 16px;
                             height: 16px;
+                        }
+                    }
+                }
+
+                .wrapper_header {
+                    .header_scroll {
+                        h3 {
+                            font-size: 1rem;
+                        }
+            
+                        button {
+                            font-size: 1rem;
+                            line-height: 1rem;
+                            gap: 10px;
+    
+                            img {
+                                width: 13px;
+                                height: 13px;
+                            }
                         }
                     }
                 }
@@ -472,10 +540,13 @@
         }
         
         .has_scrolled {
+            // height: 75px;
             height: 124px;
-
+            
             .headings {
                 padding: 50px;
+                // padding-top: 30px;
+                // height: 75px;
                 height: 124px;
             }
         }
