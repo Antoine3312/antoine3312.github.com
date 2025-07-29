@@ -2,15 +2,22 @@
 import { useEffect, useRef, useState } from 'react';
 import '../assets/Homepage.scss';
 import clsx from 'clsx';
+import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 
 const Homepage = () => {
   const [pageLoaded, setPageLoeaded] = useState(false);
 
   useEffect(() => {
+    const colorbg = new BlurGradientBg({
+      dom: 'box',
+      colors: ['#ff6601', '#ffae00', '#ff2e2e', '#cb000a'],
+      loop: true,
+    });
     setTimeout(() => {
       setPageLoeaded(true);
     }, 500);
+    return () => colorbg;
   }, []);
 
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -93,6 +100,8 @@ const Homepage = () => {
     }
   };
 
+  const boxRef = useRef(null);
+
   return (
     <div className="homepage">
 
@@ -102,20 +111,28 @@ const Homepage = () => {
         has_scrolled: hasScrolled,
       })}
       >
-        <div className="headings">
+        <div className="headings" id="box">
           <div className="gradient_bottom" />
           <div className="gradient_top" />
           <div className="wrapper_header">
             <div className="header">
               <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
-              <button type="button">
+              <button
+                type="button"
+                tabIndex={!hasScrolled ? '0' : '-1'}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+              >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />
               </button>
             </div>
             <div className="header header_scroll">
               <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
-              <button type="button">
+              <button
+                type="button"
+                tabIndex={hasScrolled ? '0' : '-1'}
+                style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+              >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />
               </button>
@@ -133,7 +150,6 @@ const Homepage = () => {
         <button
           type="button"
           tabIndex={!hasScrolled ? '0' : '-1'}
-          aria-hidden={!hasScrolled}
           style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
           onClick={() => { setHasScrolled(true); }}
         >
