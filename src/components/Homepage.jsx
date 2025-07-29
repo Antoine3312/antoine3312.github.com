@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../assets/Homepage.scss';
 import clsx from 'clsx';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
@@ -45,6 +45,54 @@ const Homepage = () => {
     },
   ];
 
+  const carousselRef = useRef(null);
+  const [carousselSlideIndex, setCarousselSlideIndex] = useState(0);
+  const [scrollAmount, setScrollAmount] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const scrollCaroussel = toLeft => {
+    if (isEnd && !toLeft) return;
+    setCarousselSlideIndex(prev => (toLeft ? prev - 1 : prev + 1));
+  };
+
+  useEffect(() => {
+    const wrapper = carousselRef.current;
+    if (!wrapper) return;
+    const { clientWidth } = wrapper;
+
+    const carousselEl = wrapper.querySelector('.caroussel');
+    const carousselStyle = window.getComputedStyle(carousselEl);
+    const gapValue = parseInt(carousselStyle.gap, 10) || 0;
+
+    const cards = wrapper.querySelectorAll('.card');
+    const cardWidth = cards[0].offsetWidth;
+
+    setScrollAmount(() => {
+      const scrollWanted = Math.floor(clientWidth / cardWidth) * (cardWidth + gapValue);
+
+      setIsEnd(scrollWanted * carousselSlideIndex >= carousselEl.scrollWidth - clientWidth);
+
+      return Math.min(scrollWanted * carousselSlideIndex, carousselEl.scrollWidth - clientWidth);
+    });
+  }, [carousselSlideIndex]);
+
+  const onTabFocus = cardIndex => {
+    const wrapper = carousselRef.current;
+    if (!wrapper) return;
+    const { clientWidth } = wrapper;
+
+    const carousselEl = wrapper.querySelector('.caroussel');
+    const carousselStyle = window.getComputedStyle(carousselEl);
+    const gapValue = parseInt(carousselStyle.gap, 10) || 0;
+
+    const cards = wrapper.querySelectorAll('.card');
+    const cardWidth = cards[0].offsetWidth;
+
+    if ((cardIndex + 1) * cardWidth + cardIndex * gapValue >= clientWidth) {
+      scrollCaroussel(false);
+    }
+  };
+
   return (
     <div className="homepage">
 
@@ -88,11 +136,14 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className={clsx({
-        content: true,
-        content_loaded: pageLoaded,
-        content_scrolled: hasScrolled,
-      })}
+      <div
+        className={clsx({
+          content: true,
+          content_loaded: pageLoaded,
+          content_scrolled: hasScrolled,
+        })}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex="-1"
       >
         <div className="header">
           <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
@@ -101,8 +152,9 @@ const Homepage = () => {
               type="button"
               className="arrow left"
               tabIndex={hasScrolled ? '0' : '-1'}
-              aria-hidden={hasScrolled}
               style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+              disabled={carousselSlideIndex === 0}
+              onClick={() => scrollCaroussel(true)}
             >
               <img src="arrow_left.svg" alt="arrow left icon" />
             </button>
@@ -110,34 +162,47 @@ const Homepage = () => {
               type="button"
               className="arrow right"
               tabIndex={hasScrolled ? '0' : '-1'}
-              aria-hidden={hasScrolled}
               style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+              disabled={isEnd}
+              onClick={() => scrollCaroussel(false)}
             >
               <img src="arrow_right.svg" alt="arrow right icon" />
             </button>
           </div>
         </div>
 
-        <div className="caroussel">
-          {projects.map(({ title, description, src }) => (
-            <button
-              type="button"
-              className="card"
-              tabIndex={hasScrolled ? '0' : '-1'}
-              aria-hidden={hasScrolled}
-              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-            >
-              <div className="img_container">
-                <img src={src} alt={src.split('.')[0]} />
-              </div>
-              <div className="titles">
-                <img src={src} alt={src.split('.')[0]} />
-                <h4>{title}</h4>
-                <p>{description}</p>
-              </div>
-            </button>
-          ))}
+        <div className="caroussel_wrapper" ref={carousselRef} tabIndex="-1">
+          <div
+            className="caroussel"
+            style={{
+              transition: '1s all ',
+              transform: `translateX(-${scrollAmount}px)`,
+            }}
+          >
+            {projects.map(({ title, description, src }, index) => (
+              <button
+                type="button"
+                className="card"
+                key={title}
+                tabIndex={hasScrolled ? '0' : '-1'}
+                aria-hidden={hasScrolled}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                onFocus={() => onTabFocus(index)}
+                onClick={() => console.log('click')}
+                onMouseDown={e => e.preventDefault()}
+              >
+                <div className="img_container">
+                  <img src={src} alt={src.split('.')[0]} />
+                </div>
+                <div className="titles">
+                  <img src={src} alt={src.split('.')[0]} />
+                  <h4>{title}</h4>
+                  <p>{description}</p>
+                </div>
+              </button>
+            ))}
 
+          </div>
         </div>
       </div>
     </div>

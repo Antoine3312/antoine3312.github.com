@@ -27,8 +27,7 @@
             
             padding: 70px;
             display: flex;
-            justify-content: space-between;
-            flex-direction: column;
+            justify-content: center;
     
             position: relative;
             overflow: hidden;
@@ -54,7 +53,7 @@
                 width: 1037px;
                 height: 1037px;
                 top: -60%;
-                right: -40%;
+                right: -30%;
                 border-radius: 9999px;
                 filter: blur(5rem);
             }
@@ -63,6 +62,9 @@
                 display: flex;
                 justify-content: space-between;
                 z-index: 1;
+                width: 100%;
+                height: fit-content;
+
                 h3 {
                     font-family: 'RocGrotesk';
                     font-weight: 300;
@@ -262,8 +264,9 @@
     
     .content {
         width: 100%;
+        max-width: 1920px;
+        margin: auto;
         padding: 70px 70px;
-        overflow-x: hidden;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -273,6 +276,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+
             h1 {
                 font-family: 'RocGrotesk';
                 font-weight: 900;
@@ -289,89 +293,113 @@
                 gap: 5px;
                 padding: 5px;
                 border-radius: 9999px;
+
                 button {
                     background: unset;
                     border: 1px solid black;
                     border-radius: 9999px;
                     padding: 7.5px;
+                    transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
 
                     img {
                         display: block;
+                    }
+                    
+                    &:not([disabled]):hover {
+                        cursor: pointer;
+                    }
+
+                    &:disabled {
+                        opacity: 0.3;
                     }
                 }
             }
         }
     
-        .caroussel {
-            display: flex;
-            gap: 25px;
-            width: fit-content;
+        .caroussel_wrapper {
+            overflow-x: hidden;
+            width: 100%;
 
-            
-            .card {
-                background: #FBFBFB;
-                border-radius: 12px;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                border: unset;
+            -ms-overflow-style: none; /* IE et Edge */
+            scrollbar-width: none;    /* Firefox */
 
-                &:hover {
-                    cursor: pointer;
-                }
-
-    
-                .img_container {
-                    img {
-                        max-width: 700px;
-                        display: block;
-                        border-top-left-radius: 12px;
-                        border-top-right-radius: 12px;
-                    }
-                }
-    
-                .titles {
-                    padding: 10px 20px 30px 20px;
-                    position: relative;
-                    overflow: hidden;
-
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    position: relative;
-    
-                    img {
-                        z-index: 0;
-                        width: 100%;
-                        position: absolute;
-                        top: -600px;
-                        left: 0;
-                        filter: blur(10rem);
-                    }
-    
-                    h4 {
-                        font-family: 'Satoshi', sans-serif; 
-                        font-weight: 900;
-                        font-style: normal;
-                        font-size: 1.875rem;
-                        text-transform: uppercase;
-                        z-index: 1;
-                        position: relative;
-                    }
-                    p {
-                        font-family: 'Satoshi', sans-serif; 
-                        font-weight: 400;
-                        font-style: normal;
-                        font-size: 0.75rem;
-                        z-index: 1;
-                        position: relative;
-                    }
-                }
+            &::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Edge */
             }
 
-            @for $i from 1 through 10 {
-                .card:nth-child(#{$i}) {
-                    transform: translateY(#{($i - 1) * 150}px);
+
+            .caroussel {
+                display: flex;
+                gap: 25px;
+                min-width: max-content;
+                
+                .card {
+                    min-width: fit-content;
+                    background: #FBFBFB;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    border: unset;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+    
+        
+                    .img_container {
+                        img {
+                            min-width: 700px;
+                            max-width: 700px;
+                            display: block;
+                            border-top-left-radius: 12px;
+                            border-top-right-radius: 12px;
+                        }
+                    }
+        
+                    .titles {
+                        padding: 10px 20px 30px 20px;
+                        position: relative;
+                        overflow: hidden;
+    
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        position: relative;
+        
+                        img {
+                            z-index: 0;
+                            width: 100%;
+                            position: absolute;
+                            top: -600px;
+                            left: 0;
+                            filter: blur(10rem);
+                        }
+        
+                        h4 {
+                            font-family: 'Satoshi', sans-serif; 
+                            font-weight: 900;
+                            font-style: normal;
+                            font-size: 1.875rem;
+                            text-transform: uppercase;
+                            z-index: 1;
+                            position: relative;
+                        }
+                        p {
+                            font-family: 'Satoshi', sans-serif; 
+                            font-weight: 400;
+                            font-style: normal;
+                            font-size: 0.75rem;
+                            z-index: 1;
+                            position: relative;
+                        }
+                    }
+                }
+                
+                @for $i from 1 through 10 {
+                    .card:nth-child(#{$i}) {
+                        transform: translateY(#{($i - 1) * 200}px);
+                    }
                 }
             }
         }
@@ -380,17 +408,28 @@
     .content_scrolled {
         opacity: 1;
         transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
-        transition-delay: 300ms;
+        transition-delay: 350ms;
 
-        .caroussel {
-            
-            .card {
-                transform: translateY(0) !important;
-                transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
+        .caroussel_wrapper {
+            .caroussel {
+                .card {
+                    transform: translateY(0) !important;
+                    transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
+                }
             }
         }
     }
 
+}
+
+@media (min-width: 1950px) {
+    .homepage {
+        .content {
+            .caroussel_wrapper {
+                overflow-x: unset;
+            }
+        }
+    }
 }
 
 
@@ -487,21 +526,23 @@
                 }
             }
 
-            .caroussel {
-                .card {
-                    .titles {
-                        padding: 10px 20px 20px 20px;
-
-                        h4 {
-                            font-size: 1.25rem;
-                        }
-                        p {
-                            font-size: 0.75rem;
+            .caroussel_wrapper {
+                .caroussel {
+                    .card {
+                        .titles {
+                            padding: 10px 20px 20px 20px;
+    
+                            h4 {
+                                font-size: 1.25rem;
+                            }
+                            p {
+                                font-size: 0.75rem;
+                            }
                         }
                     }
                 }
+        
             }
-    
         }
     }
 }
