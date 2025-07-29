@@ -125,7 +125,7 @@ const Homepage = () => {
               </button>
             </div>
             <div className="header header_scroll">
-              <h3><AnimatedTitle text="Antoine Mazeau" pageLoaded={pageLoaded} separation={WORD} /></h3>
+              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
               <button
                 type="button"
                 tabIndex={hasScrolled ? '0' : '-1'}

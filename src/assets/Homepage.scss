@@ -148,7 +148,7 @@
             height: calc(100vh - 40px);
 
             canvas {
-                transition: all 1.5s cubic-bezier(1, 0, 0.6, 0.62);
+                transition: all 3s cubic-bezier(0.3, 0.29, 0, 01);
                 opacity: 1;
             }
     
@@ -169,7 +169,6 @@
     
     .has_scrolled {
         padding: 0; 
-        // height: 100px;
         height: 179px;
         transition: unset;
 
@@ -179,10 +178,7 @@
             transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
             border-radius: unset;
             padding: 70px;
-            // padding-top: 30px;
             background: #000;
-            // background: #160400;
-            // height: 100px;
             height: 179px;
 
             canvas {
@@ -431,13 +427,32 @@
     
                     &:hover {
                         cursor: pointer;
+
+                        .img_container {
+                            img {
+                                width: 102%;
+                            }
+                        }
+
+                        .titles {
+                            img {
+                                top: -500px;
+                            }
+                        }
                     }
     
         
                     .img_container {
+                        max-width: 800px;
+                        max-height: 505px;
+                        overflow: hidden;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
                         img {
-                            min-width: 700px;
-                            max-width: 700px;
+                            transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+                            width: 100%;
                             display: block;
                             border-top-left-radius: 12px;
                             border-top-right-radius: 12px;
@@ -461,6 +476,7 @@
                             top: -600px;
                             left: 0;
                             filter: blur(10rem);
+                            transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
                         }
         
                         h4 {
@@ -579,13 +595,10 @@
         }
         
         .has_scrolled {
-            // height: 75px;
             height: 124px;
             
             .headings {
                 padding: 50px;
-                // padding-top: 30px;
-                // height: 75px;
                 height: 124px;
             }
         }
