@@ -16,7 +16,7 @@ const Homepage = () => {
     });
     setTimeout(() => {
       setPageLoeaded(true);
-    }, 300);
+    }, 500);
     return () => colorbg;
   }, []);
 
@@ -117,22 +117,26 @@ const Homepage = () => {
               <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
               <button
                 type="button"
-                tabIndex={!hasScrolled ? '0' : '-1'}
-                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                tabIndex={hasScrolled ? '-1' : '0'}
+                style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+                onClick={() => console.log('test')}
               >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />
+                <img src="arrow.svg" alt="arrow icon" className="to-translate" />
               </button>
             </div>
             <div className="header header_scroll">
               <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
               <button
                 type="button"
-                tabIndex={hasScrolled ? '0' : '-1'}
-                style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+                tabIndex={!hasScrolled ? '-1' : '0'}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                onClick={() => console.log('test 2')}
               >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />
+                <img src="arrow.svg" alt="arrow icon" className="to-translate" />
               </button>
             </div>
           </div>
@@ -145,14 +149,17 @@ const Homepage = () => {
         footer_scrolled: hasScrolled,
       })}
       >
-        <button
-          type="button"
-          tabIndex={!hasScrolled ? '0' : '-1'}
-          style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
-          onClick={() => { setHasScrolled(true); }}
-        >
-          <img src="arrow_bottom_orange.svg" alt="arrow icon" />
-        </button>
+        <div className="wrapper_button">
+          <button
+            type="button"
+            tabIndex={!hasScrolled ? '0' : '-1'}
+            style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+            onClick={() => { setHasScrolled(true); }}
+          >
+            <img src="arrow_bottom_orange.svg" alt="arrow icon" />
+            <img src="arrow_bottom_orange.svg" alt="arrow icon" className="to-slide" />
+          </button>
+        </div>
         <div className="main_title">
           <h4>2025</h4>
           <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
@@ -215,6 +222,19 @@ const Homepage = () => {
                 onFocus={() => onTabFocus(index)}
                 onClick={() => console.log('click')}
                 onMouseDown={e => e.preventDefault()}
+                onMouseMove={e => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const image = e.currentTarget.querySelector('img');
+
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+
+                  const x = e.clientX - rect.left - centerX;
+                  const y = e.clientY - rect.top - centerY;
+
+                  image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+                }}
+                onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
               >
                 <div className="img_container">
                   <img src={src} alt={src.split('.')[0]} />

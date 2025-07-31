@@ -69,6 +69,65 @@
                 position: relative;
                 z-index: 1;
 
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: fit-content;
+    
+                    h3 {
+                        font-family: 'RocGrotesk';
+                        font-weight: 300;
+                        text-transform: uppercase;
+                        font-size: 2rem;
+                    }
+        
+                    button {
+                        background: unset;
+                        border: unset;
+                        color: white;
+                        opacity: 0;
+        
+                        font-family: 'RocGrotesk';
+                        font-weight: 300;
+                        text-transform: uppercase;
+                        font-size: 2rem;
+        
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 15px;
+
+                        position: relative;
+                        overflow: hidden;
+        
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+                        }
+
+                        .to-translate {
+                            position: absolute;
+                            right: 0;
+                            transform: translate3d(0, 150%, 0);
+                        }
+        
+                        &:hover, &:focus {
+                            cursor: pointer;
+
+                            img {
+                                transform: translate3d(0, -150%, 0);
+                            }
+
+                            .to-translate {
+                                transform: translate3d(0, 0, 0);
+                            }
+                        }
+                    }
+    
+                }
+
                 .header_scroll {
                     position: absolute;
                     h3 {
@@ -85,49 +144,10 @@
                         }
                     }
                 }
-            }
-
-            .header {
-                display: flex;
-                justify-content: space-between;
-                z-index: 1;
-                width: 100%;
-                height: fit-content;
-
-                h3 {
-                    font-family: 'RocGrotesk';
-                    font-weight: 300;
-                    text-transform: uppercase;
-                    font-size: 2rem;
-                }
-    
-                button {
-                    background: unset;
-                    border: unset;
-                    color: white;
-                    opacity: 0;
-    
-                    font-family: 'RocGrotesk';
-                    font-weight: 300;
-                    text-transform: uppercase;
-                    font-size: 2rem;
-    
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 15px;
-    
-                    img {
-                        width: 24px;
-                        height: 24px;
-                    }
-    
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
+                
 
             }
+
     
         }
     
@@ -152,10 +172,11 @@
                 opacity: 1;
             }
     
-    
-            .header {
-                button {
-                    opacity: 1;
+            .wrapper_header {
+                .header {
+                    button {
+                        opacity: 1;
+                    }
                 }
             }
     
@@ -204,14 +225,13 @@
                         transform: translateY(-120%);
                     }
                 }
-
             }
         }
     }
 
     .headings_footer {
         z-index: 2;
-        height: 100vh;
+        height: 90vh;
         width: 100vw;
         padding: 70px;
         overflow: hidden;
@@ -227,21 +247,13 @@
 
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
-        button {
-            background: unset;
-            border: unset;
-            color: white;
-            opacity: 0;
+        .wrapper_button {
+            position: relative;
             height: fit-content;
-            background: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            border-radius: 9999px;
-            margin-bottom: 12px;
-
-            position: relative;
+            opacity: 0;
 
             &::after {
                 content: "";
@@ -261,6 +273,47 @@
                 opacity: 0.2;
                 border-radius: 9999px;
                 border: 10px solid white;
+            }
+
+            button {
+                background: unset;
+                border: unset;
+                color: white;
+                height: fit-content;
+                background: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
+                border-radius: 9999px;
+                margin-bottom: 12px;
+                overflow: hidden;
+                z-index: 1;
+    
+                position: relative;
+    
+                img {
+                    transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+                }
+    
+                .to-slide {
+                    position: absolute;
+                    transform: translateY(-175%);             
+                }
+    
+                &:hover, &:focus {
+                    cursor: pointer;
+    
+                    .to-slide {
+                        transform: translateY(0%);    
+                    }
+                    
+                    img {
+                        transform: translateY(175%);    
+                        
+                    }
+                }
+    
             }
         }
         
@@ -297,7 +350,7 @@
             transition: inherit;
         }
 
-        button {
+        .wrapper_button {
             opacity: 1;
         }
 
@@ -310,10 +363,10 @@
 
     .footer_scrolled {
         clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+        animation: removeFromDOM 0s 1s forwards;
 
-        button, .main_title h4 {
+        .wrapper_button button, .main_title h4 {
             opacity: 0;
-
         }
     }
 
@@ -400,7 +453,7 @@
         }
     
         .caroussel_wrapper {
-            overflow-x: hidden;
+            // overflow-x: hidden;
             width: 100%;
 
             -ms-overflow-style: none; /* IE et Edge */
@@ -413,24 +466,24 @@
 
             .caroussel {
                 display: flex;
-                gap: 25px;
+                gap: 10px;
                 min-width: max-content;
                 
                 .card {
                     min-width: fit-content;
                     background: #FBFBFB;
-                    border-radius: 12px;
+                    // border-radius: 8px;
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
                     border: unset;
     
-                    &:hover {
+                    &:hover, &:focus {
                         cursor: pointer;
 
                         .img_container {
                             img {
-                                width: 102%;
+                                scale: 1.045;
                             }
                         }
 
@@ -454,13 +507,11 @@
                             transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
                             width: 100%;
                             display: block;
-                            border-top-left-radius: 12px;
-                            border-top-right-radius: 12px;
                         }
                     }
         
                     .titles {
-                        padding: 10px 20px 30px 20px;
+                        padding: 20px 30px 30px 30px;
                         position: relative;
                         overflow: hidden;
     
@@ -501,7 +552,7 @@
                 
                 @for $i from 1 through 10 {
                     .card:nth-child(#{$i}) {
-                        transform: translateY(#{($i - 1) * 200}px);
+                        transform: translateY(#{($i ) * 200}px);
                     }
                 }
             }
@@ -512,6 +563,7 @@
         opacity: 1;
         transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
         transition-delay: 350ms;
+        // z-index: ;
 
         .caroussel_wrapper {
             .caroussel {
@@ -550,24 +602,25 @@
                     top: -80%;
                     right: -50%;
                 }
-                .header {
-                    h3 {
-                        font-size: 1.25rem;
-                    }
-        
-                    button {
-                        font-size: 1.25rem;
-                        line-height: 1rem;
-                        gap: 10px;
-
-                        img {
-                            width: 16px;
-                            height: 16px;
-                        }
-                    }
-                }
 
                 .wrapper_header {
+                    .header {
+                        h3 {
+                            font-size: 1.25rem;
+                        }
+            
+                        button {
+                            font-size: 1.25rem;
+                            line-height: 1rem;
+                            gap: 10px;
+
+                            img {
+                                width: 16px;
+                                height: 16px;
+                            }
+                        }
+                    }
+
                     .header_scroll {
                         h3 {
                             font-size: 1rem;
@@ -607,11 +660,7 @@
             padding: 50px;
 
 
-            button {
-                img {
-                    width: 22px;
-                    height: 22px;
-                }
+            .wrapper_button {
 
                 &::after {
                     width: 208px;
@@ -621,6 +670,13 @@
                 &::before {
                     width: 240px;
                     height: 240px;
+                }
+                button {
+                    img {
+                        width: 22px;
+                        height: 22px;
+                    }
+    
                 }
             }
 
@@ -653,7 +709,7 @@
                 .caroussel {
                     .card {
                         .titles {
-                            padding: 10px 20px 20px 20px;
+                            padding: 15px 20px 20px 20px;
     
                             h4 {
                                 font-size: 1.25rem;
@@ -668,4 +724,11 @@
             }
         }
     }
+}
+
+
+@keyframes removeFromDOM {
+    to {
+        display: none;
+    }   
 }
