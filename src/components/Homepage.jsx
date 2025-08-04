@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import { useCallback, useEffect, useRef, useState } from 'react';
-import '../assets/Homepage.scss';
 import clsx from 'clsx';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 
@@ -191,6 +191,7 @@ const Homepage = () => {
         })}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex="-1"
+        // style={{ display: hasScrolled ? 'block' : 'none' }}
       >
         <div className="header">
           <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>

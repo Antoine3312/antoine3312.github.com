@@ -1,4 +1,4 @@
-// import ReactLenis from 'lenis/react';
+import ReactLenis from 'lenis/react';
 import { useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import NavBar from './Nav';
@@ -13,7 +13,7 @@ const Project = () => {
 
   return (
     <>
-      {/* <ReactLenis root /> */}
+      <ReactLenis root />
       <NavBar />
       <div className="wrapper-project">
         <div className="wrapper-description">
