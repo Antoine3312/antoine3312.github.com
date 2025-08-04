@@ -144,11 +144,15 @@
             a {
                 display: flex;
                 text-decoration: none;
-                color: #000;
                 gap: 5px;
+                padding: 10px 20px;
+                border-radius: 12px;
+                background: #000;
+                // width: fit-content;
 
                 display: flex;
                 align-items: center;
+                gap: 10px;
 
                 p {
                     font-family: 'Satoshi', sans-serif; 
@@ -156,10 +160,13 @@
                     font-style: normal;
                     font-size: 0.75rem;
                     text-transform: uppercase;
+                    color: white;
+                    // white-space: nowrap;
                 }
 
                 img {
                     height: 17px;
+                    filter: invert(100%);
                 }
 
 
@@ -177,7 +184,7 @@
 
         }
 
-        img:last-of-type {
+        img:nth-last-child(1) {
             margin-bottom: 0;
         }
 
@@ -189,7 +196,8 @@
 
             img {
                 width: calc(50% - 5px);
-                height: 100%;
+                max-height: 100%;
+                margin-bottom: unset;
             }
 
 
@@ -201,7 +209,7 @@
 .wrapper-project-scrolled {
 
     .wrapper-description {
-        max-width: 110px;
+        max-width: 125px;
 
         .description {
             transform: translateX(calc(-100% - 50px));

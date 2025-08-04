@@ -22,6 +22,13 @@
         ]
     },
     {
-        "title": "v-lock"
+        "title": "v-lock",
+        "description": "V-Lock is a student startup from Troyes, France, that developed a connected, solar-powered bike locking system. I collaborated on the creation of the mobile app, focusing on UI/UX design and mobile development.",
+        "url": "",
+        "tags": ["UX/UI", "mobile", "development"],
+        "images": [
+            "vlock-mockup.webp",
+            ["vlock-bike-1.webp", "vlock-bike-2.webp"]
+        ] 
     }
 ]
