@@ -1,15 +1,17 @@
-:root {
-    --nav-height: 100px; 
-    --gap: 20px; 
-}
+
 
 .navbar {
     background: #000;
     width: 100%;
     height: var(--nav-height);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 999999;
+
+    // display: none;
+
+    // transform: translateY(-10%);
+    // transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 
  
     .content {
@@ -67,4 +69,9 @@
         }
     }
 
+}
+
+.navbar-scroll {
+    // background: rebeccapurple;
+    top: calc(-1 * var(--nav-height));
 }

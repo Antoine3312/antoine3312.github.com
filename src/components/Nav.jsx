@@ -1,12 +1,21 @@
+import clsx from 'clsx';
 import '../assets/Nav.scss';
 
-const NavBar = () => {
+export const NAV_HEIGHT = 100;
+export const CONTENT_TO_NAV_GAP = 20;
+
+const NavBar = ({ scrollPos }) => {
   const handleResume = () => {
     console.log('resume');
   };
 
   return (
-    <div className="navbar">
+    <div
+      className={clsx({
+        navbar: true,
+      })}
+      style={{ top: scrollPos, height: `${NAV_HEIGHT}px` }}
+    >
       <div className="content">
 
         <button
