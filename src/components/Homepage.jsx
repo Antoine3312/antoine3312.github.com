@@ -1,17 +1,29 @@
 /* eslint-disable max-len */
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import '../assets/Homepage.scss';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 
+export const slugify = str =>
+  str
+    .toLowerCase()
+    .normalize('NFD') // accents → lettres + diacritiques
+    .replace(/[\u0300-\u036f]/g, '') // supprime les diacritiques
+    .replace(/[^a-z0-9]+/g, '-') // remplace tout sauf lettres/nombres par -
+    .replace(/^-+|-+$/g, ''); // supprime les - au début/fin
+
 const Homepage = () => {
+  const navigate = useNavigate();
+
   const [pageLoaded, setPageLoeaded] = useState(false);
 
   useEffect(() => {
     const colorbg = new BlurGradientBg({
       dom: 'box',
       colors: ['#ff6601', '#ffae00', '#ff2e2e', '#cb000a'],
+      // colors: ['#00023E', '#3157B3', '#204299', '#132385'],
       loop: true,
     });
     setTimeout(() => {
@@ -24,14 +36,19 @@ const Homepage = () => {
 
   useEffect(() => {
     const handleWheel = e => {
-      e.preventDefault(); // bloque le scroll natif
-      window.scrollTo(0, 0); // force la position
+      e.preventDefault();
+      window.scrollTo(0, 0);
       if (!hasScrolled) {
-        setHasScrolled(true); // ton animation personnalisée
+        setHasScrolled(true);
       }
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
+
+    // les returns dans un useEffect sont des fonctions appelées au démontage du composant (lorsque le comosant est retiré du DOM)
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
   }, [hasScrolled]);
 
   const projects = [
@@ -220,7 +237,7 @@ const Homepage = () => {
                 aria-hidden={hasScrolled}
                 style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
                 onFocus={() => onTabFocus(index)}
-                onClick={() => console.log('click')}
+                onClick={() => navigate(`/${slugify(title)}`)}
                 onMouseDown={e => e.preventDefault()}
                 onMouseMove={e => {
                   const rect = e.currentTarget.getBoundingClientRect();

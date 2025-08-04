@@ -1,0 +1,70 @@
+:root {
+    --nav-height: 100px; 
+    --gap: 20px; 
+}
+
+.navbar {
+    background: #000;
+    width: 100%;
+    height: var(--nav-height);
+    position: sticky;
+    top: 0;
+    z-index: 999999;
+
+ 
+    .content {
+        padding: 0 100px;
+        max-width: 1920px;
+        margin: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+
+        button {
+            background: unset;
+            border: unset;
+            color: white;
+
+            height: fit-content;
+    
+            font-family: 'RocGrotesk';
+            font-weight: 300;
+            text-transform: uppercase;
+            font-size: 2rem;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+    
+            position: relative;
+            overflow: hidden;
+    
+            img {
+                width: 24px;
+                height: 24px;
+                transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+            }
+    
+            .to-translate {
+                position: absolute;
+                right: 0;
+                transform: translate3d(0, 150%, 0);
+            }
+    
+            &:hover, &:focus {
+                cursor: pointer;
+    
+                img {
+                    transform: translate3d(0, -150%, 0);
+                }
+    
+                .to-translate {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        }
+    }
+
+}
