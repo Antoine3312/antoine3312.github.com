@@ -192,6 +192,7 @@
             display: flex;
             max-width: 100%;
             gap: 10px;
+            margin-bottom: 10px;
 
 
             img {
@@ -201,6 +202,10 @@
             }
 
 
+        }
+
+        > :last-child {
+            margin-bottom: 0;
         }
 
     }
