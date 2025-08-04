@@ -31,10 +31,10 @@ const Project = () => {
 
       setLastScrollTop(currentScrollPos);
     };
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleWheel, { passive: false });
 
     return () => {
-      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('scroll', handleWheel);
     };
   }, [lastScrollTop, isScrolledTop]);
 
