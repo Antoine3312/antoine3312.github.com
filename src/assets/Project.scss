@@ -30,12 +30,6 @@
         overflow: hidden;
         color: $neutral_950;
 
-        a {
-            img {
-                transform: rotate(-45deg);
-            }
-        }
-
         h1 {
             font-family: 'RocGrotesk';
             font-weight: 900;
@@ -89,6 +83,8 @@
                 flex-direction: column;
                 gap: 5px;
 
+                transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+
                 a {
                     width: 100%;
                     display: flex;
@@ -107,9 +103,6 @@
                         text-transform: uppercase;
                     }
 
-                    img {
-                        height: 25px;
-                    }
                 }
 
                 .company {
@@ -117,6 +110,17 @@
                     border: 2px solid $neutral_950;
                     color: $neutral_950;
 
+                    &:hover, &:focus {
+                        .wrapper-translation {
+                            img, p {
+                                transform: translateY(-25px);
+                            }
+                            .to-translate {
+                                transform: translateY(-0);
+                            }
+                        }
+
+                    }
                 }
 
                 .site {
@@ -141,9 +145,34 @@
                     img {
                         filter: invert(100%);
                     }
+
+                    &:hover, &:focus {
+                        .wrapper-translation {
+                            img, p {
+                                transform: translateY(-25px);
+                            }
+                            .to-translate {
+                                transform: translateY(-0);
+                            }
+                        }
+
+                    }
     
     
                     
+                }
+
+                .wrapper-translation {
+                    position: relative;
+                    overflow: hidden;
+
+                    .to-translate {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+
+                        transform: translateY(25px);
+                    }
                 }
             }
 
@@ -182,7 +211,10 @@
     
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     gap: 10px;
+
+                    transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
     
                     p {
                         font-family: 'Satoshi', sans-serif; 
@@ -191,9 +223,18 @@
                         font-size: 0.75rem;
                         text-transform: uppercase;
                     }
-    
-                    img {
-                        height: 17px;
+
+                    .wrapper-translation {
+                        position: relative;
+                        overflow: hidden;
+
+                        .to-translate {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+
+                            transform: translateY(20px);
+                        }
                     }
                 }
 
@@ -207,6 +248,19 @@
                     img {
                         filter: invert(100%);
                     }
+
+                    &:hover, &:focus {
+                        p, img {
+                            transform: translateY(-20px);
+                        }
+
+                        .wrapper-translation {
+
+                            .to-translate {
+                                transform: translateY(0);
+                            }
+                        }
+                    }
                 }
 
                 .company {
@@ -215,6 +269,19 @@
 
                     p {
                         color: $neutral_950;
+                    }
+
+                    &:hover, &:focus {
+                        p, img {
+                            transform: translateY(-20px);
+                        }
+
+                        .wrapper-translation {
+
+                            .to-translate {
+                                transform: translateY(0);
+                            }
+                        }
                     }
                 }
             }
@@ -225,7 +292,7 @@
 
         img {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 16px;
             margin-bottom: 10px;
             display: block;
 

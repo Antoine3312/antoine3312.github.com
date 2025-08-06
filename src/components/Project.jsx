@@ -70,18 +70,42 @@ const Project = () => {
             </div>
             <div className="urls">
               {companyUrl && (
-                <a href={companyUrl} target="_blank" rel="noreferrer" className="company">
-                  <p>discover company</p>
-                  <img src="arrow_right.svg" alt="arrow right icon" />
+                <a
+                  href={companyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="company"
+                  tabIndex={isScrolledTop ? '0' : '-1'}
+                >
+                  <div className="wrapper-translation">
+                    <p>discover company</p>
+                    <p className="to-translate">discover company</p>
+                  </div>
+                  <div className="wrapper-translation">
+                    <img src="arrow_top_right.svg" alt="arrow right icon" />
+                    <img src="arrow_top_right.svg" alt="arrow right icon" className="to-translate" />
+                  </div>
                 </a>
               )}
               {url && (
-                <a href={url} target="_blank" rel="noreferrer" className="site">
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="site"
+                  tabIndex={isScrolledTop ? '0' : '-1'}
+                >
                   <div className="left">
                     <div className="dot" />
-                    <p>visit site</p>
+                    <div className="wrapper-translation">
+                      <p>visit site</p>
+                      <p className="to-translate">visit site</p>
+                    </div>
                   </div>
-                  <img src="arrow_right.svg" alt="arrow right icon" />
+                  <div className="wrapper-translation">
+                    <img src="arrow_top_right.svg" alt="arrow right icon" />
+                    <img src="arrow_top_right.svg" alt="arrow right icon" className="to-translate" />
+                  </div>
                 </a>
               )}
             </div>
@@ -90,15 +114,39 @@ const Project = () => {
             <h1>{title}</h1>
             <div className="urls">
               {companyUrl && (
-                <a href={companyUrl} target="_blank" rel="noreferrer" className="company">
-                  <p>company</p>
-                  <img src="arrow_right.svg" alt="arrow right icon" />
+                <a
+                  href={companyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="company"
+                  tabIndex={isScrolledTop ? '-1' : '0'}
+                >
+                  <div className="wrapper-translation">
+                    <p>company</p>
+                    <p className="to-translate">company</p>
+                  </div>
+                  <div className="wrapper-translation">
+                    <img src="arrow_top_right.svg" alt="arrow right icon" />
+                    <img src="arrow_top_right.svg" alt="arrow right icon" className="to-translate" />
+                  </div>
                 </a>
               )}
               {url && (
-                <a href={url} target="_blank" rel="noreferrer" className="site">
-                  <p>visit site</p>
-                  <img src="arrow_right.svg" alt="arrow right icon" />
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="site"
+                  tabIndex={isScrolledTop ? '-1' : '0'}
+                >
+                  <div className="wrapper-translation">
+                    <p>visit site</p>
+                    <p className="to-translate">visit site</p>
+                  </div>
+                  <div className="wrapper-translation">
+                    <img src="arrow_top_right.svg" alt="arrow right icon" />
+                    <img src="arrow_top_right.svg" alt="arrow right icon" className="to-translate" />
+                  </div>
                 </a>
               )}
             </div>
@@ -131,7 +179,7 @@ const Project = () => {
           })}
         </div>
       </div>
-      {/* <h1>Test</h1> */}
+      <h1>Test</h1>
     </>
   );
 };
