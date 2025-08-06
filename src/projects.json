@@ -3,6 +3,7 @@
         "title": "PASSEPORT CARBONE",
         "description": "Passeport Carbone is a web app created within the junior enterprise for the University of Technology of Troyes, aiming to raise student awareness about their carbon footprint. I led UI/UX design and handled most of the front-end development.",
         "url": "https://passeport-carbone.utt.fr/",
+        "company_url": "https://www.utt.fr/",
         "tags": ["ux/ui", "web", "development"],
         "images": [
             "passeport-carbone-mockup-1.webp",
@@ -14,6 +15,7 @@
         "title": "présences",
         "description": "Présences is a web mapping app developed by Makina Corpus to manage office space in a flex-office context. During my internship, I redesigned the web and mobile UI and added several quality-of-life features, the most significant being authentication.",
         "url": "",
+        "company_url": "https://makina-corpus.com/",
         "tags": ["ux/ui","development",  "web"],
         "images": [
             "presences-mockup.png",
@@ -25,6 +27,7 @@
         "title": "v-lock",
         "description": "V-Lock is a student startup from Troyes, France, that developed a connected, solar-powered bike locking system. I collaborated on the creation of the mobile app, focusing on UI/UX design and mobile development.",
         "url": "",
+        "company_url": "https://www.v-lock.fr/",
         "tags": ["UX/UI", "mobile", "development"],
         "images": [
             "vlock-mockup.webp",

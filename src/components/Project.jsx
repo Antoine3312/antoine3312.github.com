@@ -9,7 +9,7 @@ import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
 
 const Project = () => {
   const { projectSlug } = useParams();
-  const { title, description, tags, url, images } = projects
+  const { title, description, tags, url, images, company_url: companyUrl } = projects
     .find(({ title: projectTitle }) => slugify(projectTitle) === projectSlug);
 
   const [isScrolledTop, setIsScrolledTop] = useState(true);
@@ -68,24 +68,40 @@ const Project = () => {
               </div>
               <p>{description}</p>
             </div>
-            {url && (
-            <a href={url} target="_blank" rel="noreferrer">
-              <div className="left">
-                <div className="dot" />
-                <p>visit site</p>
-              </div>
-              <img src="arrow_right.svg" alt="arrow right icon" />
-            </a>
-            )}
+            <div className="urls">
+              {companyUrl && (
+                <a href={companyUrl} target="_blank" rel="noreferrer" className="company">
+                  <p>discover company</p>
+                  <img src="arrow_right.svg" alt="arrow right icon" />
+                </a>
+              )}
+              {url && (
+                <a href={url} target="_blank" rel="noreferrer" className="site">
+                  <div className="left">
+                    <div className="dot" />
+                    <p>visit site</p>
+                  </div>
+                  <img src="arrow_right.svg" alt="arrow right icon" />
+                </a>
+              )}
+            </div>
           </div>
           <div className="description-scroll">
             <h1>{title}</h1>
-            {url && (
-            <a href={url} target="_blank" rel="noreferrer">
-              <p>visit site</p>
-              <img src="arrow_right.svg" alt="arrow right icon" />
-            </a>
-            )}
+            <div className="urls">
+              {companyUrl && (
+                <a href={companyUrl} target="_blank" rel="noreferrer" className="company">
+                  <p>company</p>
+                  <img src="arrow_right.svg" alt="arrow right icon" />
+                </a>
+              )}
+              {url && (
+                <a href={url} target="_blank" rel="noreferrer" className="site">
+                  <p>visit site</p>
+                  <img src="arrow_right.svg" alt="arrow right icon" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
         <div className="wrapper-images">
