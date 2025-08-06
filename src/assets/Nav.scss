@@ -1,7 +1,8 @@
-
+@use './fonts.scss';
+@use './colors.scss' as *;
 
 .navbar {
-    background: #000;
+    background: $neutral_950;
     width: 100%;
     height: var(--nav-height);
     position: fixed;
@@ -26,7 +27,7 @@
         button {
             background: unset;
             border: unset;
-            color: white;
+            color: $neutral_50;
 
             height: fit-content;
     

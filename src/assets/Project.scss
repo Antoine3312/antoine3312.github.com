@@ -1,3 +1,5 @@
+@use './fonts.scss';
+@use './colors.scss' as *;
 
 .wrapper-project {
     width: 100%;
@@ -5,6 +7,7 @@
     height: fit-content;
     margin: auto;
     padding: 20px;
+    background: $neutral_50;
 
     display: flex;
     gap: 50px;
@@ -25,6 +28,7 @@
         position: sticky;
         top: 0;
         overflow: hidden;
+        color: $neutral_950;
 
         a {
             img {
@@ -52,7 +56,7 @@
                 font-style: normal;
                 font-size: 0.875rem;
                 text-transform: uppercase;
-                border: 2px solid black;
+                border: 2px solid $neutral_950;
                 width: fit-content;
                 padding: 5px 20px;
                 border-radius: 999px;
@@ -110,14 +114,14 @@
 
                 .company {
                     width: 100%;
-                    border: 2px solid black;
-                    color: #000;
+                    border: 2px solid $neutral_950;
+                    color: $neutral_950;
 
                 }
 
                 .site {
-                    background: #000;
-                    color: white;
+                    background: $neutral_950;
+                    color: $neutral_50;
     
     
                     .left {
@@ -194,10 +198,10 @@
                 }
 
                 .site {
-                    background: #000;
+                    background: $neutral_950;
 
                     p {
-                        color: white;
+                        color: $neutral_50;
                     }
 
                     img {
@@ -206,11 +210,11 @@
                 }
 
                 .company {
-                    background: white;
-                    border: 1px solid black;
+                    background: $neutral_50;
+                    border: 1px solid $neutral_950;
 
                     p {
-                        color: #000;
+                        color: $neutral_950;
                     }
                 }
             }
