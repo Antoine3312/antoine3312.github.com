@@ -1,21 +1,13 @@
 /* eslint-disable max-len */
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
-
-export const slugify = str =>
-  str
-    .toLowerCase()
-    .normalize('NFD') // accents → lettres + diacritiques
-    .replace(/[\u0300-\u036f]/g, '') // supprime les diacritiques
-    .replace(/[^a-z0-9]+/g, '-') // remplace tout sauf lettres/nombres par -
-    .replace(/^-+|-+$/g, ''); // supprime les - au début/fin
+import { useNavigation } from './NavigationProvider';
 
 const Homepage = () => {
-  const navigate = useNavigate();
+  const navigateTo = useNavigation();
 
   const [pageLoaded, setPageLoeaded] = useState(false);
 
@@ -191,7 +183,6 @@ const Homepage = () => {
         })}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex="-1"
-        // style={{ display: hasScrolled ? 'block' : 'none' }}
       >
         <div className="header">
           <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
@@ -238,7 +229,7 @@ const Homepage = () => {
                 aria-hidden={hasScrolled}
                 style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
                 onFocus={() => onTabFocus(index)}
-                onClick={() => navigate(`/${slugify(title)}`)}
+                onClick={() => navigateTo(title)}
                 onMouseDown={e => e.preventDefault()}
                 onMouseMove={e => {
                   const rect = e.currentTarget.getBoundingClientRect();

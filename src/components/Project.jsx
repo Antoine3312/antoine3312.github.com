@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
-import { slugify } from './Homepage';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
+import { slugify } from './NavigationProvider';
 
 const Project = () => {
   const { projectSlug } = useParams();

@@ -1,0 +1,74 @@
+@use './fonts.scss';
+@use './colors.scss' as *;
+
+.transition-frame {
+    background: $neutral_950;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    visibility: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper-title {
+        // border: 1px solid red;
+        overflow: hidden;
+        h1 {
+            color: white;
+            font-family: 'Satoshi', sans-serif; 
+            font-weight: 900;
+            font-style: normal;
+            text-transform: uppercase;
+            font-size: 1rem;
+
+            transform: translateY(-100%);
+        }
+    }
+
+
+    .wrapper-title-active {
+        h1 {
+            animation: title-appearance 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards .2s, 
+                title-appearance 1s cubic-bezier(0.645, 0.045, 0.355, 1) reverse forwards 2s;
+        }
+    }
+}
+
+.transition-frame-active {
+    visibility: visible;
+    animation: 
+        go-down 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards,
+        go-up 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards 2.5s;   
+}
+
+@keyframes go-down {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes go-up {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+}
+
+@keyframes title-appearance {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
