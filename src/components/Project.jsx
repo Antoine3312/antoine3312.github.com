@@ -1,21 +1,36 @@
 import clsx from 'clsx';
-import ReactLenis from 'lenis/react';
-import { useEffect, useState } from 'react';
+import { useLenis } from 'lenis/react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
-import { slugify } from './NavigationProvider';
+import { slugify, useNavigation } from './NavigationProvider';
 
 const Project = () => {
+  const navigateTo = useNavigation();
+  const lenis = useLenis();
+  const nextProjetcBtn = useRef(null);
+  const [isOnScreen, setIsOnScreen] = useState(false);
+
   const { projectSlug } = useParams();
   const { title, description, tags, url, images, company_url: companyUrl } = projects
     .find(({ title: projectTitle }) => slugify(projectTitle) === projectSlug);
+  const projectIndex = projects
+    .findIndex(({ title: projectTitle }) => slugify(projectTitle) === projectSlug);
+  const nextProject = projects[(projectIndex + 1) % projects.length];
 
   const [isScrolledTop, setIsScrolledTop] = useState(true);
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+
+  useEffect(() => {
+    if (!lenis) return;
+    lenis.scrollTo(0, { immediate: true });
+    setScrollPosition(0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps, no-restricted-globals
+  }, [lenis, location.pathname]);
 
   useEffect(() => {
     const handleWheel = () => {
@@ -31,6 +46,7 @@ const Project = () => {
 
       setLastScrollTop(currentScrollPos);
     };
+
     window.addEventListener('scroll', handleWheel, { passive: false });
 
     return () => {
@@ -40,7 +56,6 @@ const Project = () => {
 
   return (
     <>
-      <ReactLenis root />
       <NavBar
         scrollPos={scrollPosition}
       />
@@ -179,7 +194,28 @@ const Project = () => {
           })}
         </div>
       </div>
-      <h1>Test</h1>
+      <div className="wrapper-next-project">
+        <div className="transition">
+          <h4>Interested to see more ?</h4>
+        </div>
+        <button
+          type="button"
+          onClick={() => navigateTo(nextProject.title)}
+          ref={nextProjetcBtn}
+        >
+          <div className="button-text">
+            <h4>next project</h4>
+            <div className="wrapper-to-move">
+              <h1>{nextProject.title}</h1>
+              <h1 className="to-move">{nextProject.title}</h1>
+            </div>
+          </div>
+          <div className="wrapper-img-to-move">
+            <img src="big-arrow-right.svg" alt="arrow right icon" />
+            <img src="big-arrow-right.svg" alt="arrow right icon" className="img-to-move" />
+          </div>
+        </button>
+      </div>
     </>
   );
 };

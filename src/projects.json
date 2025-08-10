@@ -12,7 +12,7 @@
         ]
     }, 
     {
-        "title": "présences",
+        "title": "presences",
         "description": "Présences is a web mapping app developed by Makina Corpus to manage office space in a flex-office context. During my internship, I redesigned the web and mobile UI and added several quality-of-life features, the most significant being authentication.",
         "url": "",
         "company_url": "https://makina-corpus.com/",
