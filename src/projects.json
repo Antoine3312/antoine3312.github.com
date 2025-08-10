@@ -1,6 +1,8 @@
 [
     {
         "title": "PASSEPORT CARBONE",
+        "preview": "passeportcarbone_preview.png",
+        "desc_preview": "A web-app broadcasted to the student of my school to make them aware of their carbon footprint",
         "description": "Passeport Carbone is a web app created within the junior enterprise for the University of Technology of Troyes, aiming to raise student awareness about their carbon footprint. I led UI/UX design and handled most of the front-end development.",
         "url": "https://passeport-carbone.utt.fr/",
         "company_url": "https://www.utt.fr/",
@@ -13,6 +15,8 @@
     }, 
     {
         "title": "presences",
+        "preview": "presences_preview.png",
+        "desc_preview": "A web-app made in my previous internship which goal was to organise the usage of the office’s desktop",
         "description": "Présences is a web mapping app developed by Makina Corpus to manage office space in a flex-office context. During my internship, I redesigned the web and mobile UI and added several quality-of-life features, the most significant being authentication.",
         "url": "",
         "company_url": "https://makina-corpus.com/",
@@ -25,6 +29,8 @@
     },
     {
         "title": "v-lock",
+        "preview": "vlock_preview.png",
+        "desc_preview": "A mobile application that can be use to store and secure your own bike in town",
         "description": "V-Lock is a student startup from Troyes, France, that developed a connected, solar-powered bike locking system. I collaborated on the creation of the mobile app, focusing on UI/UX design and mobile development.",
         "url": "",
         "company_url": "https://www.v-lock.fr/",

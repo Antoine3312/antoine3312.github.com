@@ -5,6 +5,8 @@ import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 import { useNavigation } from './NavigationProvider';
+import Entrance from './Entrance';
+import projects from '../projects.json';
 
 const Homepage = () => {
   const navigateTo = useNavigation();
@@ -20,7 +22,7 @@ const Homepage = () => {
     });
     setTimeout(() => {
       setPageLoeaded(true);
-    }, 500);
+    }, 1700);
     return () => colorbg;
   }, []);
 
@@ -43,23 +45,23 @@ const Homepage = () => {
     };
   }, [hasScrolled]);
 
-  const projects = [
-    {
-      title: 'Présences',
-      description: 'A web-app made in my previous internship which goal was to organise the usage of the office’s desktop',
-      src: 'presences_preview.png',
-    },
-    {
-      title: 'passeport carbone',
-      description: 'A web-app broadcasted to the student of my school to make them aware of their carbon footprint',
-      src: 'passeportcarbone_preview.png',
-    },
-    {
-      title: 'v-lock',
-      description: 'A mobile application that can be use to store and secure your own bike in town',
-      src: 'vlock_preview.png',
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: 'Présences',
+  //     description: 'A web-app made in my previous internship which goal was to organise the usage of the office’s desktop',
+  //     src: 'presences_preview.png',
+  //   },
+  //   {
+  //     title: 'passeport carbone',
+  //     description: 'A web-app broadcasted to the student of my school to make them aware of their carbon footprint',
+  //     src: 'passeportcarbone_preview.png',
+  //   },
+  //   {
+  //     title: 'v-lock',
+  //     description: 'A mobile application that can be use to store and secure your own bike in town',
+  //     src: 'vlock_preview.png',
+  //   },
+  // ];
 
   const carousselRef = useRef(null);
   const [carousselSlideIndex, setCarousselSlideIndex] = useState(0);
@@ -110,156 +112,158 @@ const Homepage = () => {
   };
 
   return (
-    <div className="homepage">
-
-      <div className={clsx({
-        wrapper_headings: true,
-        is_loaded: pageLoaded,
-        has_scrolled: hasScrolled,
-      })}
-      >
-        <div className="headings" id="box">
-          <div className="gradient_bottom" />
-          <div className="gradient_top" />
-          <div className="wrapper_header">
-            <div className="header">
-              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
-              <button
-                type="button"
-                tabIndex={hasScrolled ? '-1' : '0'}
-                style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
-                onClick={() => console.log('test')}
-              >
-                get my resume
-                <img src="arrow.svg" alt="arrow icon" />
-                <img src="arrow.svg" alt="arrow icon" className="to-translate" />
-              </button>
-            </div>
-            <div className="header header_scroll">
-              <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
-              <button
-                type="button"
-                tabIndex={!hasScrolled ? '-1' : '0'}
-                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-                onClick={() => console.log('test 2')}
-              >
-                get my resume
-                <img src="arrow.svg" alt="arrow icon" />
-                <img src="arrow.svg" alt="arrow icon" className="to-translate" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={clsx({
-        headings_footer: true,
-        footer_loaded: pageLoaded,
-        footer_scrolled: hasScrolled,
-      })}
-      >
-        <div className="wrapper_button">
-          <button
-            type="button"
-            tabIndex={!hasScrolled ? '0' : '-1'}
-            style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
-            onClick={() => { setHasScrolled(true); }}
-          >
-            <img src="arrow_bottom_orange.svg" alt="arrow icon" />
-            <img src="arrow_bottom_orange.svg" alt="arrow icon" className="to-slide" />
-          </button>
-        </div>
-        <div className="main_title">
-          <h4>2025</h4>
-          <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
-        </div>
-      </div>
-
-      <div
-        className={clsx({
-          content: true,
-          content_loaded: pageLoaded,
-          content_scrolled: hasScrolled,
+    <>
+      <Entrance />
+      <div className="homepage">
+        <div className={clsx({
+          wrapper_headings: true,
+          is_loaded: pageLoaded,
+          has_scrolled: hasScrolled,
         })}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex="-1"
-      >
-        <div className="header">
-          <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
-          <div className="caroussel_nav">
-            <button
-              type="button"
-              className="arrow left"
-              tabIndex={hasScrolled ? '0' : '-1'}
-              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-              disabled={carousselSlideIndex === 0}
-              onClick={() => scrollCaroussel(true)}
-            >
-              <img src="arrow_left.svg" alt="arrow left icon" className="left-arrow" />
-              <img src="arrow_left.svg" alt="arrow left icon" className="toSlide toSlide-left" />
-            </button>
-            <button
-              type="button"
-              className="arrow right"
-              tabIndex={hasScrolled ? '0' : '-1'}
-              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-              disabled={isEnd}
-              onClick={() => scrollCaroussel(false)}
-            >
-              <img src="arrow_right.svg" alt="arrow right icon" />
-              <img src="arrow_right.svg" alt="arrow right icon" className="toSlide" />
-            </button>
+        >
+          <div className="headings" id="box">
+            <div className="gradient_bottom" />
+            <div className="gradient_top" />
+            <div className="wrapper_header">
+              <div className="header">
+                <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+                <button
+                  type="button"
+                  tabIndex={hasScrolled ? '-1' : '0'}
+                  style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+                  onClick={() => console.log('test')}
+                >
+                  get my resume
+                  <img src="arrow.svg" alt="arrow icon" />
+                  <img src="arrow.svg" alt="arrow icon" className="to-translate" />
+                </button>
+              </div>
+              <div className="header header_scroll">
+                <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+                <button
+                  type="button"
+                  tabIndex={!hasScrolled ? '-1' : '0'}
+                  style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                  onClick={() => console.log('test 2')}
+                >
+                  get my resume
+                  <img src="arrow.svg" alt="arrow icon" />
+                  <img src="arrow.svg" alt="arrow icon" className="to-translate" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="caroussel_wrapper" ref={carousselRef} tabIndex="-1">
-          <div
-            className="caroussel"
-            style={{
-              transition: '1s all ',
-              transform: `translateX(-${scrollAmount}px)`,
-            }}
-          >
-            {projects.map(({ title, description, src }, index) => (
+        <div className={clsx({
+          headings_footer: true,
+          footer_loaded: pageLoaded,
+          footer_scrolled: hasScrolled,
+        })}
+        >
+          <div className="wrapper_button">
+            <button
+              type="button"
+              tabIndex={!hasScrolled ? '0' : '-1'}
+              style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
+              onClick={() => { setHasScrolled(true); }}
+            >
+              <img src="arrow_bottom_orange.svg" alt="arrow icon" />
+              <img src="arrow_bottom_orange.svg" alt="arrow icon" className="to-slide" />
+            </button>
+          </div>
+          <div className="main_title">
+            <h4>2025</h4>
+            <h1><AnimatedTitle text="portfolio" pageLoaded={pageLoaded} hasScrolled={hasScrolled} /></h1>
+          </div>
+        </div>
+
+        <div
+          className={clsx({
+            content: true,
+            content_loaded: pageLoaded,
+            content_scrolled: hasScrolled,
+          })}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex="-1"
+        >
+          <div className="header">
+            <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
+            <div className="caroussel_nav">
               <button
                 type="button"
-                className="card"
-                key={title}
+                className="arrow left"
                 tabIndex={hasScrolled ? '0' : '-1'}
-                aria-hidden={hasScrolled}
                 style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-                onFocus={() => onTabFocus(index)}
-                onClick={() => navigateTo(title)}
-                onMouseDown={e => e.preventDefault()}
-                onMouseMove={e => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const image = e.currentTarget.querySelector('img');
-
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-
-                  const x = e.clientX - rect.left - centerX;
-                  const y = e.clientY - rect.top - centerY;
-
-                  image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
-                }}
-                onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
+                disabled={carousselSlideIndex === 0}
+                onClick={() => scrollCaroussel(true)}
               >
-                <div className="img_container">
-                  <img src={src} alt={src.split('.')[0]} />
-                </div>
-                <div className="titles">
-                  <img src={src} alt={src.split('.')[0]} />
-                  <h4>{title}</h4>
-                  <p>{description}</p>
-                </div>
+                <img src="arrow_left.svg" alt="arrow left icon" className="left-arrow" />
+                <img src="arrow_left.svg" alt="arrow left icon" className="toSlide toSlide-left" />
               </button>
-            ))}
+              <button
+                type="button"
+                className="arrow right"
+                tabIndex={hasScrolled ? '0' : '-1'}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                disabled={isEnd}
+                onClick={() => scrollCaroussel(false)}
+              >
+                <img src="arrow_right.svg" alt="arrow right icon" />
+                <img src="arrow_right.svg" alt="arrow right icon" className="toSlide" />
+              </button>
+            </div>
+          </div>
 
+          <div className="caroussel_wrapper" ref={carousselRef} tabIndex="-1">
+            <div
+              className="caroussel"
+              style={{
+                transition: '1s all ',
+                transform: `translateX(-${scrollAmount}px)`,
+              }}
+            >
+              {projects.map(({ title, desc_preview: description, preview }, index) => (
+                <button
+                  type="button"
+                  className="card"
+                  key={title}
+                  tabIndex={hasScrolled ? '0' : '-1'}
+                  aria-hidden={hasScrolled}
+                  style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                  onFocus={() => onTabFocus(index)}
+                  onClick={() => navigateTo(title)}
+                  onMouseDown={e => e.preventDefault()}
+                  onMouseMove={e => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const image = e.currentTarget.querySelector('img');
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const x = e.clientX - rect.left - centerX;
+                    const y = e.clientY - rect.top - centerY;
+
+                    image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+                  }}
+                  onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
+                >
+                  <div className="img_container">
+                    <img src={preview} alt={preview.split('.')[0]} />
+                  </div>
+                  <div className="titles">
+                    <img src={preview} alt={preview.split('.')[0]} />
+                    <h4>{title}</h4>
+                    <p>{description}</p>
+                  </div>
+                </button>
+              ))}
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,40 @@
+@use './colors.scss' as *;
+
+.wrapper-entrance {
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+
+    position: fixed;
+    top: 0;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title-container {
+        overflow: hidden;
+        h3 {
+            font-family: 'Satoshi';
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            font-size: 1rem;
+            color: $neutral_50;
+            animation: rise-up 1s cubic-bezier(0.3, 0.29, 0, 01) 1.5s forwards;
+        }
+    }
+}
+
+.remove-from-dom {
+    display: none;
+}
+
+@keyframes rise-up {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+         transform: translateY(-100%);
+    }
+}

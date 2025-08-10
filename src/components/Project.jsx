@@ -11,7 +11,6 @@ const Project = () => {
   const navigateTo = useNavigation();
   const lenis = useLenis();
   const nextProjetcBtn = useRef(null);
-  const [isOnScreen, setIsOnScreen] = useState(false);
 
   const { projectSlug } = useParams();
   const { title, description, tags, url, images, company_url: companyUrl } = projects
