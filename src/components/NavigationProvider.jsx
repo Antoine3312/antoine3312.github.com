@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/NavigationProvider.scss';
 import clsx from 'clsx';
@@ -15,6 +15,7 @@ const NavigationContext = createContext();
 
 const NavigationProvider = ({ children }) => {
   const navigate = useNavigate();
+  const transitionRef = useRef(null);
 
   const [active, setActive] = useState(false);
   const [title, setTitle] = useState('test test');
@@ -23,7 +24,8 @@ const NavigationProvider = ({ children }) => {
     setActive(true);
     setTitle(destination);
 
-    const transitionFrame = document.querySelector('.transition-frame');
+    const transitionFrame = transitionRef.current;
+    if (!transitionFrame) return;
 
     const handleEnd = e => {
       if (e.animationName === 'go-down') {
@@ -42,10 +44,12 @@ const NavigationProvider = ({ children }) => {
   return (
     <NavigationContext.Provider value={navigateTo}>
       {children}
-      <div className={clsx({
-        'transition-frame': true,
-        'transition-frame-active': active,
-      })}
+      <div
+        className={clsx({
+          'transition-frame': true,
+          'transition-frame-active': active,
+        })}
+        ref={transitionRef}
       >
         <div className={clsx({
           'wrapper-title': true,

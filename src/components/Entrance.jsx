@@ -34,15 +34,17 @@ const Entrance = () => {
   }, []);
 
   return (
-    <div className={clsx({
-      'wrapper-entrance': true,
-      'remove-from-dom': isFinish,
-    })}
-    >
-      <div className="title-container">
-        <h3>{amount}</h3>
+    !isFinish && (
+      <div className={clsx({
+        'wrapper-entrance': true,
+        'remove-from-dom': isFinish,
+      })}
+      >
+        <div className="title-container">
+          <h3>{amount}</h3>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

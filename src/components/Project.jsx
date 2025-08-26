@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useLenis } from 'lenis/react';
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
@@ -24,11 +24,12 @@ const Project = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
+  const location = useLocation();
+
   useEffect(() => {
     if (!lenis) return;
     lenis.scrollTo(0, { immediate: true });
     setScrollPosition(0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps, no-restricted-globals
   }, [lenis, location.pathname]);
 
   useEffect(() => {
@@ -176,6 +177,7 @@ const Project = () => {
                     alt={actuelImg}
                     key={actuelImg}
                     className="image"
+                    loading="lazy"
                   />
                 ))}
                 </div>
@@ -188,6 +190,7 @@ const Project = () => {
                 alt={img}
                 key={img}
                 className="image"
+                loading="lazy"
               />
             );
           })}
@@ -199,7 +202,10 @@ const Project = () => {
         </div>
         <button
           type="button"
-          onClick={() => navigateTo(nextProject.title)}
+          onClick={e => {
+            e.currentTarget.blur();
+            navigateTo(nextProject.title);
+          }}
           ref={nextProjetcBtn}
         >
           <div className="button-text">

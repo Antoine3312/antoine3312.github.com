@@ -17,13 +17,13 @@
         "title": "presences",
         "preview": "presences_preview.png",
         "desc_preview": "A web-app made in my previous internship which goal was to organise the usage of the office’s desktop",
-        "description": "Présences is a web mapping app developed by Makina Corpus to manage office space in a flex-office context. During my internship, I redesigned the web and mobile UI and added several quality-of-life features, the most significant being authentication.",
+        "description": "Présences is a web app developed by Makina Corpus to manage office space in a flex-office context. During my internship, I redesigned the web and mobile UI and added several quality-of-life features, the most significant being authentication.",
         "url": "",
         "company_url": "https://makina-corpus.com/",
         "tags": ["ux/ui","development",  "web"],
         "images": [
             "presences-mockup.png",
-            ["presences-palette.svg", "presences-topo.png"],
+            ["presences-palette.jpg", "presences-topo.png"],
             "presences-mockup-login.png"
         ]
     },
