@@ -392,10 +392,10 @@
         .wrapper-img-to-move {
             position: relative;
             transition: transform .5s cubic-bezier(0.3, 0.29, 0, 01);
+            overflow: hidden;
             * {
                 transition: inherit;
             }
-            overflow: hidden;
 
             img {
                 display: block;

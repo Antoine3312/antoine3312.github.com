@@ -458,7 +458,7 @@
         }
     
         .caroussel_wrapper {
-            // overflow-x: hidden;
+            overflow-x: hidden;
             width: 100%;
 
             -ms-overflow-style: none; /* IE et Edge */
@@ -729,6 +729,49 @@
                 }
         
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage {
+        overflow: visible;
+        height: fit-content;
+
+        .is_loaded {
+            padding: 0;
+
+            .headings {
+                height: 100svh;
+                border-radius: unset;
+                padding: 15px;
+            }
+        }
+
+        .headings_footer {
+            padding: 15px;
+            justify-content: flex-end;
+
+            .wrapper_button {
+                display: none;
+
+                button {
+                    margin-bottom: unset;
+                }
+            }
+
+            .main_title {
+                margin-bottom: unset;
+                // transform: translateY(-100%) translateX(32%) rotate(-90deg);
+                h1 {
+                    font-size: 4rem;
+                    line-height: 4rem;
+                }
+            }
+        }
+
+        .content {
+            opacity: 1;
         }
     }
 }

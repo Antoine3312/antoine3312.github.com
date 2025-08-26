@@ -3,13 +3,30 @@ import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
-import AnimatedTitle, { WORD } from './AnimatedTitle';
-import { useNavigation } from './NavigationProvider';
-import Entrance from './Entrance';
 import projects from '../projects.json';
+import AnimatedTitle, { WORD } from './AnimatedTitle';
+import Entrance from './Entrance';
+import { useNavigation } from './NavigationProvider';
+
+const useIsMobile = (breakpoint = 768) => {
+  const [isMobile, setIsMobile] = useState(window.screen.width < breakpoint);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < breakpoint);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+};
 
 const Homepage = () => {
   const navigateTo = useNavigation();
+  const isMobile = useIsMobile();
 
   const [pageLoaded, setPageLoeaded] = useState(false);
 
@@ -21,7 +38,7 @@ const Homepage = () => {
     });
     setTimeout(() => {
       setPageLoeaded(true);
-    }, 1800);
+    }, 1700);
     return () => colorbg;
   }, []);
 
@@ -29,10 +46,12 @@ const Homepage = () => {
 
   useEffect(() => {
     const handleWheel = e => {
-      e.preventDefault();
-      window.scrollTo(0, 0);
-      if (!hasScrolled) {
-        setHasScrolled(true);
+      if (!isMobile) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        if (!hasScrolled) {
+          setHasScrolled(true);
+        }
       }
     };
 
@@ -42,7 +61,7 @@ const Homepage = () => {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [hasScrolled]);
+  }, [hasScrolled, isMobile]);
 
   const carousselRef = useRef(null);
   const [carousselSlideIndex, setCarousselSlideIndex] = useState(0);
@@ -107,7 +126,7 @@ const Homepage = () => {
             <div className="gradient_top" />
             <div className="wrapper_header">
               <div className="header">
-                <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+                <h3><AnimatedTitle text="software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
                 <button
                   type="button"
                   tabIndex={hasScrolled ? '-1' : '0'}
@@ -120,7 +139,7 @@ const Homepage = () => {
                 </button>
               </div>
               <div className="header header_scroll">
-                <h3><AnimatedTitle text="web & software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
+                <h3><AnimatedTitle text="software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
                 <button
                   type="button"
                   tabIndex={!hasScrolled ? '-1' : '0'}
@@ -147,7 +166,7 @@ const Homepage = () => {
               type="button"
               tabIndex={!hasScrolled ? '0' : '-1'}
               style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
-              onClick={() => { setHasScrolled(true); }}
+              onClick={() => { if (!isMobile) setHasScrolled(true); }}
             >
               <img src="arrow_bottom_orange.svg" alt="arrow icon" />
               <img src="arrow_bottom_orange.svg" alt="arrow icon" className="to-slide" />
@@ -162,14 +181,14 @@ const Homepage = () => {
         <div
           className={clsx({
             content: true,
-            content_loaded: pageLoaded,
-            content_scrolled: hasScrolled,
+            content_loaded: pageLoaded || isMobile,
+            content_scrolled: hasScrolled || isMobile,
           })}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
           tabIndex="-1"
         >
           <div className="header">
-            <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled} /></h1>
+            <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled || isMobile} /></h1>
             <div className="caroussel_nav">
               <button
                 type="button"
