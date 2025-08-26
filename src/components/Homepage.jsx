@@ -17,12 +17,11 @@ const Homepage = () => {
     const colorbg = new BlurGradientBg({
       dom: 'box',
       colors: ['#ff6601', '#ffae00', '#ff2e2e', '#cb000a'],
-      // colors: ['#00023E', '#3157B3', '#204299', '#132385'],
       loop: true,
     });
     setTimeout(() => {
       setPageLoeaded(true);
-    }, 2000);
+    }, 1800);
     return () => colorbg;
   }, []);
 
@@ -44,24 +43,6 @@ const Homepage = () => {
       window.removeEventListener('wheel', handleWheel);
     };
   }, [hasScrolled]);
-
-  // const projects = [
-  //   {
-  //     title: 'Présences',
-  //     description: 'A web-app made in my previous internship which goal was to organise the usage of the office’s desktop',
-  //     src: 'presences_preview.png',
-  //   },
-  //   {
-  //     title: 'passeport carbone',
-  //     description: 'A web-app broadcasted to the student of my school to make them aware of their carbon footprint',
-  //     src: 'passeportcarbone_preview.png',
-  //   },
-  //   {
-  //     title: 'v-lock',
-  //     description: 'A mobile application that can be use to store and secure your own bike in town',
-  //     src: 'vlock_preview.png',
-  //   },
-  // ];
 
   const carousselRef = useRef(null);
   const [carousselSlideIndex, setCarousselSlideIndex] = useState(0);
