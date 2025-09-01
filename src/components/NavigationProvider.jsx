@@ -18,11 +18,11 @@ const NavigationProvider = ({ children }) => {
   const transitionRef = useRef(null);
 
   const [active, setActive] = useState(false);
-  const [title, setTitle] = useState('test test');
+  const [title, setTitle] = useState('');
 
   const navigateTo = useCallback(destination => {
     setActive(true);
-    setTitle(destination);
+    setTitle(destination || 'Home');
 
     const transitionFrame = transitionRef.current;
     if (!transitionFrame) return;

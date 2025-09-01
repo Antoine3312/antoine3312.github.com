@@ -1,0 +1,23 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    background-color: rebeccapurple;
+}
+
+.page-loaded {
+    // display: none;
+    animation: disapear 1s linear forwards;
+}
+
+@keyframes disapear {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+}

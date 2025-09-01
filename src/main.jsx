@@ -1,21 +1,31 @@
 import ReactLenis from 'lenis/react';
-import { StrictMode } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Homepage from './components/Homepage';
 import NavigationProvider from './components/NavigationProvider';
-import Project from './components/Project';
+import Loader from './components/Loader';
+
+import './assets/Project.scss';
+// import Homepage from './components/Homepage';
+
+const Homepage = lazy(() => import('./components/Homepage'));
+const Project = lazy(() => import('./components/Project'));
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ReactLenis root />
-    <BrowserRouter>
-      <NavigationProvider>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/:projectSlug" element={<Project />} />
-        </Routes>
-      </NavigationProvider>
-    </BrowserRouter>
+    <ReactLenis root>
+      <BrowserRouter>
+        <NavigationProvider>
+          {/* <Loader> */}
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/:projectSlug" element={<Project />} />
+            </Routes>
+          </Suspense>
+          {/* </Loader> */}
+        </NavigationProvider>
+      </BrowserRouter>
+    </ReactLenis>
   </StrictMode>,
 );

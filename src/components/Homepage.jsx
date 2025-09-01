@@ -5,7 +5,6 @@ import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import projects from '../projects.json';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
-import Entrance from './Entrance';
 import { useNavigation } from './NavigationProvider';
 
 const useIsMobile = (breakpoint = 768) => {
@@ -28,7 +27,8 @@ const Homepage = () => {
   const navigateTo = useNavigation();
   const isMobile = useIsMobile();
 
-  const [pageLoaded, setPageLoeaded] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  console.log('homepage mounted');
 
   useEffect(() => {
     const colorbg = new BlurGradientBg({
@@ -36,9 +36,9 @@ const Homepage = () => {
       colors: ['#ff6601', '#ffae00', '#ff2e2e', '#cb000a'],
       loop: true,
     });
-    setTimeout(() => {
-      setPageLoeaded(true);
-    }, 1700);
+    // setTimeout(() => {
+    setPageLoaded(true);
+    // }, 1000);
     return () => colorbg;
   }, []);
 
@@ -113,7 +113,7 @@ const Homepage = () => {
 
   return (
     <>
-      <Entrance />
+      {/* <Entrance /> */}
       <div className="homepage">
         <div className={clsx({
           wrapper_headings: true,
