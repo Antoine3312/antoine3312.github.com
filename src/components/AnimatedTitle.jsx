@@ -27,10 +27,13 @@ const AnimatedTitle = ({ text, pageLoaded = true, hasScrolled = false, separatio
           <span
             key={`${segment}-${index}`}
             style={{
-              top: `${hasScrolled ? '-' : ''}${baseHeight + index * 30}px`,
+              top: `${baseHeight + index * 30}px`,
+              transform: hasScrolled && `translateY(-${baseHeight + index * 30}px)`,
+              transition: hasScrolled && 'transform 1s cubic-bezier(0.3, 0.29, 0, 01)',
             }}
             className={clsx({
-              loaded: pageLoaded && !hasScrolled,
+              loaded: pageLoaded,
+              scrolled: hasScrolled,
             })}
           >
             {displayChar === ' ' ? '\u00A0' : displayChar}
