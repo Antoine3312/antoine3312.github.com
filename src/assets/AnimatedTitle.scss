@@ -1,13 +1,21 @@
 .animated-title {
     display: flex;
     overflow: hidden;
+    // text-emphasis: n;
+    transition: unset !important;
     
     span {
         height: fit-content;
+        position: relative;
     }
 
     .loaded {
-        transition: all 1s cubic-bezier(0.3, 0.29, 0, 01);
-        transform: unset !important;
+        animation: test 1s cubic-bezier(0.3, 0.29, 0, 01) forwards;
+    }
+}
+
+@keyframes test {
+    to {
+        top: 0px;
     }
 }

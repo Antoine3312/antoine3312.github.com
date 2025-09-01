@@ -26,7 +26,9 @@ const AnimatedTitle = ({ text, pageLoaded = true, hasScrolled = false, separatio
         return (
           <span
             key={`${segment}-${index}`}
-            style={{ transform: `translateY(${hasScrolled ? '-' : ''}${baseHeight + index * 30}px)` }}
+            style={{
+              top: `${hasScrolled ? '-' : ''}${baseHeight + index * 30}px`,
+            }}
             className={clsx({
               loaded: pageLoaded && !hasScrolled,
             })}
