@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationProvider from './components/NavigationProvider';
 import Loader from './components/Loader';
 
-import './assets/Project.scss';
+// import './assets/Project.scss';
 // import Homepage from './components/Homepage';
 
 const Homepage = lazy(() => import('./components/Homepage'));

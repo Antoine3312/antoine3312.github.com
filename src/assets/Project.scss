@@ -1,7 +1,10 @@
 @use './colors.scss' as *;
 
+* {
+    margin: 0;
+}
+
 .wrapper-project {
-    width: 100%;
     max-width: 1920px;
     height: fit-content;
     margin: auto;
@@ -85,7 +88,7 @@
                 transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
 
                 a {
-                    width: 100%;
+                    // width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -105,7 +108,7 @@
                 }
 
                 .company {
-                    width: 100%;
+                    // width: 100%;
                     border: 2px solid $neutral_950;
                     color: $neutral_950;
 
@@ -351,7 +354,7 @@
 }
 
 .wrapper-next-project {
-    width: 100%;
+    max-width: 1920px;
     padding: 20px 20px 20px 20px;
     // padding-top: 100px;
 
@@ -361,9 +364,9 @@
     // align-items: flex-end;
     align-items: center;
 
+
     .transition {
-        width: 100%;
-        // border: 1px solid red;
+        width: calc(100% - 40px);
         display: flex;
         border-top: 3px solid black;
         justify-content: flex-end;
@@ -373,11 +376,8 @@
             font-family: 'Satoshi';
             font-weight: 500;
             font-size: 1.5rem;
-            // font-style: italic;
-            // width: 100%;
             text-transform: uppercase;
             letter-spacing: -0.5px;
-            // width: 100%;
         }
     }
 
