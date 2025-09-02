@@ -1,33 +1,44 @@
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
 import '../assets/Loader.scss';
+import { Suspense, useEffect, useState } from 'react';
 
-const Loader = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
+const Loader = ({ children, delay = 1000 }) => {
+  const [keepLoader, setKeepShowLoader] = useState(true);
+  const [showTransition, setShowTransition] = useState(false);
 
-  console.log('isLoading');
+  const onLoaded = () => {
+    setShowTransition(true);
+    setTimeout(() => {
+      setKeepShowLoader(false);
+    }, delay);
+  };
 
-  useEffect(() => {
-    const handler = () => {
-      console.log('load complete');
-
-      setIsLoading(false);
-    };
-    window.addEventListener('load', handler);
-  }, []);
+  const fallback = (
+    <div className={clsx({
+      'loading-screen': true,
+      'transition-disapear': showTransition,
+    })}
+    >
+      <h1>loading</h1>
+    </div>
+  );
 
   return (
-    <>
-      <div className={clsx({
-        'loading-screen': true,
-        // 'page-loaded': !isLoading,
-      })}
-      >
-        <h1>loading</h1>
-      </div>
-      {/* {!isLoading && (children)} */}
-    </>
+    <Suspense fallback={fallback}>
+      <ContentWrapper onLoaded={onLoaded}>
+        {children}
+      </ContentWrapper>
+      {keepLoader && fallback}
+    </Suspense>
+
   );
+};
+
+const ContentWrapper = ({ children, onLoaded }) => {
+  useEffect(() => {
+    onLoaded();
+  }, [onLoaded]);
+  return children;
 };
 
 export default Loader;

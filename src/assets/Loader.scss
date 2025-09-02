@@ -8,8 +8,11 @@
     background-color: rebeccapurple;
 }
 
+.transition-disapear {
+    background-color: blue; 
+}
+
 .page-loaded {
-    // display: none;
     animation: disapear 1s linear forwards;
 }
 
