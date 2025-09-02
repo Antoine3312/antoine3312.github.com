@@ -4,23 +4,24 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationProvider from './components/NavigationProvider';
 import Loader from './components/Loader';
+import lazyWithDelay from './helpers';
 
-const Homepage = lazy(() => import('./components/Homepage'));
-const Project = lazy(() => import('./components/Project'));
+const ANIMATION_DELAY = 1000;
+
+const Homepage = lazyWithDelay(() => import('./components/Homepage'), ANIMATION_DELAY);
+const Project = lazyWithDelay(() => import('./components/Project'), ANIMATION_DELAY);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ReactLenis root>
       <BrowserRouter>
         <NavigationProvider>
-          {/* <Suspense fallback={<Loader />}> */}
-          <Loader>
+          <Loader delay={ANIMATION_DELAY}>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/:projectSlug" element={<Project />} />
             </Routes>
           </Loader>
-          {/* </Suspense> */}
         </NavigationProvider>
       </BrowserRouter>
     </ReactLenis>

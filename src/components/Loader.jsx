@@ -2,29 +2,51 @@ import clsx from 'clsx';
 import '../assets/Loader.scss';
 import { Suspense, useEffect, useState } from 'react';
 
-const Loader = ({ children, delay = 1000 }) => {
+const Loader = ({ children, delay }) => {
   const [keepLoader, setKeepShowLoader] = useState(true);
   const [showTransition, setShowTransition] = useState(false);
 
+  const animationDuration = 1000;
+
   const onLoaded = () => {
-    setShowTransition(true);
+    setTimeout(() => {
+      setShowTransition(true);
+    }, delay - animationDuration);
+
     setTimeout(() => {
       setKeepShowLoader(false);
-    }, delay);
+    }, delay + 500);
   };
 
   const fallback = (
-    <div className={clsx({
-      'loading-screen': true,
-      'transition-disapear': showTransition,
-    })}
+    <div
+      className={clsx({
+        'loading-screen': true,
+        'transition-disapear': showTransition,
+      })}
+      style={{
+        animation: showTransition && `disapear ${animationDuration / 1000}s cubic-bezier(0.3, 0.29, 0, 01) forwards`,
+      }}
     >
-      <h1>loading</h1>
+      <div className="wrapper-title appearance">
+        <h1
+          style={{
+            animation: showTransition && `go-up ${animationDuration / 1000}s cubic-bezier(0.3, 0.29, 0, 01) forwards`,
+          }}
+        >
+          WELCOME
+        </h1>
+      </div>
     </div>
   );
 
   return (
-    <Suspense fallback={fallback}>
+    <Suspense fallback={(
+      <div className="transition-appear">
+        {fallback}
+      </div>
+    )}
+    >
       <ContentWrapper onLoaded={onLoaded}>
         {children}
       </ContentWrapper>

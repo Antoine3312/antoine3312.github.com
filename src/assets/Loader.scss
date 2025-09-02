@@ -1,3 +1,5 @@
+@use './colors.scss' as *;
+
 .loading-screen {
     position: fixed;
     top: 0;
@@ -5,22 +7,71 @@
     width: 100vw;
     height: 100vh;
     z-index: 99999;
-    background-color: rebeccapurple;
+    background-color: $neutral_950;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    &:hover {
+        cursor: wait;
+    }
+
+    .wrapper-title {
+        overflow: hidden;
+
+
+        h1 {
+            color: white;
+            font-family: 'Satoshi', sans-serif; 
+            font-weight: 900;
+            font-style: normal;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+        }
+    }
+}
+
+.transition-appear {
+    .loading-screen {
+        .wrapper-title {
+            h1 {
+                animation: come-up 1s cubic-bezier(0.3, 0.29, 0, 01) forwards;
+            }
+        }
+    }
 }
 
 .transition-disapear {
-    background-color: blue; 
-}
-
-.page-loaded {
-    animation: disapear 1s linear forwards;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 @keyframes disapear {
     0% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        opacity: 1;
     }
     100% {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        opacity: 0;
+    }
+}
+
+@keyframes go-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes come-up {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
     }
 }
