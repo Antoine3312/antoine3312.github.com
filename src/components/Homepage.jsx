@@ -72,7 +72,7 @@ const Homepage = () => {
     setScrollAmount(() => {
       const scrollWanted = Math.floor(clientWidth / cardWidth) * (cardWidth + gapValue);
 
-      setIsEnd(scrollWanted * carousselSlideIndex >= scrollWidth - clientWidth);
+      setIsEnd(scrollWanted * carousselSlideIndex >= scrollWidth - clientWidth && carousselSlideIndex !== 0);
 
       return Math.min(scrollWanted * carousselSlideIndex, scrollWidth - clientWidth);
     });
