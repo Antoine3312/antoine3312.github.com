@@ -6,22 +6,7 @@ import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import projects from '../projects.json';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 import { useNavigation } from './NavigationProvider';
-
-const useIsMobile = (breakpoint = 768) => {
-  const [isMobile, setIsMobile] = useState(window.screen.width < breakpoint);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < breakpoint);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [breakpoint]);
-
-  return isMobile;
-};
+import useIsMobile from '../hooks/useIsMobile';
 
 const Homepage = () => {
   const navigateTo = useNavigation();
@@ -35,9 +20,7 @@ const Homepage = () => {
       colors: ['#ff6601', '#ffae00', '#ff2e2e', '#cb000a'],
       loop: true,
     });
-    // setTimeout(() => {
     setPageLoaded(true);
-    // }, 1000);
     return () => colorbg;
   }, []);
 
@@ -228,9 +211,9 @@ const Homepage = () => {
                 type="button"
                 className="card"
                 key={title}
-                tabIndex={hasScrolled ? '0' : '-1'}
-                aria-hidden={hasScrolled}
-                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                tabIndex={hasScrolled || isMobile ? '0' : '-1'}
+                aria-hidden={hasScrolled || isMobile}
+                style={{ pointerEvents: hasScrolled || isMobile ? 'auto' : 'none' }}
                 onFocus={() => onTabFocus(index)}
                 onClick={() => navigateTo(title)}
                 onMouseDown={e => e.preventDefault()}

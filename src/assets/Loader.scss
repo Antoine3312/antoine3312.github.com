@@ -8,6 +8,7 @@
     height: 100vh;
     z-index: 99999;
     background-color: $neutral_950;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
@@ -73,5 +74,15 @@
     }
     100% {
         transform: translateY(0%);
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-screen {
+        .wrapper-title {
+            h1 {
+                font-size: 1rem;
+            }
+        }
     }
 }

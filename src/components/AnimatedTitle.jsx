@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import '../assets/AnimatedTitle.scss';
 import { useEffect, useRef, useState } from 'react';
+import useIsMobile from '../hooks/useIsMobile';
 
 export const WORD = 'word';
 export const LETTER = 'letter';
@@ -8,6 +9,7 @@ export const LETTER = 'letter';
 const AnimatedTitle = ({ text, pageLoaded = true, hasScrolled = false, separation = LETTER }) => {
   const wrapperRef = useRef(null);
   const [baseHeight, setBaseHeight] = useState(0);
+  const isMobile = useIsMobile();
 
   const segments = separation === LETTER ? [...text] : text.split(' ');
 
@@ -33,6 +35,7 @@ const AnimatedTitle = ({ text, pageLoaded = true, hasScrolled = false, separatio
             }}
             className={clsx({
               loaded: pageLoaded,
+              mobile: isMobile,
               scrolled: hasScrolled,
             })}
           >

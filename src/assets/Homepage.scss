@@ -475,7 +475,6 @@
                 
                 .card {
                     min-width: fit-content;
-                    // background: #FBFBFB;
                     background: $neutral_50;
                     color: $neutral_950;
                     border-radius: 16px;
@@ -737,8 +736,21 @@
         overflow: visible;
         height: fit-content;
 
+        .wrapper_headings {
+            .headings {
+                .wrapper_header {
+                    .header {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 10px;
+                    }
+                }
+            }
+        }
+
         .is_loaded {
             padding: 0;
+            transition: unset;
 
             .headings {
                 height: 100svh;
@@ -761,16 +773,61 @@
 
             .main_title {
                 margin-bottom: unset;
-                // transform: translateY(-100%) translateX(32%) rotate(-90deg);
                 h1 {
                     font-size: 4rem;
                     line-height: 4rem;
+                    letter-spacing: .5px;
                 }
             }
         }
 
         .content {
             opacity: 1;
+            padding: 15px;
+            margin-top: 30px;
+            gap: 10px;
+
+            .header {
+                h1 {
+                    font-size: 2rem;
+                    line-height: 2rem;
+                }
+
+                .caroussel_nav {
+                    display: none;
+                }
+            }
+
+            .caroussel_wrapper {
+                .caroussel {
+                    flex-direction: column;
+                    width: 100%;
+                    min-width: unset;
+
+                    .card {
+                        border-radius: 8px;
+
+                        .titles {
+                            padding: 10px 12.5px 12.5px 12.5px;
+                            background: $neutral_200;
+
+                            h4 {
+                                font-size: 1rem;
+                                letter-spacing: -0.2px;
+                            }
+
+                            p {
+                                text-align: left;
+                                font-size: 0.75rem;
+                            }
+
+                            img {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
