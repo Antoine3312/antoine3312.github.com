@@ -6,9 +6,6 @@ function wait (ms) {
   });
 }
 
-// const lazyWithDelay = (factory, delay) => lazy(() =>
-//   Promise.all([factory(), wait(delay)]));
-
 const lazyWithDelay = (factory, delay) => lazy(async () => {
   await wait(delay);
   return factory();
