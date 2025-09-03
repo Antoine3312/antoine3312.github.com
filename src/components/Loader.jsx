@@ -31,7 +31,7 @@ const Loader = ({ children, delayLeaving }) => {
       <div className="wrapper-title appearance">
         <h1
           style={{
-            animation: showTransition && `go-up ${animationDuration / 1000}s cubic-bezier(0.3, 0.29, 0, 01) forwards`,
+            animation: showTransition && `move-up ${animationDuration / 1000}s cubic-bezier(0.3, 0.29, 0, 01) forwards`,
           }}
         >
           WELCOME
