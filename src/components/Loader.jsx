@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import '../assets/Loader.scss';
 import { Suspense, useEffect, useState } from 'react';
 
-const Loader = ({ children, delay }) => {
+const Loader = ({ children, delayLeaving }) => {
   const [keepLoader, setKeepShowLoader] = useState(true);
   const [showTransition, setShowTransition] = useState(false);
 
@@ -11,11 +11,11 @@ const Loader = ({ children, delay }) => {
   const onLoaded = () => {
     setTimeout(() => {
       setShowTransition(true);
-    }, delay - animationDuration);
+    }, delayLeaving - animationDuration);
 
     setTimeout(() => {
       setKeepShowLoader(false);
-    }, delay + 500);
+    }, delayLeaving);
   };
 
   const fallback = (
