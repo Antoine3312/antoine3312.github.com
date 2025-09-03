@@ -6,11 +6,13 @@ import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
 import { slugify, useNavigation } from './NavigationProvider';
+import useIsMobile from '../hooks/useIsMobile';
 
 const Project = () => {
   const navigateTo = useNavigation();
   const lenis = useLenis();
   const nextProjetcBtn = useRef(null);
+  const isMobile = useIsMobile();
 
   const { projectSlug } = useParams();
   const { title, description, tags, url, images, company_url: companyUrl } = projects
@@ -62,7 +64,7 @@ const Project = () => {
       <div
         className={clsx({
           'wrapper-project': true,
-          'wrapper-project-scrolled': !isScrolledTop,
+          'wrapper-project-scrolled': !isScrolledTop && !isMobile,
         })}
         style={{
           paddingTop: `${NAV_HEIGHT + CONTENT_TO_NAV_GAP + scrollPosition}px`,
@@ -125,7 +127,12 @@ const Project = () => {
               )}
             </div>
           </div>
-          <div className="description-scroll">
+          <div
+            className="description-scroll"
+            style={{
+              display: isMobile && 'none',
+            }}
+          >
             <h1>{title}</h1>
             <div className="urls">
               {companyUrl && (

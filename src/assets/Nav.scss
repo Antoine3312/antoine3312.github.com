@@ -37,6 +37,8 @@
     
             position: relative;
             overflow: hidden;
+
+            padding: unset;
     
             img {
                 width: 15px;
@@ -73,4 +75,27 @@
 .navbar-scroll {
     // background: rebeccapurple;
     top: calc(-1 * var(--nav-height));
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 65px !important;
+        .content {
+            padding: 0 15px;
+
+            button {
+                font-size: 0.825rem;
+                font-weight: 500;
+
+                img {
+                    width: 10px;
+                    height: 10px;
+                }
+
+                .to-translate {
+                    display: none;
+                }
+            }
+        }
+    }
 }

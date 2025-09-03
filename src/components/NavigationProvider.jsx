@@ -22,7 +22,7 @@ const NavigationProvider = ({ children }) => {
 
   const navigateTo = useCallback(destination => {
     setActive(true);
-    setTitle(destination || 'Home');
+    setTitle(destination || 'HOME');
 
     const transitionFrame = transitionRef.current;
     if (!transitionFrame) return;

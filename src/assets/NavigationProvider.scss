@@ -14,6 +14,8 @@
     justify-content: center;
     align-items: center;
 
+    overflow: hidden;
+
     .wrapper-title {
         overflow: hidden;
         h1 {
@@ -25,6 +27,7 @@
             font-size: 2.5rem;
 
             transform: translateY(-100%);
+            text-align: center;
         }
     }
 
@@ -68,5 +71,16 @@
     }
     100% {
         transform: translateY(0%);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .transition-frame {
+        .wrapper-title {
+            h1 {
+                font-size: 1rem;
+            }
+        }
     }
 }
