@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
     <ReactLenis root>
       <BrowserRouter>
         <NavigationProvider>
-          <Loader delayLeaving={ANIMATION_ENTRANCE_DELAY + 400}>
+          <Loader delayLeaving={ANIMATION_ENTRANCE_DELAY + 500}>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/:projectSlug" element={<Project />} />
