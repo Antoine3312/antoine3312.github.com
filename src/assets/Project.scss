@@ -225,6 +225,7 @@
                     .wrapper-translation {
                         position: relative;
                         overflow: hidden;
+                        display: flex;
 
                         .to-translate {
                             position: absolute;
@@ -561,12 +562,12 @@
         }
 
         button {
-            // align-items: flex-end;
             .button-text {
                 color: $neutral_950;
 
                 h4 {
                     font-size: 0.75rem;
+                    font-weight: 400;
                 }
 
                 .wrapper-to-move {

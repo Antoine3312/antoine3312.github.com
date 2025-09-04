@@ -8,8 +8,9 @@ export const CONTENT_TO_NAV_GAP = 20;
 const NavBar = ({ scrollPos }) => {
   const navigateTo = useNavigation();
 
-  const handleResume = () => {
-    console.log('resume');
+  const handleResume = e => {
+    e.currentTarget.blur();
+    window.open('/cv.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (

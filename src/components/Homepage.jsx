@@ -95,6 +95,11 @@ const Homepage = () => {
     }
   };
 
+  const handleResume = e => {
+    e.currentTarget.blur();
+    window.open('/cv.pdf', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="homepage">
       <div className={clsx({
@@ -113,7 +118,7 @@ const Homepage = () => {
                 type="button"
                 tabIndex={hasScrolled ? '-1' : '0'}
                 style={{ pointerEvents: hasScrolled ? 'none' : 'auto' }}
-                onClick={() => console.log('test')}
+                onClick={handleResume}
               >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />
@@ -126,7 +131,7 @@ const Homepage = () => {
                 type="button"
                 tabIndex={!hasScrolled ? '-1' : '0'}
                 style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-                onClick={() => console.log('test 2')}
+                onClick={handleResume}
               >
                 get my resume
                 <img src="arrow.svg" alt="arrow icon" />

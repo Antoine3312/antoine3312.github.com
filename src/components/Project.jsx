@@ -93,6 +93,7 @@ const Project = () => {
                   rel="noreferrer"
                   className="company"
                   tabIndex={isScrolledTop ? '0' : '-1'}
+                  onClick={e => e.currentTarget.blur()}
                 >
                   <div className="wrapper-translation">
                     <p>discover company</p>
@@ -111,6 +112,7 @@ const Project = () => {
                   rel="noreferrer"
                   className="site"
                   tabIndex={isScrolledTop ? '0' : '-1'}
+                  onClick={e => e.currentTarget.blur()}
                 >
                   <div className="left">
                     <div className="dot" />
@@ -142,6 +144,7 @@ const Project = () => {
                   rel="noreferrer"
                   className="company"
                   tabIndex={isScrolledTop ? '-1' : '0'}
+                  onClick={e => e.currentTarget.blur()}
                 >
                   <div className="wrapper-translation">
                     <p>company</p>
@@ -160,6 +163,7 @@ const Project = () => {
                   rel="noreferrer"
                   className="site"
                   tabIndex={isScrolledTop ? '-1' : '0'}
+                  onClick={e => e.currentTarget.blur()}
                 >
                   <div className="wrapper-translation">
                     <p>visit site</p>
