@@ -28,7 +28,7 @@ const Homepage = () => {
 
   useEffect(() => {
     const handleWheel = e => {
-      if (!isMobile) {
+      if (!isMobile && !hasScrolled) {
         e.preventDefault();
         window.scrollTo(0, 0);
         if (!hasScrolled) {
@@ -101,7 +101,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="homepage">
+    <div className={clsx('homepage', { 'homepage-scrolled': hasScrolled })}>
       <div className={clsx({
         wrapper_headings: true,
         is_loaded: pageLoaded,
