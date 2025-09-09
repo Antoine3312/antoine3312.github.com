@@ -361,11 +361,11 @@
 
 
     .transition {
-        width: calc(100% - 40px);
+        width: 100%;
         display: flex;
         border-top: 3px solid black;
         justify-content: flex-end;
-        padding: 20px;
+        padding: 20px 0;
 
         h4 {
             font-family: 'Satoshi';
@@ -373,6 +373,7 @@
             font-size: 1.5rem;
             text-transform: uppercase;
             letter-spacing: -0.5px;
+            margin-right: 20px;
         }
     }
 
