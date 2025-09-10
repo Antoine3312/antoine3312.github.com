@@ -5,6 +5,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
+import ImageComponent from './ImageComponent';
 import { slugify, useNavigation } from './NavigationProvider';
 import useIsMobile from '../hooks/useIsMobile';
 
@@ -183,7 +184,7 @@ const Project = () => {
             if (Array.isArray(img)) {
               return (
                 <div className="row" key={img}>{img.map(actuelImg => (
-                  <img
+                  <ImageComponent
                     src={actuelImg}
                     alt={actuelImg}
                     key={actuelImg}
@@ -196,7 +197,7 @@ const Project = () => {
             }
 
             return (
-              <img
+              <ImageComponent
                 src={img}
                 alt={img}
                 key={img}
