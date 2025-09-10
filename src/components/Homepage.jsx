@@ -7,6 +7,7 @@ import projects from '../projects.json';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 import { useNavigation } from './NavigationProvider';
 import useIsMobile from '../hooks/useIsMobile';
+import ImageComponent from './ImageComponent';
 
 const Homepage = () => {
   const navigateTo = useNavigation();
@@ -237,10 +238,10 @@ const Homepage = () => {
                 onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
               >
                 <div className="img_container">
-                  <img src={preview} alt={preview.split('.')[0]} />
+                  <ImageComponent src={preview} alt={preview.split('.')[0]} />
                 </div>
                 <div className="titles">
-                  <img src={preview} alt={preview.split('.')[0]} />
+                  <ImageComponent src={preview} alt={preview.split('.')[0]} />
                   <h4>{title}</h4>
                   <p>{description}</p>
                 </div>
