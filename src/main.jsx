@@ -10,6 +10,7 @@ const ANIMATION_ENTRANCE_DELAY = 1000;
 
 const Homepage = lazyWithDelay(() => import('./components/Homepage'), ANIMATION_ENTRANCE_DELAY);
 const Project = lazyWithDelay(() => import('./components/Project'), ANIMATION_ENTRANCE_DELAY);
+const NotFound = lazyWithDelay(() => import('./components/NotFound'), ANIMATION_ENTRANCE_DELAY);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/:projectSlug" element={<Project />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Loader>
         </NavigationProvider>

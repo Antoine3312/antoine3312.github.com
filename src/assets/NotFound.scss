@@ -7,6 +7,10 @@
     padding: 20px;
     z-index: 9999;
 
+    * {
+        margin: unset;
+    }
+
     .content-not-found {
         width: 100%;
         height: 100%;

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import '../assets/Nav.scss';
 import { useNavigation } from './NavigationProvider';
+import ImageComponent from './ImageComponent';
 
 export const NAV_HEIGHT = 100;
 export const CONTENT_TO_NAV_GAP = 20;
@@ -30,8 +31,8 @@ const NavBar = ({ scrollPos, variant = VARIANT_PRIMARY }) => {
           onClick={() => navigateTo('')}
           tabIndex={scrollPos === -100 ? '-1' : '0'}
         >
-          <img src="arrow_left-white.svg" alt="arrow icon" />
-          <img src="arrow_left-white.svg" alt="arrow icon" className="to-translate to-translate-left" />
+          <ImageComponent src="arrow_left-white.svg" alt="arrow icon" />
+          <ImageComponent src="arrow_left-white.svg" alt="arrow icon" className="to-translate to-translate-left" />
           HOME
         </button>
         <button
@@ -40,8 +41,8 @@ const NavBar = ({ scrollPos, variant = VARIANT_PRIMARY }) => {
           tabIndex={scrollPos === -100 ? '-1' : '0'}
         >
           get my resume
-          <img src="arrow.svg" alt="arrow icon" />
-          <img src="arrow.svg" alt="arrow icon" className="to-translate" />
+          <ImageComponent src="arrow.svg" alt="arrow icon" />
+          <ImageComponent src="arrow.svg" alt="arrow icon" className="to-translate" />
         </button>
       </div>
     </div>
