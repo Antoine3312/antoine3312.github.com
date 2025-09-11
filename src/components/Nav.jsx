@@ -5,7 +5,10 @@ import { useNavigation } from './NavigationProvider';
 export const NAV_HEIGHT = 100;
 export const CONTENT_TO_NAV_GAP = 20;
 
-const NavBar = ({ scrollPos }) => {
+export const VARIANT_PRIMARY = 'primary';
+export const VARIANT_SECONDARY = 'secondary';
+
+const NavBar = ({ scrollPos, variant = VARIANT_PRIMARY }) => {
   const navigateTo = useNavigation();
 
   const handleResume = e => {
@@ -17,6 +20,7 @@ const NavBar = ({ scrollPos }) => {
     <div
       className={clsx({
         navbar: true,
+        secondary: variant === VARIANT_SECONDARY,
       })}
       style={{ top: scrollPos, height: `${NAV_HEIGHT}px` }}
     >

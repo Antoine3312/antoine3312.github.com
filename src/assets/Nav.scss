@@ -72,9 +72,20 @@
 
 }
 
-.navbar-scroll {
-    // background: rebeccapurple;
-    top: calc(-1 * var(--nav-height));
+.secondary {
+    background: unset;
+    width: calc(100% - 80px);
+    padding: 0 20px;
+    .content {
+        padding: 0;
+        button {
+            color: $neutral_950;
+
+            img {
+                filter: invert(100%);
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
@@ -97,5 +108,11 @@
                 }
             }
         }
+    }
+
+    .secondary {
+        width: calc(100vw - 20px);
+        padding: 0;
+
     }
 }

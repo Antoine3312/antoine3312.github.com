@@ -1,0 +1,125 @@
+@use './colors.scss' as *;
+
+.wrapper-not-found {
+    background: $neutral_50;
+    width: calc(100vw - 40px);
+    height: calc(100svh - 40px);
+    padding: 20px;
+    z-index: 9999;
+
+    .content-not-found {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        flex-direction: column;
+
+        .error-msg {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            h5 {
+                font-family: 'Satoshi';
+                font-size: 1.25rem;
+                font-weight: 200;
+            }
+
+            h2 {
+                font-family: 'Satoshi';
+                font-size: 3rem;
+                font-weight: 900;
+            }
+            
+            p {
+                font-family: 'Satoshi';
+                font-size: 1rem;
+                font-weight: 400;
+
+            }
+
+        }
+
+        .who-am-i {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+
+            h1 {
+                font-family: 'RocGrotesk';
+                font-weight: 900;
+                font-size: 10.5vw;
+                line-height: 9.5vw;
+                text-transform: uppercase;
+            }
+            h4 {
+                font-family: 'Satoshi';
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+        }
+
+        .circle {
+            width: 900px;
+            aspect-ratio: 1;
+            border: 40px solid $neutral_950;
+            opacity: 0.05;
+            position: fixed;
+            border-radius: 100%;
+        }
+
+        .circle-top {
+            top: -450px;
+            right: -450px;
+        }
+
+        .circle-bottom {
+            bottom: -450px;
+            left: -450px;
+        }
+
+
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper-not-found {
+        width: calc(100vw - 20px);
+        height: calc(100svh - 20px);
+        padding: 10px;
+
+        .content-not-found {
+            overflow: hidden;
+            .error-msg {
+                h5 {
+                    font-size: 1rem;
+                }
+                h2 {
+                    font-size: 2rem;
+                }
+                p {
+                    font-size: 0.75rem;
+
+                }
+            }
+
+            .who-am-i {
+                gap: 10px;
+
+                h1 {
+                    font-size: 25vw;
+                    line-height: 20vw;
+                    text-align: center;
+                }
+                h4 {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

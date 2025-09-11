@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../assets/ImageComponent.scss';
 import useImageData from '../hooks/useImgData';
 
-const ImageComponent = ({ src, alt, rest }) => {
+const ImageComponent = ({ src, alt, ...rest }) => {
   const [isLoaded, setLoaded] = useState(false);
   const imgData = useImageData(src);
 

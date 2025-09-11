@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 import { useLenis } from 'lenis/react';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';
 import ImageComponent from './ImageComponent';
 import { slugify, useNavigation } from './NavigationProvider';
 import useIsMobile from '../hooks/useIsMobile';
+import NotFound from './NotFound';
 
 const Project = () => {
   const navigateTo = useNavigation();
@@ -16,7 +17,7 @@ const Project = () => {
   const isMobile = useIsMobile();
 
   const { projectSlug } = useParams();
-  const { title, description, tags, url, images, company_url: companyUrl } = projects
+  const project = projects
     .find(({ title: projectTitle }) => slugify(projectTitle) === projectSlug);
   const projectIndex = projects
     .findIndex(({ title: projectTitle }) => slugify(projectTitle) === projectSlug);
@@ -56,6 +57,9 @@ const Project = () => {
       window.removeEventListener('scroll', handleWheel);
     };
   }, [lastScrollTop, isScrolledTop]);
+
+  if (!project) return <NotFound />;
+  const { title, description, tags, url, images, company_url: companyUrl } = project;
 
   return (
     <>
