@@ -26,15 +26,23 @@ const Homepage = () => {
   }, []);
 
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [blockScroll, setBlockScroll] = useState(true);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const handleWheel = e => {
-      if (!isMobile && !hasScrolled) {
+      if (!isMobile && blockScroll) {
         e.preventDefault();
         window.scrollTo(0, 0);
+
         if (!hasScrolled) {
           setHasScrolled(true);
         }
+        // Debounce le premier scroll pour qu'il reste bloqué
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+          setBlockScroll(false);
+        }, 100);
       }
     };
 
@@ -44,7 +52,7 @@ const Homepage = () => {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [hasScrolled, isMobile]);
+  }, [hasScrolled, isMobile, blockScroll]);
 
   const wrapperRef = useRef(null);
   const carousselRef = useRef(null);
@@ -102,7 +110,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className={clsx('homepage', { 'homepage-scrolled': hasScrolled })}>
+    <div className={clsx('homepage', { 'homepage-scrolled': !blockScroll })}>
       <div className={clsx({
         wrapper_headings: true,
         is_loaded: pageLoaded,
