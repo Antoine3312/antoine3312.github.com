@@ -117,7 +117,10 @@ const Homepage = () => {
   const [popupUrl, setPopupUrl] = useState('');
 
   const handlePopupEnter = e => {
-    if (!showPopup) setShowPopup(true);
+    if (!showPopup) {
+      setPopupTranslation({ x: 0, y: 0 });
+      setShowPopup(true);
+    }
     const container = e.currentTarget.getBoundingClientRect();
     const exploreButton = document.getElementById('explore');
     const { width, height } = exploreButton.getBoundingClientRect();

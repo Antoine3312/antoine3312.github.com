@@ -633,7 +633,7 @@
                     min-width: fit-content;
 
                     .wrapper {
-                        transition: transform 0.45s cubic-bezier(0.5, 1.7, 0.4, 0.8) .1s, opacity 0.45s cubic-bezier(0.5, 1.7, 0.4, 0.8) .1s;
+                        transition: transform 0.45s cubic-bezier(0.5, 1.7, 0.4, 0.8), opacity 0.45s cubic-bezier(0.5, 1.7, 0.4, 0.8);
 
                         border: 1px solid $neutral_100;
                         border-radius: 999px;
