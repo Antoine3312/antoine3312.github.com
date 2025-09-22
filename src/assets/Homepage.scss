@@ -571,22 +571,23 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    gap: 10px;
+                    gap: 15px;
 
 
                     .wrapper-translation {
                         position: relative;
                         height: fit-content;
+                        width: fit-content;
                         overflow: hidden;
 
                         img {
-                            height: 0.8rem;
+                            height: 1rem;
                             display: block;
-                            transition: all .5s cubic-bezier(0.3, 0.29, 0, 01);
+                            transition: all 0.5s cubic-bezier(0.3, 0.29, 0, 1);
                         }
 
                         .to-translate {
-                            top: calc(100% + 10px);
+                            top: calc(100% + 35px);
                             position: absolute;
                         }
                     }
@@ -597,7 +598,7 @@
                                 transform: translateY(-100%);
                             }
                             .to-translate {
-                                transform: translateY(calc(-100% - 10px));
+                                transform: translateY(calc(-100% - 35px));
                             }
                         }
                     }

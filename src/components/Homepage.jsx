@@ -292,8 +292,10 @@ const Homepage = () => {
 
                     const x = e.clientX - rect.left - centerX;
                     const y = e.clientY - rect.top - centerY;
-
-                    image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+                    const animate = () => {
+                      image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+                    };
+                    requestAnimationFrame(animate);
                   }}
                   onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
                 >
