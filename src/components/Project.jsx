@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useLenis } from 'lenis/react';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import '../assets/Project.scss';
 import projects from '../projects.json';
 import NavBar, { CONTENT_TO_NAV_GAP, NAV_HEIGHT } from './Nav';

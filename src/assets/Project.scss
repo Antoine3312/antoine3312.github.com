@@ -178,7 +178,10 @@
 
 
         .description-scroll {
-            transform: translate(calc(475px + 50px), -100%);
+            // transform: translate(calc(475px + 50px), -100%);
+            position: absolute;
+            top: 0;
+            left: 100%;
             width: fit-content;
             display: flex;
             flex-direction: column;
@@ -193,6 +196,7 @@
                 font-size: 3.125rem;
                 line-height: 3.125rem;
                 padding: 30px;
+                text-align: end;
             }
 
             .urls {
@@ -336,7 +340,7 @@
         }
     
         .description-scroll{
-            transform: translate(0, -100%) !important;
+            transform: translateX(-100%);
         }
     }
 }
