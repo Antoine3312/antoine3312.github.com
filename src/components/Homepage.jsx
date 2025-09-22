@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import clsx from 'clsx';
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import '../assets/Homepage.scss';
 import { BlurGradientBg } from '../lib/BlurGradientBg.module';
 import projects from '../projects.json';
+import experiences from '../experiences.json';
 import AnimatedTitle, { WORD } from './AnimatedTitle';
 import { useNavigation } from './NavigationProvider';
 import useIsMobile from '../hooks/useIsMobile';
@@ -42,7 +43,7 @@ const Homepage = () => {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
           setBlockScroll(false);
-        }, 100);
+        }, 75);
       }
     };
 
@@ -109,6 +110,38 @@ const Homepage = () => {
     window.open('/cv.pdf', '_blank', 'noopener,noreferrer');
   };
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [popupTranslation, setPopupTranslation] = useState({ x: 0, y: 0 });
+  const [popupUrl, setPopupUrl] = useState('');
+
+  const handlePopupEnter = e => {
+    if (!showPopup) setShowPopup(true);
+    const container = e.currentTarget.getBoundingClientRect();
+    const exploreButton = document.getElementById('explore');
+    const { width, height } = exploreButton.getBoundingClientRect();
+
+    const { x, y } = {
+      x: e.clientX - container.x - (width / 2),
+      y: e.clientY - container.y - (height / 2),
+    };
+
+    setPopupPosition({ x, y });
+  };
+
+  const handlePopupMove = e => {
+    const container = e.currentTarget.getBoundingClientRect();
+    const exploreButton = document.getElementById('explore');
+    const { width, height } = exploreButton.getBoundingClientRect();
+
+    const { x, y } = {
+      x: e.clientX - container.x - (width / 2) - popupPosition.x,
+      y: e.clientY - container.y - (height / 2) - popupPosition.y,
+    };
+
+    setPopupTranslation({ x, y });
+  };
+
   return (
     <div className={clsx('homepage', { 'homepage-scrolled': !blockScroll })}>
       <div className={clsx({
@@ -118,8 +151,6 @@ const Homepage = () => {
       })}
       >
         <div className="headings" id="box">
-          <div className="gradient_bottom" />
-          <div className="gradient_top" />
           <div className="wrapper_header">
             <div className="header">
               <h3><AnimatedTitle text="software engineer student" pageLoaded={pageLoaded} separation={WORD} /></h3>
@@ -183,79 +214,181 @@ const Homepage = () => {
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex="-1"
       >
-        <div className="header">
-          <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled || isMobile} /></h1>
-          <div className="caroussel_nav">
-            <button
-              type="button"
-              className="arrow left"
-              tabIndex={hasScrolled ? '0' : '-1'}
-              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-              disabled={carousselSlideIndex === 0}
-              onClick={() => scrollCaroussel(true)}
+        <div className="section-caroussel">
+          <div className="header">
+            <h1><AnimatedTitle text="main projects" pageLoaded={hasScrolled || isMobile} /></h1>
+            <div className="caroussel_nav">
+              <button
+                type="button"
+                className="arrow left"
+                tabIndex={hasScrolled ? '0' : '-1'}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                disabled={carousselSlideIndex === 0}
+                onClick={() => scrollCaroussel(true)}
+              >
+                <img src="arrow_left.svg" alt="arrow left icon" className="left-arrow" />
+                <img src="arrow_left.svg" alt="arrow left icon" className="toSlide toSlide-left" />
+              </button>
+              <button
+                type="button"
+                className="arrow right"
+                tabIndex={hasScrolled ? '0' : '-1'}
+                style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
+                disabled={isEnd}
+                onClick={() => scrollCaroussel(false)}
+              >
+                <img src="arrow_right.svg" alt="arrow right icon" />
+                <img src="arrow_right.svg" alt="arrow right icon" className="toSlide" />
+              </button>
+            </div>
+          </div>
+
+          <div className="caroussel_wrapper" ref={wrapperRef} tabIndex="-1">
+            <div
+              ref={carousselRef}
+              className="caroussel"
+              style={{
+                transition: '1s all ',
+                transform: `translateX(-${scrollAmount}px)`,
+              }}
             >
-              <img src="arrow_left.svg" alt="arrow left icon" className="left-arrow" />
-              <img src="arrow_left.svg" alt="arrow left icon" className="toSlide toSlide-left" />
-            </button>
-            <button
-              type="button"
-              className="arrow right"
-              tabIndex={hasScrolled ? '0' : '-1'}
-              style={{ pointerEvents: !hasScrolled ? 'none' : 'auto' }}
-              disabled={isEnd}
-              onClick={() => scrollCaroussel(false)}
-            >
-              <img src="arrow_right.svg" alt="arrow right icon" />
-              <img src="arrow_right.svg" alt="arrow right icon" className="toSlide" />
-            </button>
+              {projects.map(({ title, desc_preview: description, preview }, index) => (
+                <button
+                  type="button"
+                  className="card"
+                  key={title}
+                  tabIndex={hasScrolled || isMobile ? '0' : '-1'}
+                  aria-hidden={hasScrolled || isMobile}
+                  style={{ pointerEvents: hasScrolled || isMobile ? 'auto' : 'none' }}
+                  onFocus={() => onTabFocus(index)}
+                  onClick={() => navigateTo(title)}
+                  onMouseDown={e => e.preventDefault()}
+                  onMouseMove={e => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const image = e.currentTarget.querySelector('img');
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const x = e.clientX - rect.left - centerX;
+                    const y = e.clientY - rect.top - centerY;
+
+                    image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+                  }}
+                  onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
+                >
+                  <div className="img_container">
+                    <ImageComponent src={preview} alt={preview.split('.')[0]} />
+                  </div>
+                  <div className="titles">
+                    <ImageComponent src={preview} alt={preview.split('.')[0]} />
+                    <h4>{title}</h4>
+                    <p>{description}</p>
+                  </div>
+                </button>
+              ))}
+
+            </div>
           </div>
         </div>
 
-        <div className="caroussel_wrapper" ref={wrapperRef} tabIndex="-1">
+        <div className="section-professional">
+          <div className="header">
+            <h1>Work experiences</h1>
+            <a href="https://www.linkedin.com/in/antoine-mazeau-153767252/" target="_blank" rel="noreferrer">
+              LinkedIn
+              <div className="wrapper-translation">
+                <img src="arrow.svg" alt="arrow icon" />
+                <img src="arrow.svg" alt="arrow icon" className="to-translate" />
+              </div>
+            </a>
+          </div>
           <div
-            ref={carousselRef}
-            className="caroussel"
-            style={{
-              transition: '1s all ',
-              transform: `translateX(-${scrollAmount}px)`,
-            }}
+            className="wrapper-content"
+            onMouseEnter={handlePopupEnter}
+            onMouseMove={handlePopupMove}
+            onWheel={handlePopupMove}
+            onMouseLeave={() => setShowPopup(false)}
           >
-            {projects.map(({ title, desc_preview: description, preview }, index) => (
-              <button
-                type="button"
-                className="card"
-                key={title}
-                tabIndex={hasScrolled || isMobile ? '0' : '-1'}
-                aria-hidden={hasScrolled || isMobile}
-                style={{ pointerEvents: hasScrolled || isMobile ? 'auto' : 'none' }}
-                onFocus={() => onTabFocus(index)}
-                onClick={() => navigateTo(title)}
-                onMouseDown={e => e.preventDefault()}
-                onMouseMove={e => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const image = e.currentTarget.querySelector('img');
-
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-
-                  const x = e.clientX - rect.left - centerX;
-                  const y = e.clientY - rect.top - centerY;
-
-                  image.style.transform = `translate(${x / 25}px, ${y / 25}px)`;
+            <a
+              id="explore"
+              href={popupUrl}
+              target="_blank"
+              className={clsx('explore')}
+              tabIndex={-1}
+              style={{
+                top: `${popupPosition.y}px`,
+                left: `${popupPosition.x}px`,
+                transform: `translate(${popupTranslation.x}px, ${popupTranslation.y}px)`,
+              }}
+              rel="noreferrer"
+            >
+              <div
+                className="wrapper"
+                style={{
+                  transform: showPopup ? 'scale(1)' : 'scale(0)',
+                  opacity: showPopup ? '1' : '0',
                 }}
-                onMouseLeave={e => { e.currentTarget.querySelector('img').style.transform = 'translate3d(0px, 0px, 0px)'; }}
               >
-                <div className="img_container">
-                  <ImageComponent src={preview} alt={preview.split('.')[0]} />
-                </div>
-                <div className="titles">
-                  <ImageComponent src={preview} alt={preview.split('.')[0]} />
-                  <h4>{title}</h4>
-                  <p>{description}</p>
-                </div>
-              </button>
-            ))}
+                <div className="wrapper-translation">
+                  <div className="content-explore">
+                    <h5>Discover company</h5>
+                    <div className="wrapper-img">
+                      <img src="arrow.svg" alt="arrow" />
+                    </div>
+                  </div>
 
+                  <div className="content-explore to-translate">
+                    <h5>Discover company</h5>
+                    <div className="wrapper-img">
+                      <img src="arrow.svg" alt="arrow" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            {experiences.map(({ role, company, description, begin_month: beginMonth, begin_year: beginYear, end_month: endMonth, end_year: endYear, tags, url }, index) => (
+              <Fragment key={role + company}>
+                <a
+                  href={url}
+                  target="_blank"
+                  className="line"
+                  rel="noreferrer"
+                  onMouseMove={() => setPopupUrl(url)}
+                  onWheel={() => setPopupUrl(url)}
+                >
+                  <div className="dates">
+                    <div className="date">
+                      <p className="month">{beginMonth}</p>
+                      <p>'{beginYear}</p>
+                    </div>
+                    <p>-</p>
+                    <div className="date">
+                      <p className="month">{endMonth}</p>
+                      <p>'{endYear}</p>
+                    </div>
+                  </div>
+                  <h2>{role}</h2>
+                  <div className="description">
+                    <div className="summary">
+                      <div className="titles">
+                        <h5>{company}</h5>
+                        <p>{description}</p>
+                      </div>
+                      <div className="tags">
+                        {tags.map(tag => (
+                          <p key={tag}>{tag}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {index + 1 !== experiences.length && (
+                  <div className="separator" />
+                )}
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>

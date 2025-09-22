@@ -1,0 +1,83 @@
+[
+    {
+        "role": "Front-End Developer",
+        "company": "Makina Corpus",
+        "description": "I worked on Présences, a web mapping application developed by Makina Corpus to organize office spaces in a flex-office environment.",
+        "begin_month": "February",
+        "begin_year": "25",
+        "end_month": "January",
+        "end_year": "25",
+        "tags": [
+                    "Javascrip",
+                    "React",
+                    "Python",
+                    "Django",
+                    "netlify",
+                    "git",
+                    "github",
+                    "docker"
+                ],
+        "url": "https://makina-corpus.com/"
+    },
+    {
+        "role": "Front-End Developer",
+        "company": "Junior Conseil Utt",
+        "description": "Within the junior enterprise JC UTT, I worked on Passeport Carbone, a web application commissioned by the University of Technology of Troyes to raise student awareness about their carbon footprint.",
+        "begin_month": "January",
+        "begin_year": "24",
+        "end_month": "August",
+        "end_year": "25",
+        "tags": [
+                    "Javascrip",
+                    "React",
+                    "PHP",
+                    "Symfony",
+                    "mysql",
+                    "git",
+                    "docker"
+                ],
+        "url": "https://jc-utt.fr/"
+    },
+    {
+        "role": "Mobile Developer",
+        "company": "v-lock",
+        "description": "I collaborated with the startup V-Lock, based in Troyes, on the development of the mobile application supporting their anti-theft bike station system.",
+        "begin_month": "February",
+        "begin_year": "24",
+        "end_month": "August",
+        "end_year": "24",
+        "tags": [
+                    "Flutter",
+                    "Dart",
+                    "Supabase",
+                    "Github",
+                    "git",
+                    "github"
+                ],
+        "url": "https://www.v-lock.fr/"
+    },
+    {
+        "role": "Full-Stack Developer",
+        "company": "orange",
+        "description": "I completed this internship within the Agile Diamant team, contributing to the redesign of the intervention management information system.",
+        "begin_month": "April",
+        "begin_year": "23",
+        "end_month": "June",
+        "end_year": "23",
+        "tags": [
+                    "Angular",
+                    "Typescript",
+                    "Java",
+                    "Spring",
+                    "Docker",
+                    "Gitlab Pipeline",
+                    "Nginx",
+                    "Maven",
+                    "Junit",
+                    "Selenium",
+                    "Gherkin",
+                    "Cucumber"
+                ],
+        "url": "https://www.orange.com/"
+    }
+]
