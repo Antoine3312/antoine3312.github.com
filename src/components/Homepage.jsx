@@ -113,6 +113,7 @@ const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [popupTranslation, setPopupTranslation] = useState({ x: 0, y: 0 });
+  const targetPos = useRef({ x: 0, y: 0 });
   const [popupUrl, setPopupUrl] = useState('');
 
   const handlePopupEnter = e => {
@@ -129,17 +130,33 @@ const Homepage = () => {
     setPopupPosition({ x, y });
   };
 
+  useEffect(() => {
+    let raf;
+    const animate = () => {
+      setPopupTranslation(prev => {
+        const dx = targetPos.current.x - prev.x;
+        const dy = targetPos.current.y - prev.y;
+
+        const easing = 0.035; // 0 -> lent
+
+        return {
+          x: prev.x + dx * easing,
+          y: prev.y + dy * easing,
+        };
+      });
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   const handlePopupMove = e => {
     const container = e.currentTarget.getBoundingClientRect();
-    const exploreButton = document.getElementById('explore');
-    const { width, height } = exploreButton.getBoundingClientRect();
-
-    const { x, y } = {
-      x: e.clientX - container.x - (width / 2) - popupPosition.x,
-      y: e.clientY - container.y - (height / 2) - popupPosition.y,
+    const exploreButton = document.getElementById('explore').getBoundingClientRect();
+    targetPos.current = {
+      x: e.clientX - container.x - (exploreButton.width / 2) - popupPosition.x,
+      y: e.clientY - container.y - (exploreButton.height / 2) - popupPosition.y,
     };
-
-    setPopupTranslation({ x, y });
   };
 
   return (
@@ -319,7 +336,7 @@ const Homepage = () => {
               style={{
                 top: `${popupPosition.y}px`,
                 left: `${popupPosition.x}px`,
-                transform: `translate(${popupTranslation.x}px, ${popupTranslation.y}px)`,
+                transform: `translate3d(${popupTranslation.x}px, ${popupTranslation.y}px, 0)`,
               }}
               rel="noreferrer"
             >
