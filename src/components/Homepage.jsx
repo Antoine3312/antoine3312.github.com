@@ -29,6 +29,7 @@ const Homepage = () => {
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [blockScroll, setBlockScroll] = useState(true);
+  const [navPosition, setNavPosition] = useState(0);
   const timeoutRef = useRef(null);
 
   useEffect(() => {
@@ -45,6 +46,16 @@ const Homepage = () => {
         timeoutRef.current = setTimeout(() => {
           setBlockScroll(false);
         }, 75);
+      }
+
+      if (!isMobile && !blockScroll) {
+        const max = 100;
+        setNavPosition(prev => {
+          if (e.deltaY > 0) { // scroll to top
+            return Math.max(-max, prev - 3);
+          }
+          return Math.min(0, prev + 3);
+        });
       }
     };
 
@@ -165,11 +176,15 @@ const Homepage = () => {
 
   return (
     <div className={clsx('homepage', { 'homepage-scrolled': !blockScroll })}>
-      <div className={clsx({
-        wrapper_headings: true,
-        is_loaded: pageLoaded,
-        has_scrolled: hasScrolled,
-      })}
+      <div
+        className={clsx({
+          wrapper_headings: true,
+          is_loaded: pageLoaded,
+          has_scrolled: hasScrolled,
+        })}
+        style={{
+          top: hasScrolled && !blockScroll && `${navPosition}px`,
+        }}
       >
         <div className="headings" id="box">
           <div className="wrapper_header">
