@@ -557,7 +557,7 @@
                 justify-content: space-between;
                 align-items: flex-end;
                 width: 100%;
-                color: $neutral_100;
+                color: $neutral_50;
 
                 padding: 120px 20px 20px 20px;
 
@@ -1069,7 +1069,7 @@
             opacity: 1;
             padding: 15px;
             margin-top: 30px;
-            gap: 50px;
+            gap: 75px;
 
             .section-caroussel {
                 gap: 10px;
@@ -1137,8 +1137,11 @@
                         font-size: 0.75rem;
                         gap: 5px;
 
-                        img {
-                            height: 0.75rem;
+                        .wrapper-translation {
+
+                            img {
+                                height: 0.75rem;
+                            }
                         }
                     }
 

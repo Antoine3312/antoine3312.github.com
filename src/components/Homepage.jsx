@@ -9,6 +9,7 @@ import AnimatedTitle, { WORD } from './AnimatedTitle';
 import { useNavigation } from './NavigationProvider';
 import useIsMobile from '../hooks/useIsMobile';
 import ImageComponent from './ImageComponent';
+import Footer from './Footer';
 
 const Homepage = () => {
   const navigateTo = useNavigation();
@@ -414,6 +415,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
