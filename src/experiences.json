@@ -3,8 +3,8 @@
         "role": "Front-End Developer",
         "company": "Makina Corpus",
         "description": "I worked on Présences, a web mapping application developed by Makina Corpus to organize office spaces in a flex-office environment.",
-        "begin_month": "February",
-        "begin_year": "25",
+        "begin_month": "July",
+        "begin_year": "24",
         "end_month": "January",
         "end_year": "25",
         "tags": [
@@ -51,8 +51,7 @@
                     "Dart",
                     "Supabase",
                     "Github",
-                    "git",
-                    "github"
+                    "git"
                 ],
         "url": "https://www.v-lock.fr/"
     },
