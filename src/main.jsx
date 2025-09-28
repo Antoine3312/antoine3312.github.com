@@ -1,10 +1,13 @@
+import { inject } from '@vercel/analytics';
 import ReactLenis from 'lenis/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import NavigationProvider from './components/NavigationProvider';
 import Loader from './components/Loader';
+import NavigationProvider from './components/NavigationProvider';
 import lazyWithDelay from './helpers';
+
+inject();
 
 const ANIMATION_ENTRANCE_DELAY = 1000;
 
