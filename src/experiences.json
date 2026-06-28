@@ -1,5 +1,26 @@
 [
     {
+        "role": "Full-Stack Developer",
+        "company": "Thales Services Numériques",
+        "description": "I completed this internship within an Agile development team, contributing to the design, development, and deployment of an information system for planning maintenance operations of a major french national nuclear infrastructure operator.",
+        "begin_month": "January",
+        "begin_year": "26",
+        "end_month": "July",
+        "end_year": "26",
+        "tags": [
+                    "Angular",
+                    "Typescript",
+                    "Java",
+                    "Spring",
+                    "Docker",
+                    "Gitlab",
+                    "Maven",
+                    "Jasmine",
+                    "Junit"
+                ],
+        "url": "https://www.thalesgroup.com/fr"
+    },
+    {
         "role": "Front-End Developer",
         "company": "Makina Corpus",
         "description": "I worked on Présences, a web mapping application developed by Makina Corpus to organize office spaces in a flex-office environment.",
